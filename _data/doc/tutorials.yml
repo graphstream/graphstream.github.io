@@ -1,0 +1,32 @@
+paths:
+  - title: Lab Sessions
+    href: /doc/Tutorials/Lab-Sessions/
+
+documents:
+  - title: Getting Started
+    href: /doc/Tutorials/Getting-Started/
+
+  - title: Creating a movie with FileSinkImages
+    href: /doc/Tutorials/Creating-a-movie-with-FileSinkImages/
+
+  - title: Working with algorithms and generators
+    href: /doc/Tutorials/Working-with-algorithms-and-generators/
+
+  - title: Storing, retrieving and displaying data in graphs
+    href: /doc/Tutorials/Storing-retrieving-and-displaying-data-in-graphs/
+
+  - title: Using remote source
+    href: /doc/Tutorials/Using-remote-source/
+
+  - title: Graph Visualisation
+    href: /doc/Tutorials/Graph-Visualisation/
+
+  - title: Reading files using FileSource
+    href: /doc/Tutorials/Reading-files-using-FileSource/
+
+  - title: GraphStream & Maven
+    href: /doc/Tutorials/GraphStream-Maven/
+
+  - title: Chart Measures
+    href: /doc/Tutorials/Chart-Measures/
+
