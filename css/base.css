@@ -136,23 +136,3 @@ input.b {
 		position:fixed !important;
 	}
 }
-
-/* Commands */
-
-.commands {
-	z-index:1041;
-	position: fixed;
-	right: 5px;
-	top: 7px;
-	-webkit-transition: border-color,0.3s;
-	-moz-transition: border-color,0.3s;
-	-o-transition: border-color,0.3s;
-	transition: border-color,0.3s;
-}
-
-@media (max-width: 767px) {
-	.commands {
-		position: absolute;
-		top: 12px;
-	}
-}

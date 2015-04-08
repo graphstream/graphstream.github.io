@@ -95,7 +95,7 @@ will evolve afterwards, in the following tutorials.
 
 All graphs in GraphStream follow the ``Graph`` interface. You import it with:
 
-{% highlight java linenos %}
+{% highlight java %}
 import org.graphstream.graph.*;
 {% endhighlight %}
 
@@ -106,13 +106,13 @@ edges inside such a graph, simply consider undirected edges as bidirectional. Th
 does not well cope with the mathematical definition, but is certainly easier to use
 for developing. You import it with:
 
-{% highlight java linenos %}
+{% highlight java %}
 import org.graphstream.graph.implementations.*;
 {% endhighlight %}
 
 You create the graph this way:
 
-{% highlight java linenos %}
+{% highlight java %}
 public class Tutorial1 {
 	public static void main(String args[]) {
 		Graph graph = new SingleGraph("Tutorial 1");
@@ -132,7 +132,7 @@ The construction API of the graph works as a factory for node and edge elements
 must ask the graph to create them for you). Add the following lines after the
 graph declaration:
 
-{% highlight java linenos %}
+{% highlight java %}
 graph.addNode("A" );
 graph.addNode("B" );
 graph.addNode("C" );
@@ -148,7 +148,7 @@ identifiers must naturally be unique.
 It is often useful to check the graph by seeing it, you can easily do this using
 the ``display()`` utility method:
 
-{% highlight java linenos %}
+{% highlight java %}
 graph.display();
 {% endhighlight %}
 
@@ -158,7 +158,7 @@ This should produce a result similar to this:
 
 Here is the full text of the above program:
 
-{% highlight java linenos %}
+{% highlight java %}
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
@@ -181,7 +181,7 @@ public class Tutorial1 {
 The graph being a factory for node, it can create nodes automatically if needed. Instead
 of the graph construction seen above, you can use:
 
-{% highlight java linenos %}
+{% highlight java %}
 graph.setStrict(false);
 graph.setAutoCreate( true );
 graph.addEdge( "AB", "A", "B" );
@@ -202,13 +202,13 @@ must be unique since they relate to only one node or one edge.
 
 Once added in a graph with an identifier, you can obtain a reference on these objects using this identifier:
 
-{% highlight java linenos %}
+{% highlight java %}
 Node A = graph.getNode("A");
 {% endhighlight %}
 
 or:
 
-{% highlight java linenos %}
+{% highlight java %}
 Edge AB = graph.getEdge("AB");
 {% endhighlight %}
 
@@ -226,7 +226,7 @@ In addition to ``getNode`` and ``getEdge`` which impose to know the identifier
 of the node or edge, the graph class provides ways to iterate on the nodes or
 edges, you can write:
 
-{% highlight java linenos %}
+{% highlight java %}
 for(Node n:graph) {
 	System.out.println(n.getId());
 }
@@ -235,7 +235,7 @@ for(Node n:graph) {
 The code above allows to iterate on all the nodes of the graph and will print
 their unique identifier, one by line. You can do a similar thing for edges:
 
-{% highlight java linenos %}
+{% highlight java %}
 for(Edge e:graph.getEachEdge()) {
 	System.out.println(e.getId());
 }
@@ -243,7 +243,7 @@ for(Edge e:graph.getEachEdge()) {
 
 In fact the ``for(Node n:graph)`` instruction is a shorthand for:
 
-{% highlight java linenos %}
+{% highlight java %}
 for(Node n:graph.getEachNode()) {
 ...
 }
@@ -252,7 +252,7 @@ for(Node n:graph.getEachNode()) {
 You can also obtain a read-only set of nodes from the graph (this is not a
 copy, but a view on the set of nodes, hence the operation is reasonably fast):
 
-{% highlight java linenos %}
+{% highlight java %}
 Collection<Node> nodes = graph.getNodeSet();
 {% endhighlight %}
 
@@ -262,7 +262,7 @@ are then applicable on the obtained set. The same operation is possible on edges
 Finally, you can also, if you prefer, use iterators on theses sets of nodes
 and edges:
 
-{% highlight java linenos %}
+{% highlight java %}
 Iterator<? extends Node> nodes = graph.getNodeIterator();
 
 while(nodes.hasNext()) {
@@ -277,7 +277,7 @@ Another way to access graph elements is to use their indices. Unlike identifiers
 created, indices are automatically maintained by the graph. They could change when elements are added or removed but are 
 always between zero and node/edge count minus one. The following loop iterates on all the nodes of the graph:
 
-{% highlight java linenos %}
+{% highlight java %}
 for (int i = 0; i < graph.getNodeCount(); i++) {
 	Node node = graph.getNode(i);
 	...
@@ -287,7 +287,7 @@ for (int i = 0; i < graph.getNodeCount(); i++) {
 Access by index is generally faster than access by identifier. It can be useful to interface GraphStream with APIs that use 
 arrays. The following code constructs the adjacency matrix of a graph:
 
-{% highlight java linenos %}
+{% highlight java %}
 int n = graph.getNodeCount();
 byte adjacencyMatrix[][] = new byte[n][n];
 for (int i = 0; i < n; i++)
@@ -297,16 +297,17 @@ for (int i = 0; i < n; i++)
 
 To get the index of a node knowing its identifier, use:
 
-{% highlight java linenos %}
+{% highlight java %}
 int i = graph.getNode("A").getIndex();
 {% endhighlight %}
     
 Inversely, to get the identifier of a node when its index is known, use
 
-{% highlight java linenos %}
+{% highlight java %}
 String id = graph.getNode(0).getId();
 {% endhighlight %}
 
+### Other version of this document
 
-[GraphStream 1.0 Version of this document.](/doc/Tutorials/Getting-Started/1.0/)
+- [GraphStream 1.0](/doc/Tutorials/Getting-Started/1.0/)
 
