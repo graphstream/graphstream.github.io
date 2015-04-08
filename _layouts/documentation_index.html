@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	
+	{% include head.html extra_css="/css/doc-index.css" %}
+	
+	<body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+			
+		<div class="container-fluid fitheight" style="padding:0px;">
+		
+		{% include menu.html %}
+		
+			<div class="content row-fluid fitheight">
+				<div class="span3 fitheight hidden-phone sidebar-container">
+					{% include sidebar.html %}
+				</div>
+	
+				<section id="main" class="offset3 span8 fitheight">
+					<article id="content">
+						<h1>
+							<a href="/doc/">Documentation</a>
+						{% if page.docpath %}
+							{% for p in page.docpath | split:"," %}
+								{% assign path = p | split:"|" %}
+							 / <a href="{{ path[1] }}">{{ path[0] }}</a>
+							{% endfor %}
+						{% endif %}
+						</h1>
+
+						<ul class="subcategories nostyle">
+						{% for e in page.subpaths %}
+							<li>
+								<a href="{{ e.href }}" class="nb">
+									<i class="icon-folder-open-alt"></i>
+									{{ e.name }}
+								</a>
+							</li>
+						{% endfor %}
+						</ul>
+
+					</article>
+					
+					<div style="text-align:center;padding:5px;"><span>
+						Copyright  &copy; 2010 - 2013,&nbsp;
+						<a href="/doc/About-Us/">GraphStream Team</a>.&nbsp;
+						All rights reserved.
+						</span>
+					</div>
+				</section>
+			</div>
+		</div>
+	
+		<!--<footer id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+			<div><span>
+				Copyright  &copy; 2010 - 2013,&nbsp;
+				<a href="/doc/About-Us/" class="i">GraphStream Team</a>.&nbsp;
+				All rights reserved.
+				</span>
+			</div>
+		</footer>-->
+
+        {% include scripts.html %}
+    </body>
+</html>

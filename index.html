@@ -1,0 +1,98 @@
+---
+title: GraphStream - A Dynamic Graph Library
+---
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	
+	{% include head.html %}
+	
+	<body class="fitheight">
+		{% include menu.html %}
+
+		<div class="container fitheight">
+			<div class="hidden-xs" style="height:50px;"></div>
+			
+			<div class="row">
+				<div class="col-xs-6">
+					<div class="hidden-phone" style="height:110px;"></div>
+					<div class="title" style="font-size:47px;font-weight:600;line-height:50px;text-align:right;color:#222222;text-shadow:black 0px 0px 1px;">GraphStream</div>
+					<div style="font-size:21px;text-align:right;line-height:30px;">A Dynamic Graph Library</div>
+				</div>
+				<div class="col-xs-6">
+					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>				
+				</div>
+			</div>
+			
+			<div class="row" style="padding-top:40px; padding-bottom:40px;">
+				<div class="col-md-offset-3 col-xs-2" style="text-align:center;">
+					<a href="http://www.youtube.com/watch?v=XX5rRF6uxow" class="fancybox-media nb">
+						<i class="icon-play-sign icon-3x"></i>
+						<div style="font-size:12px;">Watch the Demo</div>
+					</a>
+				</div>
+				<div class="col-xs-2" style="text-align:center;">
+					<a href="/download/" class="nb">
+						<i class="icon-download icon-3x"></i>
+						<div style="font-size:12px;">Download GraphStream</div>
+					</a>
+				</div>
+				<div class="col-xs-2" style="text-align:center;">
+					<a href="https://github.com/graphstream" class="nb">
+						<i class="icon-github icon-3x"></i>
+						<div style="font-size:12px;">Browse the Code</div>
+					</a>
+				</div>
+			</div>
+			
+			<div class="row" style="font-size:85%;">
+				<div class="col-xs-4">
+					<div class="alert alert-success" style="font-size:125%;">
+						<h5>What is GraphStream ?</h5>
+						<p style="text-align:justify;">GraphStream is a Java library for the modeling and analysis of dynamic graphs. You can generate, import, export, measure, layout and visualize them.</p>
+						<div style="text-align:right;"><a href="/doc/Tutorials/Getting-Started_1.0/" class="alert-success"><i class="icon-expand-alt icon-large"></i> Get Started</a></div>
+					</div>
+					<h5>Get some Help :</h5>
+					<ul>
+						<li>Try the <a href="/doc/FAQ/">FAQ</a>.</li>
+						<li>Check the <a href="http://sympa.litislab.fr/sympa/arc/graphstream-users">archives</a> of the users mailing list, or <a href="http://sympa.litislab.fr/sympa/subscribe/graphstream-users">post a question</a>.</li>
+						<li>Report bugs with GraphStream in the <a href="http://tracker.graphstream-project.org/">issue tracker</a>.</li>
+					</ul>
+				</div>
+
+				<div class="col-xs-4">
+					<h5>Development :</h5>
+					<p>So you are a developer ? You like GraphStream and want to help contribute to this open source project ?  Then read out how to <a href="/doc/Development/Get-Involved/">Get Involved</a>.</p>
+					<p>You may also check out our <a href="/doc/Development/Projects-We-Fancy/">wish list</a>, pick up one idea and contact us if you feel like !</p>
+				
+					<p>For a quick overview, check out these links:</p>
+					<ul>
+				 		<li>The <a href="/doc/API/">API</a></li>
+				 		<li>The <a href="/doc/Source-Repository/"> Source Repository</a></li>
+				 		<li>The <a href="https://github.com/graphstream/gs-core/issues">Issue Tracker</a></li> 
+				 		<li>The <a href="http://tracker.graphstream-project.org/milestones/">Roadmap</a></li>
+					</ul>
+				</div>
+
+				<div class="col-xs-4">
+					<h5>Lastest News :</h5>
+					<ul>
+					{% for news in site.data.news %}
+						<li><a  href="{{ news.url }}">{{ news.title }}</a></li>
+					{% endfor %}
+					</ul>
+				</div>
+			</div>
+        
+			<div class="commands"></div>
+			
+			<footer style="font-size:12px;text-align:center;margin-top:50px;">Copyright  &copy; 2010-2015, <a href="/doc/About-Us/">GraphStream Team.</a> All rights reserved.</footer>
+		</div>
+		
+		{% include scripts.html %}
+        
+		<script type="text/javascript">jQuery(document).ready(function() {jQuery(".fancybox-media").fancybox({helpers:{media: true}});});</script>
+	</body>
+</html>

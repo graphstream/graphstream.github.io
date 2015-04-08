@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	
+	{% include head.html extra_css="/css/doc-index.css" %}
+	
+	<body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+		
+		{% include menu.html %}
+			
+		<div class="container fitheight" style="padding:0px; margin-top: 50px;">
+		
+			<div class="content row fitheight">
+				<div class="col-md-3 fitheight hidden-xs sidebar-container">
+					{% include sidebar.html %}
+				</div>
+	
+				<div id="main" class="col-md-9 fitheight">
+					<article id="content">
+						{{ content }}
+					</article>
+					
+					<div style="text-align:center;padding:5px;"><span>
+						Copyright  &copy; 2010 - 2015,&nbsp;
+						<a href="/doc/About-Us/">GraphStream Team</a>.&nbsp;
+						All rights reserved.
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!--<footer id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+			<div><span>
+				Copyright  &copy; 2010 - 2013,&nbsp;
+				<a href="/doc/About-Us/" class="i">GraphStream Team</a>.&nbsp;
+				All rights reserved.
+				</span>
+			</div>
+		</footer>-->
+
+        {% include scripts.html %}
+    </body>
+</html>

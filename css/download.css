@@ -1,0 +1,10 @@
+#downloads .download {
+	padding: 20px 0px;
+}
+
+#downloads .download .description {
+	background: white url('../img/lines.png') repeat;
+	font-size: 12px;
+	padding: 5px;
+	color: black;
+}

@@ -1,0 +1,158 @@
+html, body, span.label {
+	font-family: "Open Sans", sans-serif;
+	height:100%;
+}
+
+h1, h2, h3, h4, .title {
+	font-family: "Patua One";	
+	font-weight: normal;
+}
+
+.fitheight {
+	min-height:100%;
+	height:100%;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: #222;
+	font-weight:600;
+	-webkit-transition: color,0.2s;
+	-moz-transition: color,0.2s;
+	-o-transition: color,0.2s;
+	transition: color,0.2s;
+}
+
+h1 a, h2 a, h3 a, h4 a, .title a, a.nb {
+	font-weight:normal;	
+}	
+
+a:hover {
+	text-decoration: none;
+	color: rgb(0,136,204);/*#89a9e3;*/
+	text-shadow: 0px 0px 0px #999;
+}
+
+a.i {
+	color: #BBB;
+}
+
+a.i:hover {
+	color: rgb(0,136,204);/*#89a9e3;*/
+	text-shadow: 0px 0px 0px #999;
+}
+
+ul.nostyle {
+	list-style:none;
+	padding-left:10px;
+}
+
+ul.nostyle i {
+	padding-right: 0.5em;
+}
+
+ul.nostyle i.np {
+	padding-right: 0.1em;
+}
+
+::-webkit-scrollbar {width: 10px;}
+::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);}
+::-webkit-scrollbar-thumb {background: rgba(34,34,34,0.8); -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);}
+::-webkit-scrollbar-thumb:window-inactive {background: rgba(34,34,34,0.4);}
+
+.touch ::-webkit-scrollbar {width: 0px;}
+
+.sidebar-container {
+	font-size: 75%;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 50px;
+	/*background-color: #EDEDED;*/
+	border-right: 1px solid #efefef;
+	/*overflow-y:auto;*/
+	/*position:fixed;
+	left:0px;
+	top:0px;*/
+}
+
+.sidebar ul {
+	padding-left: 15px;
+}
+
+.box {
+	padding: 2px 20px;
+}
+
+body {
+	overflow-y: auto;
+}
+
+section {
+	padding-top: 50px;
+}
+
+article {
+	/*padding-left: 35px;*/
+}
+
+.tiny-logo {
+	background:url('../img/gs-logo-white-tiny.png') no-repeat left center;
+	height:40px;
+	width:40px;
+	position:absolute;
+	top:0px;
+	left:0px;	
+}
+
+.svg.backgroundsize .tiny-logo {
+	background:url('../img/gs-logo-white-tiny.svg') no-repeat left center;
+	background-size:40px;
+}
+
+input.b, textarea.b {
+	display: block;
+	width:100%;	
+	-moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+
+input.b {
+   height:28px;
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+	.sidebar-container {
+		z-index: 0;
+	}	
+	
+	.sidebar, aside .box {
+		padding-left: 10px;
+		padding-right: 10px;	
+	}	
+
+	.navbar-fixed-top {
+		position:fixed !important;
+	}
+}
+
+/* Commands */
+
+.commands {
+	z-index:1041;
+	position: fixed;
+	right: 5px;
+	top: 7px;
+	-webkit-transition: border-color,0.3s;
+	-moz-transition: border-color,0.3s;
+	-o-transition: border-color,0.3s;
+	transition: border-color,0.3s;
+}
+
+@media (max-width: 767px) {
+	.commands {
+		position: absolute;
+		top: 12px;
+	}
+}

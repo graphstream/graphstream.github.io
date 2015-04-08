@@ -1,0 +1,27 @@
+- title: Getting Started
+  slug: /doc/Tutorials/Getting-Started/
+
+- title: Creating a movie with FileSinkImages
+  slug: /doc/Tutorials/Creating-a-movie-with-FileSinkImages/
+
+- title: Working with algorithms and generators
+  slug: /doc/Tutorials/Working-with-algorithms-and-generators/
+
+- title: Storing, retrieving and displaying data in graphs
+  slug: /doc/Tutorials/Storing-retrieving-and-displaying-data-in-graphs/
+
+- title: Using remote source
+  slug: /doc/Tutorials/Using-remote-source/
+
+- title: Graph Visualisation
+  slug: /doc/Tutorials/Graph-Visualisation/
+
+- title: Reading files using FileSource
+  slug: /doc/Tutorials/Reading-files-using-FileSource/
+
+- title: GraphStream & Maven
+  slug: /doc/Tutorials/GraphStream-Maven/
+
+- title: Chart Measures
+  slug: /doc/Tutorials/Chart-Measures_development/
+

@@ -1,0 +1,31 @@
+<h1>
+	<a href="/doc/">Documentation</a>
+{% if include.docpath %}
+	{% for p in include.docpath | split:"," %}
+		{% assign path = p | split:"|" %}
+	 / <a href="{{ path[1] }}">{{ path[0] }}</a>
+	{% endfor %}
+{% endif %}
+</h1>
+
+<ul class="subcategories nostyle">
+{% for e in include.subpaths %}
+	<li>
+		<a href="{{ e.href }}" class="nb">
+			<i class="fa fa-folder-open-o"></i>{{ e.title }}
+		</a>
+	</li>
+{% endfor %}
+</ul>
+
+<ul class="documents nostyle">
+{% for d in include.documents %}
+	<li>
+	{% if d.releases %}
+		<i class="fa fa-file"></i>{{ d.title }} [{% for r in d.releases.items %}&nbsp;<a href="{{ u }}" class="release"><i class="icon-asterisk np"></i>{{ r }}</a>{% endfor %}]
+	{% else %}
+		<a href="{{ d.slug }}" class="nb"><i class="fa fa-file"></i>{{ d.title }}</a>
+	{% endif %}
+	</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,15 @@
+# Site settings
+title: GraphStream - A Dynamic Graph Library
+email: team@graphstream-project.org
+description: >
+  GraphStream, java library, API, Graph Visualisation, Graph Layout
+baseurl: ""
+url: "http://graphstream-project.org"
+github_username:  graphstream
+content_img: "/img/content/"
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+gems:
+  - jekyll-redirect-from

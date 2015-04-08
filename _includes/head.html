@@ -1,0 +1,29 @@
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	
+	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+
+	<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:600,400italic,700italic,400,700,300' rel='stylesheet'>
+	<link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" type="text/css" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"/>
+	<!--<link rel="stylesheet" type="text/css" href="{{ "/css/bootstrap-responsive.min.css" | prepend: site.baseurl }}"/>-->
+	<link rel="stylesheet" type="text/css" href="{{ "/css/base.css" | prepend: site.baseurl }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ "/css/sidebar.css" | prepend: site.baseurl }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ "/css/syntax.css" | prepend: site.baseurl }}">
+	
+	<link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+	
+	{% for css in include.extra_css | split:"," %}
+	<link rel="stylesheet" type="text/css" href="{{ css | prepend: site.baseurl }}"/>
+	{% endfor %}
+
+	<script src="{{ "/js/vendor/modernizr-2.8.3.min.js" | prepend: site.baseurl }}"></script>
+</head>
+

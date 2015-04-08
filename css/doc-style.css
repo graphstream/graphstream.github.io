@@ -1,0 +1,88 @@
+/*
+ * This defines some classes which can be used
+ * into documents.
+ *
+ */
+
+.bordered {
+  border: 1px solid gray;
+}
+
+.padded {
+  padding: 5px;
+}
+
+.monospaced {
+  font-family: Monospace;
+}
+
+.centered {
+  text-align: center;
+}
+
+.highlighted {
+  color: red;
+}
+
+table.docutils {
+  border-spacing: 0px 0px;
+  border-collapse: collapse;
+  margin: 2px;
+}
+
+table.docutils td {
+  border: solid #888888 1px;
+  padding: 2px;
+}
+
+table.docutils th, table.docutils td.header {
+  border: solid #888888 1px;
+  padding: 4px;
+  text-align: center;
+}
+
+#contents {
+    width: auto;
+    display: table;
+    border: solid 1px #AAA;
+    background-color: #F9F9F9;
+    margin-top: 5px;
+    padding: 3px;
+}
+
+#contents .topic-title {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+#contents li a.reference.internal {
+    font-weight: normal;
+    font-size: 11px;
+}
+
+#contents li li a.reference.internal {
+    font-weight: normal;
+    font-size: 10px;
+}
+
+#contents > ul {
+    margin: 20px;
+    padding-left: 4px;
+}
+
+#contents ul.simple {
+    list-style-type: decimal;
+}
+
+#contents ul li {
+	font-size: 11px;
+}
+
+#contents ul ul {
+    padding-left: 20px;
+}
+
+#contents ul.simple li ul li {
+    padding-bottom: 0px;
+}

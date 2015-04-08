@@ -1,0 +1,8 @@
+ul.subcategories, ul.documents {
+	font-size: 130%;
+}
+
+ul.subcategories li, ul.documents li {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}

@@ -1,0 +1,19 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{ "/js/vendor/jquery-1.11.2.min.js" | prepend: site.baseurl }}"><\/script>')</script>
+<script type="text/javascript" src="{{ "/js/jquery.fancybox.pack.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript" src="{{ "/js/jquery.fancybox-media.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/bootstrap-collapse.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/plugins.js" | prepend: site.baseurl }}"></script>
+{% for js in include.extra_js | split:"," %}
+<script src="{{ js | prepend: site.baseurl }}"></script>
+{% endfor %}
+<script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
+
+<script>
+var _gaq=[['_setAccount','UA-19598785-1'],['_setDomainName', '.graphstream-project.org'],['_trackPageview']];
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+

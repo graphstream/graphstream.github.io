@@ -1,0 +1,10 @@
+#news_list .news {
+	padding: 20px 0px;
+}
+
+#news_list .news .description {
+	background: white url('../img/lines.png') repeat;
+	font-size: 12px;
+	padding: 5px;
+	color: black;
+}
