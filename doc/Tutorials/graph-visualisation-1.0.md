@@ -2,8 +2,9 @@
 title: Graph Visualisation
 layout: documentation
 docpath: Tutorials|/doc/Tutorials/
-permalink: /doc/Tutorials/Graph-Visualisation/
-redirect_from: /doc/Tutorials/Graph-Visualisation_1.1/
+permalink: /doc/Tutorials/Graph-Visualisation/1.0/
+redirect_from: /doc/Tutorials/Graph-Visualisation_1.0/
+latest: /doc/Tutorials/Graph-Visualisation/
 ---
 
 This tutorial is dedicated to visualisation of graphs and the addition and animation of data on graph renderings. As usual, it is cut in an informational part and a practical part at the end.
@@ -328,16 +329,16 @@ Viewer viewer = graph.display();
 View view = viewer.getDefaultView();
 {% endhighlight %}
 
-The ``View`` interface defines a 'camera' object that has several methods allowing you to navigate the graph rendering (the camera object is synchronize and allows to command the view even from a distinct thread). By default the view is in a mode where it adapts to the graph size to always show the entire graph and so that the center of the view is at the center of the graph. However you can leave this mode at any time to specify the point at the center of the view (in order to "move in the graph") using for example:
+The ``View`` interface defines several methods allowing you to navigate the graph rendering. By default the view is in a mode where it adapts to the graph size to always show the entire graph and so that the center of the view is at the center of the graph. However you can leave this mode at any time to specify the point at the center of the view (in order to "move in the graph") using for example:
 
 {% highlight java %}
-view.getCamera().setViewCenter(2, 3, 4);
+view.setViewCenter(2, 3, 4);
 {% endhighlight %}
 
 You can also zoom in or out using:
 
 {% highlight java %}
-view.getCamera().setViewPercent(0.5);
+view.setViewPercent(0.5);
 {% endhighlight %}
 
 This will zoom of 200% on the view center.
@@ -831,9 +832,4 @@ For example:
 {% highlight java %}
 graph.addAttribute("ui.screenshot", "/some/place/screenshot.png");
 {% endhighlight %}
-
-
-### Other version of this document
-
-- [GraphStream 1.0](/doc/Tutorials/Graph-Visualisation/1.0/)
 
