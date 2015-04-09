@@ -1,10 +1,10 @@
 ---
 title: Dijkstra's Shortest Path Algorithm
 layout: documentation
-docpath: Algorithms|/doc/Algorithms/
-permalink: /doc/Algorithms/Dijkstra/1.0/
+docpath: Algorithms|/doc/Algorithms/,Shortest path|/doc/Algorithms/Shortest-path/
+permalink: /doc/Algorithms/Shortest-path/Dijkstra/1.0/
 redirect_from: /doc/Algorithms/Dijkstra_1.0/
-latest: /doc/Algorithms/Dijkstra/
+latest: /doc/Algorithms/Shortest-path/Dijkstra/
 ---
 
 Dijkstra's algorithm is a greedy algorithm that solves the single-source

@@ -1,0 +1,14 @@
+paths:
+
+documents:
+  - title: A*
+    href: /doc/Algorithms/Shortest-path/A-star/
+    
+  - title: All Pair Shortest Path
+    href: /doc/Algorithms/Shortest-path/All-Pair-Shortest-Path/
+    
+  - title: Bellman-Ford
+    href: /doc/Algorithms/Shortest-path/BellmanFord/
+    
+  - title: Dijkstra
+    href: /doc/Algorithms/Shortest-path/Dijkstra/

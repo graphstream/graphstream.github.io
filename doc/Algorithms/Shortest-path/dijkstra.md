@@ -1,8 +1,8 @@
 ---
 title: Dijkstra's Shortest Path Algorithm
 layout: documentation
-docpath: Algorithms|/doc/Algorithms/
-permalink: /doc/Algorithms/Dijkstra/
+docpath: Algorithms|/doc/Algorithms/,Shortest path|/doc/Algorithms/Shortest-path/
+permalink: /doc/Algorithms/Shortest-path/Dijkstra/
 redirect_from: /doc/Algorithms/Dijkstra_1.1/
 ---
 

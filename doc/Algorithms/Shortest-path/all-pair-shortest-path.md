@@ -1,8 +1,8 @@
 ---
 title: The All Pair Shortest Path (APSP) Algorithm
 layout: documentation
-docpath: Algorithms|/doc/Algorithms/
-permalink: /doc/Algorithms/All-Pair-Shortest-Path/
+docpath: "Algorithms|/doc/Algorithms/,Shortest path|/doc/Algorithms/Shortest-path/"
+permalink: /doc/Algorithms/Shortest-path/All-Pair-Shortest-Path/
 redirect_from: /doc/Algorithms/All-Pair-Shortest-Path_1.0/
 ---
 

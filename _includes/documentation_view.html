@@ -1,7 +1,8 @@
 <h3>
 	<a href="/doc/">Documentation</a>
 {% if page.docpath %}
-	{% for p in page.docpath | split:"," %}
+	{% assign paths = page.docpath | split:"," %}
+	{% for p in paths %}
 		{% assign path = p | split:"|" %}
 	 / <a href="{{ path[1] }}">{{ path[0] }}</a>
 	{% endfor %}

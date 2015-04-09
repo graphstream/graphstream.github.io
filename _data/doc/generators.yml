@@ -1,0 +1,24 @@
+paths:
+
+documents:
+  - title: Overview of generators
+    href: /doc/Generators/Overview-of-generators/
+    
+  - title: Random graph generator
+    href: /doc/Generators/Random-graph-generator/
+    
+  - title: Dorogovtsev-Mendes generator
+    href: /doc/Generators/Dorogovtsev-Mendes-generator/
+    
+  - title: Barabasi-Albert Preferential Attachment generator
+    href: /doc/Generators/Barabasi-Albert-Preferential-Attachment-generator/
+    
+  - title: Square Grid generator
+    href: /doc/Generators/Square-Grid-generator/
+    
+  - title: Small world Watts-Strogatz generator
+    href: /doc/Generators/Small-world-Watts-Strogatz-generator/
+    
+  - title: Random Euclidean generator
+    href: /doc/Generators/Random-Euclidean-generator/
+    

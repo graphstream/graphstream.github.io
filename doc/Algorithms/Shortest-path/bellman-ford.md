@@ -1,8 +1,8 @@
 ---
 title: The Bellman-Ford Shortest Path Algorithm
 layout: documentation
-docpath: Algorithms|/doc/Algorithms/
-permalink: /doc/Algorithms/BellmanFord/
+docpath: Algorithms|/doc/Algorithms/,Shortest path|/doc/Algorithms/Shortest-path/
+permalink: /doc/Algorithms/Shortest-path/BellmanFord/
 redirect_from: /doc/Algorithms/BellmanFord_1.0/
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: The A* Shortest path algorithm
 layout: documentation
-docpath: Algorithms|/doc/Algorithms/
-permalink: /doc/Algorithms/A-star/
+docpath: Algorithms|/doc/Algorithms/,Shortest path|/doc/Algorithms/Shortest-path/
+permalink: /doc/Algorithms/Shortest-path/A-star/
 redirect_from: /doc/Algorithms/A_1.0/
 ---
 
