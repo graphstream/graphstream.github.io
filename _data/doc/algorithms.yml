@@ -1,0 +1,43 @@
+paths:
+  - title: Spanning-tree Algorithms
+    href: /doc/Algorithms/Spanning-tree/
+
+documents:
+  - title: Connected Components
+    href: /doc/Algorithms/Connected-Components/
+    
+  - title: All Pair Shortest Path
+    href: /doc/Algorithms/All-Pair-Shortest-Path/
+    
+  - title: Dijkstra
+    href: /doc/Algorithms/Dijkstra/
+    
+  - title: Centroid
+    href: /doc/Algorithms/Centroid/
+    
+  - title: Eccentricity
+    href: /doc/Algorithms/Eccentricity/
+    
+  - title: Bellman-Ford
+    href: /doc/Algorithms/BellmanFord/
+    
+  - title: Betweenness Centrality
+    href: /doc/Algorithms/Betweenness-Centrality/
+    
+  - title: Several often used algorithms on graphs
+    href: /doc/Algorithms/Several-often-used-algorithms-on-graphs/
+    
+  - title: Random walks on graphs
+    href: /doc/Algorithms/Random-walks-on-graphs/
+    
+  - title: A*
+    href: /doc/Algorithms/A-star/
+    
+  - title: Welsh-Powell
+    href: /doc/Algorithms/Welsh-Powell/
+    
+  - title: Tarjan Strongly Connected Components
+    href: /doc/Algorithms/Tarjan-Strongly-Connected-Components/
+    
+  - title: PageRank
+    href: /doc/Algorithms/PageRank/

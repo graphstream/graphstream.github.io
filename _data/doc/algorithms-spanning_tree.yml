@@ -1,0 +1,12 @@
+paths:
+
+documents:
+  - title: Base for spanning-tree algorithms
+    href: /doc/Algorithms/Spanning-tree/Base/
+    
+  - title: Kruskal
+    href: /doc/Algorithms/Spanning-tree/Kruskal/
+    
+  - title: Prim
+    href: /doc/Algorithms/Spanning-tree/Prim/
+    
