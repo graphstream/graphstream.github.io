@@ -16,11 +16,12 @@
 		<div class="container fitheight" style="padding:0px; margin-top: 50px;">
 		
 			<div class="content row fitheight">
-				<div class="col-md-3 fitheight hidden-xs sidebar-container">
+				<div class="col-md-3 fitheight hidden-xs hidden-sd sidebar-container">
 					{% include sidebar.html %}
 				</div>
-	
-				<div id="main" class="col-md-9 fitheight">
+				<div class="col-xs-1 visible-xs"></div>
+				
+				<div id="main" class="col-xs-10 col-md-9 fitheight">
 					<article id="content">
 						{{ content }}
 					</article>
