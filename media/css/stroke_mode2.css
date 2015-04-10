@@ -1,0 +1,1 @@
+node { fill-color: #DED; size: 20px; stroke-mode: plain; stroke-color: #855; stroke-width: 0.5px; shape: cross; } node#A { shape: rounded-box; stroke-width: 6px; stroke-color: #585; } node#C { shape: diamond; stroke-width: 3px; stroke-color: #558; }

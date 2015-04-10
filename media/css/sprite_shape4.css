@@ -1,0 +1,1 @@
+sprite { shape: arrow; sprite-orientation: projection; fill-color: #C816; size: 20px; stroke-mode: plain; stroke-color: #333; } sprite#S4 { fill-color: #922; sprite-orientation: projection; size: 16px, 8px; } sprite#S5 { fill-color: #922; size: 16px, 8px; sprite-orientation: to; } sprite#S6 { fill-color: #922; size: 16px, 8px; sprite-orientation: from; }

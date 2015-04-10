@@ -1,0 +1,1 @@
+node { shape: cross; fill-color: #EEE; stroke-mode: plain; stroke-color: #333; size:30px; } node#A { size: 20px, 30px; } node#B { size: 30px, 20px; } edge { fill-color: #333; }

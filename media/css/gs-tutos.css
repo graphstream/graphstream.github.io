@@ -1,0 +1,16 @@
+body {
+	font-family: Ubuntu, Sans-serif;
+	color: #333;
+}
+
+.literal-block {
+	color: #EEE;
+	background-color: #555;
+	font-family: "Droid Sans Mono", monospace;
+	padding: 5px;
+}
+
+tt {
+	font-family: "Droid Sans Mono", monospace;
+	color: #533;
+}

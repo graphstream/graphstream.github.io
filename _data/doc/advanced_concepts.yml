@@ -1,0 +1,8 @@
+paths:
+
+documents:
+  - title: The DGS File Format Specification
+    href: /doc/Advanced-Concepts/The-DGS-File-Format/
+    
+  - title: GraphStream CSS Reference
+    href: /doc/Advanced-Concepts/GraphStream-CSS-Reference/

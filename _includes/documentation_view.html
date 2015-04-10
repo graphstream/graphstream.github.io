@@ -15,3 +15,13 @@
 
 {{ content }}
 
+{% if page.versions %}
+<h3>Other versions of this document</h3>
+<ul>
+	{% assign versions = page.versions | split:"," %}
+	{% for version in versions %}
+	<li><a href="{{ version }}/">Version {{ version }}</a></li>
+	{% endfor %}
+</ul>
+{% endif %}
+

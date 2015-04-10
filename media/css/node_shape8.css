@@ -1,0 +1,1 @@
+node { shape: freeplane; fill-color: white; stroke-mode: plain; size-mode: fit; stroke-width: 3px; stroke-color: #333; } edge { shape: freeplane; size: 3px; fill-color: #444; } node#A { stroke-color: red; icon-mode: at-left; icon: url('data/Smiley_016.png'); } node#B { stroke-color: red; } edge#"A--B" { fill-color: red; }

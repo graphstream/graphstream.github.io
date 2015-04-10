@@ -2,7 +2,7 @@ paths:
 
 documents:
   - title: Base for spanning-tree algorithms
-    href: /doc/Algorithms/Spanning-tree/Base/
+    href: /doc/Algorithms/Spanning-tree/Base-for-spanning-tree-algorithm/
     
   - title: Kruskal
     href: /doc/Algorithms/Spanning-tree/Kruskal/

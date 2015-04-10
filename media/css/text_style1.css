@@ -1,0 +1,1 @@
+node { text-alignment: under; text-offset: 0px, 4px; text-color: #444; } node#A { text-style:italic; } node#B { text-style:bold; } node#C { text-style: bold-italic;  text-alignment: above; text-offset: 0px, -4px; }

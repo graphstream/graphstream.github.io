@@ -6,7 +6,7 @@ description: >
 baseurl: ""
 url: "http://graphstream-project.org"
 github_username:  graphstream
-content_img: "/img/content/"
+content_img: "/media/img/"
 media: "/media"
 
 # Build settings

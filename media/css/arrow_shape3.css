@@ -1,0 +1,1 @@
+edge { arrow-shape: diamond; fill-color: #444; arrow-size: 8px, 4px; } edge#"C--A" {fill-color: #0AF;} edge#"B--C" {fill-color: #555;} edge#"A--B" {fill-color: #FA0;} node { stroke-mode: plain; stroke-color: #333; fill-color: #CCC; }

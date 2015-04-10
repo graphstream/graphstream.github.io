@@ -1,0 +1,1 @@
+node { size: 32px; fill-mode: image-scaled; fill-image: url('data/Smiley_032.png'); shape: box; stroke-mode: plain; stroke-color: #999; } node#A { size: 16px, 32px; } node#C { size: 32px, 16px; }

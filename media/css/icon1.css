@@ -1,0 +1,1 @@
+graph { padding: 50px; } node { text-alignment: at-right; text-padding: 3px, 2px; text-background-mode: rounded-box; text-background-color: #222; text-color: #DDD; icon-mode: at-left; icon: url('data/Smiley_016.png');} node#A {text-alignment:at-left; text-offset: -4px, 0px;}

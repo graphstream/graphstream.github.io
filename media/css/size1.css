@@ -1,0 +1,1 @@
+node { shape: circle; stroke-mode: plain; stroke-color: #777; } node#A { size: 20px; fill-color: #FB2; } node#B { size: 40px, 20px; fill-color: #2BF; } node#C { size: 20px, 40px; fill-color: #B2F; }
