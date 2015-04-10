@@ -1,0 +1,23 @@
+paths:
+
+documents:
+  - title: Why "graph streams" ? What is a "dynamic graph" ?
+    href: /doc/FAQ/General-Questions/Why-graph-streams-What-is-a-dynamic-graph/
+    
+  - title: What is GraphStream ?
+    href: /doc/FAQ/General-Questions/What-is-GraphStream/
+    
+  - title: How do I install ?
+    href: /doc/FAQ/General-Questions/How-do-I-install/
+    
+  - title: Why another graph library ?
+    href: /doc/FAQ/General-Questions/Why-another-graph-library/
+    
+  - title: GraphStream versions ? GIT ?
+    href: /doc/FAQ/General-Questions/GraphStream-versions-GIT/
+    
+  - title: Where do I start ?
+    href: /doc/FAQ/General-Questions/Where-do-I-start/
+    
+  - title: How to verify a GraphStream signed archive ?
+    href: /doc/FAQ/General-Questions/How-to-verify-a-GraphStream-signed-archive/

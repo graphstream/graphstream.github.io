@@ -1,0 +1,12 @@
+paths:
+
+documents:
+  - title: Is there a list of general attributes with a predefined meaning ?
+    href: /doc/FAQ/Attributes/Is-there-a-list-of-general-attributes-with-a-predefined-meaning/
+    
+  - title: Is there a list of attributes with a predefined meaning for the graph viewer ?
+    href: /doc/FAQ/Attributes/Is-there-a-list-of-attributes-with-a-predefined-meaning-for-the-graph-viewer/
+    
+  - title: Is there a list of attributes with a predefined meaning for the layout algorithms ?
+    href: /doc/FAQ/Attributes/Is-there-a-list-of-attributes-with-a-predefined-meaning-for-the-layout-algorithms/
+    

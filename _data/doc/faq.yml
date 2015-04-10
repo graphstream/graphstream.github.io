@@ -1,0 +1,18 @@
+paths:
+  - title: General Questions
+    href: /doc/FAQ/General-Questions/
+    
+  - title: The Graph Class
+    href: /doc/FAQ/The-Graph-Class/
+    
+  - title: Attributes
+    href: /doc/FAQ/Attributes/
+    
+  - title: The Graph Viewer
+    href: /doc/FAQ/The-graph-viewer/
+    
+  - title: Coding Questions
+    href: /doc/FAQ/Coding-Questions/
+
+documents:
+

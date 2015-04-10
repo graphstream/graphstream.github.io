@@ -1,0 +1,9 @@
+paths:
+
+documents:
+  - title: Why is Graph an interface ?
+    href: /doc/FAQ/The-Graph-Class/Why-is-Graph-an-interface/
+    
+  - title: What are the Graph implementations ?
+    href: /doc/FAQ/The-Graph-Class/What-are-the-Graph-implementations/
+    

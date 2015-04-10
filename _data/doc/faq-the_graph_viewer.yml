@@ -1,0 +1,23 @@
+paths:
+
+documents:
+  - title: Why using CSS style sheets ? Why not other configuration methods like a XML file ?
+    href: /doc/FAQ/The-graph-viewer/Why-using-CSS-style-sheets/
+    
+  - title: How do I disable the automatic node placement in the graph viewer ?
+    href: /doc/FAQ/The-graph-viewer/How-do-I-disable-the-automatic-node-placement/
+    
+  - title: Is there a reference for the style sheet syntax and available styles ?
+    href: /doc/FAQ/The-graph-viewer/Is-there-a-reference-for-the-style-sheet-syntax/
+    
+  - title: How do I hide or show nodes, edges or sprites individually ?
+    href: /doc/FAQ/The-graph-viewer/How-do-I-hide-or-show-nodes-edges-or-sprites-individually/
+    
+  - title: How do I dynamically change color and size in the viewer ?
+    href: /doc/FAQ/The-graph-viewer/How-do-I-dynamically-change-color-and-size-in-the-viewer/
+    
+  - title: Why node positions do not update when I move them in a viewer ?
+    href: /doc/FAQ/The-graph-viewer/Why-node-positions-do-not-update/
+    
+  - title: Why CSS property X does not work ? Why multiple edges between two nodes show as a single edge ?
+    href: /doc/FAQ/The-graph-viewer/Why-CSS-property-X-does-not-work/
