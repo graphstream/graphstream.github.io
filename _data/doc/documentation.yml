@@ -24,6 +24,9 @@ paths:
     href: /doc/Talks/
 
 documents:
+  - title: Getting Started
+    href: /doc/Tutorials/Getting-Started/
+  
   - title: About Us
     href: /doc/About-Us/
 

@@ -1,0 +1,136 @@
+- title: Release 1.3
+  icon: gear
+  description: This release fixes a lot of issues since 1.2. It can be used directly
+               in Maven project using <code>org.graphstream:*</code> artifacts.
+  files:
+    - name: gs-core
+      href: //data.graphstream-project.org/downloads/releases/1.3/gs-core-1.3.zip
+      hash: 26cba6739d2a27177db103612c5b3c3c4f54e0c887584c94e5b2d7949f52e2d9
+      hashMethod: SHA256
+      
+    - name: gs-algo
+      href: //data.graphstream-project.org/downloads/releases/1.3/gs-algo-1.3.zip
+      hash: 348937a05ece8a836e169d36e90cdf0fea5f450f848696822722ab8187dc22d4
+      hashMethod: SHA256
+      
+    - name: gs-ui
+      href: //data.graphstream-project.org/downloads/releases/1.3/gs-ui-1.3.zip
+      hash: fc49b146254cbd18be71794880e013c91f5288e99b2d285aac2d5ea30a18686e
+      hashMethod: SHA256
+
+- title: Release 1.2
+  icon: gear
+  description: Here is the 1.1.2 release of the \"core\" package of GraphStream. Main changes according to 1.0 are
+               <ul>
+               <li>rewrite of graph implementations (<code>AdjacencyListGraph</code>, <code>SingleGraph</code> and
+               <code>MultiGraph</code>)</li>
+               <li>new file source support (<code>GEXF</code>, <code>Pajek</code>, <code>GraphML</code>, 
+               <code>Tulip</code>)</li>
+               <li>new way to access elements using an integer index in addition to the id, providing a faster way 
+               to iterate over a set of elements</li>
+               <li>camera in ui becomes reachable</li>
+               <li>new DGS directive "cl" for the graphCleared event</li>
+               <li>faster Dijkstra's algorithm</li>
+               <li>many bugs are fixed</li>
+               </ul>
+  files:
+    - name: gs-core
+      href: //data.graphstream-project.org/downloads/releases/1.2/gs-core-1.2.zip
+      hash: 2ffe3b872e5c322db99fa4f1827b5fa906296f302a76327bac3f50bc61f45ed2
+      hashMethod: SHA256
+      
+    - name: gs-algo
+      href: //data.graphstream-project.org/downloads/releases/1.2/gs-algo-1.2.zip
+      hash: e6b468e57c99ac35bc04528d5d907218760ed7d2334d50ecbccec6843fa55c71
+      hashMethod: SHA256
+      
+    - name: gs-ui
+      href: //data.graphstream-project.org/downloads/releases/1.2/gs-ui-1.2.zip
+      hash: bb64217556ffee8fbafcfbbfa0d75d50c6021ee6cededfdc8b31d167d4ff2eb3
+      hashMethod: SHA256
+
+- title: Release 1.1.2
+  icon: gear
+  description: 
+  files:
+    - name: gs-core
+      href: //data.graphstream-project.org/downloads/releases/1.1.2/gs-core-1.1.2.zip
+      hash: 4b26e8918a652999f8f639942af3c9706bd2778f050baec4b82a8cb12e3404e3
+      hashMethod: SHA256
+      
+    - name: gs-algo
+      href: //data.graphstream-project.org/downloads/releases/1.1.2/gs-algo-1.1.2.zip
+      hash: 6feaddcbec1ece101a7f9ef447c300699f81488ed1403c7684c4d8c7f089004e
+      hashMethod: SHA256
+      
+    - name: gs-ui
+      href: //data.graphstream-project.org/downloads/releases/1.1.2/gs-ui-1.1.2.zip
+      hash: 51069f2d44913831543283ee043ea4be467a4943c92d8b536c064143d149532b
+      hashMethod: SHA256
+
+- title: Release 1.1.1
+  icon: gear
+  description: 
+  files:
+    - name: gs-core
+      href: //data.graphstream-project.org/downloads/releases/1.1.1/gs-core-1.1.1.zip
+      hash: 0eafc68709461cf64c47e64d8189a5a14e4e6ff2705cc1a010878eefbacfdb57
+      hashMethod: SHA256
+      
+    - name: gs-ui
+      href: //data.graphstream-project.org/downloads/releases/1.1.1/gs-ui-1.1.1.zip
+      hash: 18d51376ec4a49bd239ed199259a75f2e1b8b171ea39ab5e3290d6f42fdf2ce0
+      hashMethod: SHA256
+
+- title: Video of release 1.0
+  icon: file-video-o
+  description: 
+  files:
+    - name: sources
+      href: //data.graphstream-project.org/downloads/src-video-1.0.tar.bz2
+      hash: c92026eace89817e19491d8810e45aeb93a6c5cc1c12e8a5853e0f64896c43b1
+      hashMethod: SHA256
+      
+    - name: version mp4 720p
+      href: //data.graphstream-project.org/videos/gs-release-1.0.avi
+      hash: 952d7cb971778de0ab3c91d725606d96703c4d4ec4972b696529a78a32ad8c4b
+      hashMethod: SHA256
+      
+    - name: version xvid 720p
+      href: //data.graphstream-project.org/videos/gs-release-1.0-720p.avi
+      hash: 3d97cf6a13a93f4782ca0715c53eff1ab2c09c5cbd0c816ec5317ae41ffe1e31
+      hashMethod: SHA256
+      
+    - name: version xvid 360p
+      href: //data.graphstream-project.org/videos/gs-release-1.0-360p.avi
+      hash: 08a2c903ba69d434bb3f8a0135df5991df41ad8a44661690a7281f3bc3debd0c
+      hashMethod: SHA256
+      
+    - name: version xvid 240p
+      href: //data.graphstream-project.org/videos/gs-release-1.0-240p.avi
+      hash: 0434e4a2b93a4d7736f85af2b2860e3cbe41e3cafddddfbdf7aac9bfe4fdcc8c
+      hashMethod: SHA256
+
+- title: Release 1.0
+  icon: gear
+  description: Here is the the 1.0 release of GraphStream. This is the main package of the project.
+               All other packages depend on this one. It Contains jar binary archives that may be added to your
+               <code>CLASSPATH</code>, these archives contain the core dependencies <code>mbox2</code>,
+               <code>pherd</code> and <code>util</code>. It also contains the javadoc with the GraphStream API
+               and the sources.
+  files:
+    - name: gs-core
+      href: //data.graphstream-project.org/downloads/releases/1.0/gs-core-1.0.zip
+      hash: a2267b41dfbd3a358fe388a6cfedab827e97615f024adbbd8a2fca7fb1be0726
+      hashMethod: SHA256
+      
+    - name: gs-algo
+      href: //data.graphstream-project.org/downloads/releases/1.0/gs-algo-1.0.zip
+      hash: 731484a5fe1174ebaabdcbb79e1c1414bb233fd2adc0317177e8e3ad2519abe0
+      hashMethod: SHA256
+      
+    - name: gs-ui
+      href: //data.graphstream-project.org/downloads/releases/1.0/gs-ui-1.0.zip
+      hash: e1383ee19f8c2deb83822037adf813cb53ee921e94d6850d791a88cf572704e4
+      hashMethod: SHA256
+   

@@ -1,0 +1,48 @@
+---
+layout: base
+title: Downloads
+---
+
+<h1>{{ page.title }}</h1>
+
+<div>
+<ul class="media-list">
+{% assign dl_id = 0 %}
+{% for dl in site.data.downloads %}
+	{% assign dl_id = dl_id | plus:1 %}
+	<li class="media">
+		<div class="media-left">
+			<a data-toggle="collapse" href="#dl{{ dl_id }}" aria-expanded="false" aria-controls="dl{{ dl_id }}">
+				<span class="fa-stack fa-lg">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-{% if dl.icon %}{{ dl.icon }}{% else %}expand{% endif %} fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading" style="margin-bottom: 0px;">{{ dl.title }}</h4>
+			<a data-toggle="collapse" href="#dl{{ dl_id }}" aria-expanded="false" aria-controls="dl{{ dl_id }}" style="font-weight:300;">show more...</a>
+			<div id="dl{{ dl_id }}" class="collapse">
+			{{ dl.description }}
+			{% for f in dl.files %}
+				<div style="margin-top: 10px;">
+					<div class="well">
+						<div class="row">
+							<div class="col-md-8">
+								<h4>{{ f.name }}</h4>
+							</div>
+							<div class="col-md-4">
+								<a class="btn btn-success" href="{{ f.href }}" style="float: right;"><i class="fa fa-download"></i>&nbsp;Download</a>
+							</div>
+						</div>
+						<div style="font-weight:300;">{{ f.hashMethod }} <code>{{ f.hash }}</code></div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</li>
+{% endfor %}
+</ul>
+</div>
+
