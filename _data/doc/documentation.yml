@@ -19,6 +19,9 @@ paths:
 
   - title: FAQ
     href: /doc/FAQ/
+  
+  - title: Talks
+    href: /doc/Talks/
 
 documents:
   - title: About Us

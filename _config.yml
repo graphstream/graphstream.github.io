@@ -9,6 +9,8 @@ github_username:  graphstream
 content_img: "/media/img/"
 media: "/media"
 
+news_count: 5
+
 # Build settings
 markdown: kramdown
 highlighter: pygments

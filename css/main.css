@@ -102,6 +102,23 @@ img {
 	max-width: 100%;
 }
 
+.panel-heading.with-icon {
+	position: relative;
+	/*padding-left: 32px;*/
+}
+
+.panel-heading.with-icon .icon {
+	position: absolute;
+	top: 5px;
+	right: 3px;
+	font-size: 13px;
+	opacity: 0.5;
+}
+
+.panel-heading.with-icon a:hover .icon {
+	opacity: 1.0;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

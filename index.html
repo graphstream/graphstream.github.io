@@ -92,16 +92,7 @@ title: GraphStream - A Dynamic Graph Library
 				</div>
 
 				<div class="col-xs-12 col-md-4">
-					<div class="panel panel-primary">
-						<div class="panel-heading">Lastest News :</div>
-						<div class="panel-body">
-							<ul>
-							{% for news in site.data.news %}
-								<li><a  href="{{ news.url }}">{{ news.title }}</a></li>
-							{% endfor %}
-							</ul>
-						</div>
-					</div>
+					{% include latest_news.html %}
 				</div>
 			</div>
         
