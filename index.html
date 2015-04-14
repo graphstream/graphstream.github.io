@@ -7,7 +7,7 @@ title: GraphStream - A Dynamic Graph Library
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	
-	{% include head.html %}
+	{% include head.html extra_css="/css/jquery.fancybox.css" %}
 	
 	<body class="fitheight">
 		{% include menu.html %}
@@ -101,7 +101,7 @@ title: GraphStream - A Dynamic Graph Library
 			<footer style="font-size:12px;text-align:center;margin-top:50px;">Copyright  &copy; 2010-2015, <a href="/doc/About-Us/">GraphStream Team.</a> All rights reserved.</footer>
 		</div>
 		
-		{% include scripts.html %}
+		{% include scripts.html extra_js="/js/jquery.fancybox.pack.js,/js/jquery.fancybox-media.js"%}
         
 		<script type="text/javascript">jQuery(document).ready(function() {jQuery(".fancybox-media").fancybox({helpers:{media: true}});});</script>
 	</body>

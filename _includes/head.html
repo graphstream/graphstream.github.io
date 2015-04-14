@@ -12,7 +12,6 @@
 	<link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
 	
 	<link rel="stylesheet" type="text/css" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl }}"/>
-	<!--<link rel="stylesheet" type="text/css" href="{{ "/css/bootstrap-responsive.min.css" | prepend: site.baseurl }}"/>-->
 	<link rel="stylesheet" type="text/css" href="{{ "/css/base.css" | prepend: site.baseurl }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ "/css/sidebar.css" | prepend: site.baseurl }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl }}"/>
@@ -20,9 +19,12 @@
 	
 	<link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 	
-	{% for css in include.extra_css | split:"," %}
+{% if include.extra_css %}
+	{% assign csss = include.extra_css | split:',' %}
+	{% for css in csss %}
 	<link rel="stylesheet" type="text/css" href="{{ css | prepend: site.baseurl }}"/>
 	{% endfor %}
+{% endif %}
 
 	<script src="{{ "/js/vendor/modernizr-2.8.3.min.js" | prepend: site.baseurl }}"></script>
 </head>
