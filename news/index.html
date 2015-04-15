@@ -1,0 +1,28 @@
+---
+layout: base
+title: News
+---
+
+<h1>{{ page.title }}</h1>
+
+<div style="margin-top:25px;">
+<ul class="media-list">
+{% assign dl_id = 0 %}
+{% for news in site.posts %}
+	<li class="media">
+		<div class="media-left">
+			<span class="fa-stack fa-lg">
+				<i class="fa fa-square fa-stack-2x"></i>
+				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+			</span>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading" style="margin-bottom: 0px;">{{ news.title }}&nbsp;<span class="label label-success">{{ news.date | date:"%b %-d, %Y" }}</span></h4>
+			<div class="well" style="margin-top:0.75em;">
+			{{ news.content }}
+			</div>
+		</div>
+	</li>
+{% endfor %}
+</ul>
+

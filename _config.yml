@@ -8,7 +8,7 @@ url: "http://graphstream-project.org"
 github_username:  graphstream
 content_img: "/media/img/"
 media: "/media"
-
+api_modules: ['core', 'algo', 'ui']
 news_count: 5
 
 # Build settings

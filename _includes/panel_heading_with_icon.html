@@ -1,9 +1,9 @@
-<div class="panel-heading with-icon">
-	<a href="/doc/">
-		<span class="icon fa-stack fa-lg">
-			<i class="fa fa-square fa-stack-2x"></i>
-			<i class="fa fa-{{ include.icon }} fa-inverse fa-stack-1x"></i>
-		</span>
+<h4 class="with-icon">
+	{% if include.href %}<a href="/doc/">{% endif %}
+		<!--<span class="icon fa-stack fa-lg">
+			<i class="fa fa-square fa-stack-2x"></i>-->
+			<i class="fa fa-{{ include.icon }}"></i>&nbsp;
+		<!--</span>-->
 		{{ include.title }}
-	</a>
-</div>
+	{% if include.href %}</a>{% endif %}
+</h4>

@@ -5,7 +5,7 @@ title: Downloads
 
 <h1>{{ page.title }}</h1>
 
-<div>
+<div style="margin-top:25px;">
 <ul class="media-list">
 {% assign dl_id = 0 %}
 {% for dl in site.data.downloads %}
@@ -27,15 +27,20 @@ title: Downloads
 			{% for f in dl.files %}
 				<div style="margin-top: 10px;">
 					<div class="well">
-						<div class="row">
-							<div class="col-md-8">
-								<h4>{{ f.name }}</h4>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-md-8">
+									<h4>{{ f.name }}</h4>
+								</div>
+								<div class="col-xs-12 col-sm-6 col-md-4" style="text-align: right;">
+									<a class="btn btn-success" href="{{ f.href }}"><i class="fa fa-download"></i>&nbsp;Download</a>
+								</div>
 							</div>
-							<div class="col-md-4">
-								<a class="btn btn-success" href="{{ f.href }}" style="float: right;"><i class="fa fa-download"></i>&nbsp;Download</a>
+							<div class="row">
+								<div class="col-xs-12" style="font-weight:300;word-break:break-all;max-width:100%;">
+									{{ f.hashMethod }} 
+									<code style="word-break:break-all;">{{ f.hash }}</code>
+								</div>
 							</div>
-						</div>
-						<div style="font-weight:300;">{{ f.hashMethod }} <code>{{ f.hash }}</code></div>
 					</div>
 				</div>
 			{% endfor %}

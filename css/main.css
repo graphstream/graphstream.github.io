@@ -102,21 +102,35 @@ img {
 	max-width: 100%;
 }
 
-.panel-heading.with-icon {
+.sidebar .panel {
+	/*color: #666;*/
+}
+
+h4.with-icon {
 	position: relative;
 	/*padding-left: 32px;*/
 }
 
-.panel-heading.with-icon .icon {
-	position: absolute;
-	top: 5px;
-	right: 3px;
-	font-size: 13px;
-	opacity: 0.5;
+h4.with-icon i {
+	/*color: #666;*/
+	/*font-size:75%;*/
+	width: 1em;
+	text-align: center;
 }
 
 .panel-heading.with-icon a:hover .icon {
-	opacity: 1.0;
+}
+
+footer {
+	text-align:center;
+	padding:5px;
+	border-top:solid 1px #efefef;
+	color:#666;
+	font-weight:300;
+}
+
+footer a {
+	font-weight:400;
 }
 
 /* ==========================================================================
