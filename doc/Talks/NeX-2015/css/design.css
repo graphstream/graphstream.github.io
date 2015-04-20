@@ -1,0 +1,115 @@
+.logo {
+    position: absolute;
+    left: 50px;
+}
+
+.clear {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    text-align: center!important;
+}
+
+.half_size {
+    width: 50%;
+}
+
+.third_size {
+    width: 32%;
+}
+
+.two_third_size {
+    width: 65%;
+}
+
+.fifth_size {
+    width:15%;
+    margin:0;
+}
+
+.small_size {
+    width: 20%;
+}
+
+.full_size {
+    width: 100%;
+}
+
+.large_size {
+    width: 80%;
+}
+
+.section_title {
+    color: white;
+    text-align: center;
+}
+
+.section_title h1{
+    color: white;
+}
+
+/*
+ * HEADER
+ */
+
+#header{
+    background-color: #1b1b1b;
+    color: #777;
+    width: 100%;
+    padding : 10px;
+    font-size: 0.5em;
+    font-family: 'Patua One', sans-serif;
+    box-shadow: 0px 0px 5px 15px #1b1b1b;
+    z-index: 100;
+}
+
+#presenter_name {
+    float: left;
+    text-align: left;
+    width : 24%;
+}
+
+#title_div {
+    float: left;
+    text-align: center;
+    width : 50%;
+    font-size: 1.8em;
+    height:45px;
+}
+
+#title {
+    vertical-align:middle;
+}
+
+#conf_name_date {
+    float: left;
+    text-align: right;
+    width : 24%;
+}
+
+.clear_div{
+    display: block;
+    clear: both;
+}
+
+#logo_graphstream {
+    width: 45px;
+    height: 45px;
+    vertical-align:middle;
+}
+
+#footer{
+    position:fixed;
+    bottom:3px;
+    font-size: 1.55vh;
+    z-index: 10;
+}

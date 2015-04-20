@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Graphstream - Introduction</title>
+
+		<meta name="description" content="Presentation of GraphStream of the NeX talk on April 28-30 2015">
+		<meta name="author" content="Thibaut Démare">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/design.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+	</head>
+
+	<body>
+		
+
+		<div class="reveal">
+			<div  id="header">
+				<div id="presenter_name">
+					Thibaut Démare - LITIS<br />
+					thibaut.demare@univ-lehavre.fr
+				</div>
+				<div id="title_div">
+					<img src="css/img/gs-logo-white-tiny.svg" id="logo_graphstream"/>
+					<span id="title">GraphStream - Introduction</span>
+				</div>
+				<div id="conf_name_date">
+					NeX Days' 2015 <br />
+					28 - 30 April 2015
+				</div>
+				<div class="clear_div"></div>
+			</div>
+
+			<div class="slides">
+
+				<section data-state="no-toc-progress">
+					<h1 class="no-toc-progress">Dynamic Graphs and a tool to handle them</h1>
+					<h2 class="no-toc-progress">The GraphStream library</h2>
+					<img class="logo small_size" src="images/gs-logo.png" alt="GS Logo">
+					<p class="center">
+						Thibaut Démare
+						<br />
+						LITIS - Université du Havre
+						<br />
+						NeX Days' 2015 - Agadir, Morocco
+						<br />
+						28 - 30 April 2015
+					</p>
+				</section>
+
+
+				<!-- ============ -->
+				<!-- = OUTLOOCK = -->
+				<!-- ============ -->
+				<section data-state="no-toc-progress">
+					<h2 class="no-toc-progress">Overview</h2>  
+					<ol>
+						<li>Dynamic graphs</li>
+						<li>GraphStream</li>
+						<li>The Event Model</li>
+						<li>Algorithms</li>
+						<li>Visualization</li>
+						<li>Interactions with other tools</li>
+						<li>Demo
+							<ol>
+								<li>Basic Demo</li>
+								<li>Demo of interactions with GAMA</li>
+							</ol>
+						</li>
+					</ol>
+				</section>
+
+
+				<!-- ================== -->
+				<!-- = DYNAMIC GRAPHS = -->
+				<!-- ================== -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Dynamic graphs</h1>
+					</section>
+
+					<section>
+						<h2>First, static graphs</h2>
+
+						<div class="left half_size">
+							<p>Structure: </p>
+							<ul>
+							<li >Nodes, Vertices</li>
+							<li >(undirected) Edges, Links</li>
+							<li >(directed) Arcs</li>
+							</ul>
+
+							<div class="center"><img src="images/simpleGraph.png" class="half_size" /></div>
+						</div>
+
+						<div class="right half_size">
+							<p>Algorithms: Graphs Theory</p>
+							<ul>
+								<li>graph colouring problems</li>
+								<li>routing problems</li>
+								<li>flow problems</li>
+								<li>covering problems</li>
+								<li>subgraphs problems</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h2>When we add dynamics...</h2>
+						<div  class="left two_third_size" >
+							<p>What kind of dynamics?</p>
+							<ul>
+								<li>values/weight on edges or nodes? </li>
+								<li>nodes and/or edges added/removed?</li>
+							</ul>
+							<p>Problem with algorithms</p>
+							<ul>
+								<li>As soon as computed the result has vanished.</li>
+								<li>Can we stop the graph and recompute?</li>
+								<li>Depends on the dynamic graph model.</li>
+							</ul>
+						</div>
+						<div class="right third_size" >
+							<img src="images/simpleGraphSin.png" />
+						</div>
+					</section>
+
+					<section>
+						<h2>Dynamic Graph Models</h2><br><br>
+						<p>Many graph models consider in some ways the dynamics</p>
+						<p>but they are bounded to their application domain</p>
+						<p>What about <em>Dynamic Graph Theory</em>?</p>
+					</section>
+
+					<section>
+						<h2>Complex Networks</h2>
+						<p><strong>Exploration</strong>: analysis of "real world" networks (web graphs, biological networks, social networks)</p>
+						<p><strong>Modelling</strong>: build artificial networks (preferential attachment)</p>
+						<p>Measures on graphs: community, distribution, dimensions, <em>etc.</em></p>
+						<p>Iterative Construction/Iteration: graphs' dynamics</p>
+					</section>
+
+					<section>
+						<h2>Aggregative Methods</h2>
+						<p>All the evolution is <em><strong>known</strong></em> in advance, the dynamic graph is aggregated into a static graph.</p>
+						<p>Why? Because it allows the use of classical graph theory.</p>
+						<div class="center">
+							<img src="images/aggreg.png" class="half_size" />
+						</div>
+					</section>
+
+					<section>
+						<h2>Re-optimisation</h2>
+						<p>Build and maintain structures on dynamic graphs (e.g. spanning trees).</p>
+						<p class=''>
+						Updating an existing structure after some modifications is more effective than recomputing it from scratch.   
+						</p>
+						<div class="center"><img src="images/reop.png" class="half_size" /></div>
+					</section>
+
+				</section>
+
+
+				<!-- =============== -->
+				<!-- = Graphstream = -->
+				<!-- =============== -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>GraphStream</h1>
+					</section>
+
+					<section>
+						<h2>GraphStream</h2>
+						<h3>Study interaction networks and their dynamics</h3>
+						<ul>
+							<li>Dynamic Algorithms</li>
+							<li>Dynamic Visualization</li>
+						</ul>
+						<br>
+						<ul class="right" style="list-style-type:none">
+							<li>Stefan Balev</li>
+							<li>Antoine Dutot</li>
+							<li>Yoann Pigné</li>
+							<li>Guilhelm Savin</li>
+						</ul>
+						<!-- <div class="bottom"><img style="width:30%" src="images/gs-logo.png" alt="GS Logo"></div> -->
+					</section>
+
+					<section>
+						<h2>In a nutshell</h2>
+						<p>Java library with a handy public API<p>
+						<pre><code class="java" data-trim contenteditable>
+Graph g = new SingleGraph("MyGraph");
+g.read("some-file.tlp");
+g.getDegree();
+g.display();
+						</code></pre>
+						<p>Based on an event model: Nodes and Edges are Added/Removed/Modified</p>
+						<p>Interaction with over tools</p>
+						<ul>
+							<li>Off-line: several import / export file formats</li>
+							<li>On-line: through the API or through a network connection</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Architecture</h2>
+						<div>
+							<div class="left">
+								<h3>Public API</h3>
+								<ul>
+									<li>org.graphstream
+									<ul>
+										<li>.graph</li>
+										<li>.stream</li>
+										<li>.ui</li>
+										<li>.algorithm</li>
+										<li>.util</li>
+									</ul>
+									</li>
+								</ul>
+							</div>
+							<div  class="right">
+								<h3>Organised into sub-projects</h3>
+								<ul>
+									<li>gs-core</li>
+									<li>gs-algo</li>
+									<li>gs-ui</li>
+									<li>gs-netstream</li>
+									<li>gs-gama</li>
+									<li>gs-netlogo</li>
+									<li>gs-geography</li>
+								</ul>
+							</div>
+						</div>  
+					</section>
+
+					<section>
+						<h2>Get GraphStream!</h2>
+						<h3>On the website</h3>
+						<ul>
+							<li><a href="http://graphstream-project.org">graphstream-project.org</a></li>
+							<li>official releases (v1.3) of gs-core, gs-algo, gs-ui</li>
+							<li>nightly-builds</li>
+						</ul>
+						<h3>On Github</h3>
+						<ul>
+							<li><a href="http://github.com/graphstream/">github.com/graphstream</a></li>
+							<li>bug tracker of gs-core</li> 
+						</ul>
+						<h3>On Maven</h3>
+						<pre><code class="xml" data-trim contenteditable>
+&lt;groupId&gt;org.graphstream&lt;/groupId&gt;
+&lt;artifactId&gt;gs-core&lt;/artifactId&gt;
+&lt;version&gt;1.2&lt;/version&gt;
+						</code></pre>	
+					</section>
+				</section>
+
+				<!-- =============== -->
+				<!-- = Event model = -->
+				<!-- =============== -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>The Event Model</h1>
+					</section>
+
+					<section>
+						<h2>GraphStream's Event Model</h2>
+						<p>The dynamics of the graph is expressed by an event model</p>
+						<p>Events can be:</p>
+						<ul>
+							<li>Addition or removal of nodes</li>
+							<li>Addition or removal of edge</li>
+							<li>Addition, update or removal of data attributes</li>
+							<li>Time steps</li>
+						</ul>
+						<p>
+						<strong>A stream of events modifies the structure of a graph.</strong>
+						</p>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">GraphStream's Event Model</h2>
+
+						<div>
+							<h3>Sources</h3>
+							<div class="left two_third_size">
+								<p>They produce such stream of events.</p>
+							</div>
+							<div class="right third_size">
+								<div><img src="images/Source.png" class="small_size"/></div>
+							</div>
+						</div>
+						<div class="clear"></div>
+						
+						<div class="clear">
+							<h3>Sinks</h3>
+							<div class="left two_third_size">
+								<p>They can receive such stream of event and process it.</p>
+							</div>
+							<div class="right third_size">
+								<div><img src="images/Sink.png" class="small_size"/></div>
+							</div>
+						</div>
+						<div class="clear"></div>
+						
+						<div class="clear">
+							<h3>Pipes</h3>
+							<div class="left two_third_size">
+								<p>They are both source and sink. A <strong><em>graph</em></strong> is a pipe.</p>
+							</div>
+							<div class="right third_size">
+								<div><img src="images/Pipe.png" class="small_size"/></div>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h2>Pipelining</h2>
+						<p>Sources send their events to sinks.</p>
+						<ul>
+							<li>Observer design pattern</li>
+							<li>Publish / Subscribe</li>
+							<li>Java Swing listeners</li>
+						</ul>
+						<p>Sources, pipes and sinks can be connected in a pipeline of elements.</p>
+						<p>Example of an often used pipeline:</p>
+
+						<div class="center">
+							<div class="center" style="display:inline-block;">
+								<img src="images/Source.png"/><img src="images/Link.png"/><img src="images/Pipe.png"/><img src="images/Link.png"/><img src="images/Sink.png"/>
+								<div  class="center" >
+									<p style="display:inline-block;text-align:center;width:33%;">Graph</p>
+									<p style="float:left;width:33%;">File</p>
+									<p style="float:right;text-align:right;width:33%;">Viewer</p>
+								</div>
+							</div>
+						</div>
+						<p class="clear"></p>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Pipelining</h2>
+						<pre><code class="java" data-trim contenteditable>
+Graph graph = new SingleGraph("Some Graph");	
+graph.display();
+FileSource source = new FileSourceDGS();
+source.addSink( graph );
+source.begin("someFile.dgs");
+while( source.nextEvents() ){
+	// Do whatever between two events
+}
+source.end();
+						</code></pre>
+
+						<div class="center">
+							<div class="center" style="display:inline-block;">
+								<img src="images/Source.png"/><img src="images/Link.png"/><img src="images/Pipe.png"/><img src="images/Link.png"/><img src="images/Sink.png"/>
+								<div  class="center" >
+									<p style="display:inline-block;text-align:center;width:33%;">Graph</p>
+									<p style="float:left;width:33%;">File</p>
+									<p style="float:right;text-align:right;width:33%;">Viewer</p>
+								</div>
+							</div>
+						</div>
+						<p style="clear:both;"></p>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Pipelining</h2>
+						<p>The stream of events can flow between sources and sinks:</p>
+
+						<ul>
+							<li>across the network,</li>
+							<li>processes,</li>
+							<li>threads.</li>
+						</ul>
+
+						<p>For example a viewer can run in a distinct thread or machine, while a
+						simulation on a graph runs on another.</p>
+						<div class="center"><img class="small_size" src="images/LinkStart.png"/><img class="small_size" src="images/PipeCloud.png"/><img class="small_size" src="images/LinkEnd.png"/></div>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Pipelining</h2>
+						<p>Receive events from another some other process/thread/programme/machine</p>
+						<pre><code class="java" data-trim contenteditable>
+Graph g = new SingleGraph("RWP");
+ThreadProxyPipe pipe = getPipeFromElsewhere(); //fake function
+pipe.addSink(g);
+g.display(false);
+
+while (true) {
+	pipe.pump();
+	Thread.sleep(1);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Graph components</h2>
+						<p>
+						Several classes for various graph structures.
+						</p>
+						<ul>
+							<li>"Single" graphs (1-graph), "multigraphs" (p-graphs, that are graphs where several edges can connect two nodes).</li>
+							<li>Directed, undirected graphs.</li>
+						</ul>
+						<p>
+						Several internal representations:
+						</p>
+						<ul>
+							<li>fast data retrieval,</li>
+							<li>data compactness.</li>
+						</ul>
+						<p>
+							Representation of a graph at a given time (static).
+							But this representation can evolve.
+						</p>
+					</section>
+
+					<section>
+						<h2>Data Attributes</h2>
+						<ul>
+							<li>Any number of data attributes can be associated with any element of the graph.</li>
+							<li>An attribute is made of an identifier and a value that can be any Java Object.</li>
+							<li>You can place attributes on nodes, edges and on the graph itself.</li>
+						</ul>
+						<pre><code class="java" data-trim contenteditable>
+g.addAttribute("My attribute", aValue);
+Node n = g.getNode("A");
+n.setAttribute("xy", 23.4, 55.0);
+Edge e = g.getEdge("AB");
+e.removeAttribute("selected");
+double w = e.getNumber("weight");
+						</code></pre>
+					</section>
+				</section>
+
+
+				<!-- ============== -->
+				<!-- = Algorithms = -->
+				<!-- ============== -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Algorithms</h1>
+					</section>
+
+					<section>
+						<h2>Main Algorithms</h2>
+
+						<h3>Searches</h3>
+						<p>
+							random searches, shortest paths, spanning trees, <em>etc.</em>
+						</p>
+
+						<h3>Metrics</h3>
+						<p>
+							modularity, centrality, degree distributions, connectivity, density, <em>etc.</em> 
+						</p>
+
+						<h3>Generators</h3>
+						<p>
+							random, regular, preferential attachment, small world, from GIS, from the web, <em>etc.</em>
+						</p>
+					</section>
+
+					<section>
+						<h2>Focus on <strong><em>Dynamic Connected Components</em></strong></h2>
+						<pre><code class="java" data-trim contenteditable>
+import org.graphstream.algorithm.ConnectedComponents;
+//...
+ConnectedComponents cc = new ConnectedComponents();
+cc.init(graph);
+while(something) {
+	cc.getConnectedComponentsCount();
+	canDoSomethingWithGraph();
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Focus on <strong><em>Dynamic Shortest Paths</em></strong></h2>
+						<pre><code class="java" data-trim contenteditable>
+import org.graphstream.algorithm
+.networksimplex.DynamicOneToAllShortestPath;
+//...
+DynamicOneToAllShortestPath algorithm = 
+new DynamicOneToAllShortestPath(null);
+algorithm.init(graph);
+algorithm.setSource("0");
+while(something) {
+	algorithm.compute();
+	canDoSomethingWithGraph();
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Some tutorials to go farther</h2>
+						<p>
+							<a href="http://graphstream-project.org/doc/Algorithms/">http://graphstream-project.org/doc/Algorithms/</a>
+						</p> 
+					</section>
+				</section>
+
+
+				<!-- ================= -->
+				<!-- = VISUALIZATION = -->
+				<!-- ================= -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Visualization</h1>
+					</section>
+
+					<section>
+						<h2>Visualization</h2>
+						<h3>Aims</h3> 
+						<ul>
+							<li>Dynamic Visualization: the graph is evolving, so does the visualization.</li>
+							<li>Get <em>more</em> information than the graph itself.</li>
+						</ul> 
+						<div class="center" >
+							<video controls muted loop preload="auto">
+							<source src="http://graphstream-project.org/media/other/ICCSA2014/images/boids.mp4" type="video/mp4" />
+									Boids Video 
+							</video>
+							<img  class="small_size" src="images/CSS.png"/>
+						</div>
+					</section>
+
+					<section>
+						<h2>Extra visual information</h2>
+						<h3>CSS</h3>
+						<div class="center">
+							<img class="small_size" src="images/stroke_mode2.png"/>
+							<img class="small_size" src="images/text_bg_mode4.png"/>
+							<img class="small_size" src="images/node_shape6.png"/>
+							<img class="small_size" src="images/size_mode2_.png"/>
+						</div>
+						<pre><code class="css" data-trim contenteditable>
+graph { 
+	padding: 50px;
+} 
+node {
+	size-mode: fit; shape: rounded-box; 
+	fill-color: white; stroke-mode: plain; 
+	padding: 5px, 4px; icon-mode: at-left; 
+	icon: url('data/Smiley_032.png'); 
+}
+						</code></pre>	
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Extra visual information</h2>
+						<h3>CSS classes</h3>
+						<pre><code class="java" data-trim contenteditable>
+graph.addAttribute("stylesheet", 
+	"graph {padding : 50px;}"
+	+ "node {size: 100px; fill-mode: image-scaled;}"
+	+ "node.fun {fill-image: url('fun.gif');}"
+	+ "node.dull {fill-image: url('dull.png');}");
+
+Node a = graph.addNode("A");
+Node b = graph.addNode("B");
+Node c = graph.addNode("C");
+graph.addEdge("AB", "A", "B");
+graph.addEdge("CB", "C", "B");
+graph.addEdge("AC", "A", "C");
+a.addAttribute("ui.class", "fun");
+b.addAttribute("ui.class", "fun");
+c.addAttribute("ui.class", "dull");
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Extra visual information</h2>
+						<h3>CSS classes</h3>
+						<div class="center">
+							<img src="images/funordull.png" />
+						</div>
+						<p class="right">...and of course it is dynamic. </p>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Extra visual information</h2>
+						<h3>Sprites</h3>
+						<p>Graphical objects that give extra information on the application you deal with.</p>
+						<pre><code class="java" data-trim contenteditable>
+SpriteManager sman = new SpriteManager(graph);
+Sprite pin = sman.addSprite("pin");
+						</code></pre>
+						<p>Sprites are also tunable with CSS:
+							<img class="right" src="images/mapPinSmall.png">
+						</p>
+						<pre><code class="css" data-trim contenteditable>
+sprite#pin {
+	shape: box;
+	size: 32px, 52px;
+	fill-mode: image-scaled;
+	fill-image: url('mapPinSmall.png');
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<div class="center">
+							<img class="half_size" src="images/leHavreStep2_.png">
+						</div>
+					</section>
+
+					<section>
+						<div class="center">
+							<img class="half_size" src="images/leHavreStep7.png">
+						</div>
+					</section>
+
+					<section>
+						<div class="center">
+							<video class="large_size"  controls="controls">
+								<source src="http://graphstream-project.org/media/other/ICCSA2014/images/video.mp4" type="video/mp4" />
+								GraphStream Video 
+							</video>
+						</div>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Extra visual information</h2>
+						<h3>Some tutorials to go farther:</h3>
+						<p>
+							The CSS specification : <br>
+							<a href="http://graphstream-project.org/doc/Tutorials/GraphStream-CSS-Reference_1.2/">http://graphstream-project.org/doc/Tutorials/GraphStream-CSS-Reference_1.2/</a>
+						</p>
+						<p>
+							A thorough tutorial on visualization: <br>
+							<a href="http://graphstream-project.org/doc/Tutorials/Graph-Visualisation_1.1//">http://graphstream-project.org/doc/Tutorials/Graph-Visualisation_1.1/</a>
+						</p>
+					</section>
+				</section>
+
+
+				<!-- ================ -->
+				<!-- = Interactions = -->
+				<!-- ================ -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Interactions with other tools</h1>
+					</section>
+
+					<section>
+						<h2>Off-line interactions</h2>
+						<div>
+							<div class="left half_size">
+								<h3>files</h3>
+								<ul>
+									<li>Tulip</li>
+									<li>Gephi</li>
+									<li>GML</li>
+									<li>Pajek</li>
+									<li>DOT</li>
+									<li>LGL</li>
+									<li>ncol</li>
+									<li>DGS</li>  
+								</ul>
+								<h3>DataBase(s)</h3>
+								<ul>
+									<li>Neo4J</li>
+								</ul>
+							</div>
+							<div class="right half_size">
+								<pre><code class="bash" data-trim contenteditable>
+DGS004
+"graph.dgs" 0 0
+an A x:1 y:2.3 label:"Node A"
+an B x:0 y:0
+an C xy:2.3,1
+an D xyz:1,1
+ae AB A B weight:23.3
+ae AC A C weight:2
+st 1.0
+ae BC B > C 
+ae BD B > D
+st 1.1
+dn B
+							</code></pre>
+							</div>
+						</div>
+					</section>
+
+					<section> 
+						<h2>On-line interactions: NetStream</h2>
+						<ul>
+							<li>Export streams of events to other applications / machines / languages</li>
+							<li>Both ways. From GS to other and from other to GS</li>
+							<li>Binary network protocol</li>
+							<li>TCP socket (and WebSocket) implementation</li>
+							<li>Several languages (Java, C++, Python, JS)</li>
+						</ul>
+						<pre><code class="java" data-trim contenteditable>
+import org.graphstream.stream.netstream.NetStreamReceiver;
+//...
+NetStreamReceiver net = new NetStreamReceiver(2001);
+ThreadProxyPipe pipe = net.getDefaultStream();
+pipe.addSink(graph);
+while (true) {
+	pipe.pump();
+	Thread.sleep(100);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>GAMA and NetLogo Extension</h2>
+						<ul>
+							<li>GAMA and NetLogo agents send graph events to external application</li>
+							<li>The external application maintains a dynamic graph and runs algorithms on it</li>
+							<li>It sends the computed results back to GAMA or NetLogo</li>
+							<li>Agents can receive and use them to take their decisions</li>
+						</ul>
+						<br /><br />
+						<div class="left" >
+							<img src="images/GAMA161.png" class="full_size" />
+						</div>
+
+						<div class="right" >
+							<img src="images/netlogo.jpg" class="full_size" />
+						</div>
+					</section>
+				</section>
+
+				<section data-state="no-toc-progress">
+					<h2 class="no-toc-progress">Slides and Material</h2>
+					<br /><br />
+					<p>Get the Slides and Materials on-line:</p>
+					<div> 
+					<a href="http://graphstream-project.org/doc/Tutorials/Lab-Sessions/NeX-2015/">http://graphstream-project.org/doc/Tutorials/Lab-Sessions/NeX-2015/</a>
+					</div>
+
+					<div>  <a href="https://github.com/graphstream/gs-talk/tree/NeX2015">https://github.com/graphstream/gs-talk/tree/NeX2015</a> (branch <pre class="inline">NeX2015</pre>)
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				width: 1920,
+				height: 1080,
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				transition: 'slide',
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Graphstream - Basic Tutorials</title>
+
+		<meta name="description" content="Presentation of GraphStream of the NeX talk on April 28-30 2015">
+		<meta name="author" content="Thibaut Démare">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/design.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div  id="header">
+				<div id="presenter_name">
+					Thibaut Démare - LITIS<br />
+					thibaut.demare@univ-lehavre.fr
+				</div>
+				<div id="title_div">
+					<img src="css/img/gs-logo-white-tiny.svg" id="logo_graphstream" alt="Logo GS" />
+					<span id="title">Graphstream - Basic Tutorials</span>
+				</div>
+				<div id="conf_name_date">
+					NeX Days' 2015 <br />
+					28 - 30 April 2015
+				</div>
+				<div class="clear_div"></div>
+			</div>
+
+			<div class="slides">
+				<section data-state="no-toc-progress">
+					<h1 class="no-toc-progress">GraphStream Tutorials</h1>
+					<h2 class="no-toc-progress">Let's get some coding done</h2>
+					<img class="logo small_size" src="images/gs-logo.png" alt="GS Logo">
+					<p class="center">
+						Thibaut Démare
+						<br />
+						LITIS - Université du Havre
+						<br />
+						NeX Days' 2015 - Agadir, Morocco
+						<br />
+						28 - 30 April 2015
+					</p>
+				</section>
+
+				<!-- ============ -->
+				<!-- = OUTLOOCK = -->
+				<!-- ============ -->
+				<section data-state="no-toc-progress">
+				  <h2 class="no-toc-progress">Outlook</h2>  
+				    <ol>
+				      <li>Installation of GraphStream</li>
+				      <li>Tutorial 1: Basic tasks with GraphStream</li>
+				      <li>Tutorial 2: A first dynamic graph</li>
+				    </ol>
+				</section>
+
+
+				<!-- ================ -->
+				<!-- = INSTALLATION = -->
+				<!-- ================ -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Installation of GraphStream</h1>
+					</section>
+
+					<section>
+						<h2>Installation of GraphStream</h2>
+						<p>Basic steps to install GraphStream</p>
+						<ol>
+							<li>Get a working java SDK installed</li>
+							<li>Get Eclipse installed</li>
+							<li>Get the GraphStream tutorial sources</li>
+							<li>Get GraphStream binaries</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>Get Eclipse Installed</h2>
+						<ul>
+							<li>Go to the Eclipse download page at:<br>
+							<a href="https://eclipse.org/downloads/packages/eclipse-ide-java-developers/lunasr2">https://eclipse.org/downloads/packages/eclipse-ide-java-developers/lunasr2</a>
+							</li>
+							<li>On the right column, "Download Links", pick up your OS</li>
+							<li>Click the download button</li>
+							<li>Once downloaded, open the file. An <pre class="inline">eclipse</pre> folder is created. Move it somewhere safe.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Get the tutorial workspace</h2>
+						<ul>
+							<li>Go to the tutorial page at github:<br>
+							<a href="http://github.com/graphstream/gs-talk/tree/Nex2015">http://github.com/graphstream/gs-talk/tree/Nex2015</a>
+							</li>
+							<li> Get the code:
+								<ul>
+									<li>with the "Zip" button on github (will download an archive)</li>
+									<li><b>or</b> through git: <br>
+										<pre><code class="bash">git clone -b NeX2015 git://github.com/graphstream/gs-talk.git</code></pre>
+									</li>
+								</ul>
+							</li>
+							<li>In that project, we want the <pre class="inline">Demos</pre> folder.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Import into Eclipse</h2>
+
+						<ul>
+							<li>Start Eclipse.</li>
+							<li>When asked about a workspace, indicate a new workspace or any existing one.</li>
+							<li>Go to menu <pre class="inline">File &gt; Import &gt; General &gt; Existing projects into workspace</pre>.</li>
+							<li>Browse to the project (<pre class="inline">Demos</pre> folder), Eclipse should recognize the project.</li>
+							<li>Maven users: nothing to do here</li>
+						</ul> 
+					</section>
+
+					<section>
+						<h2>Get GraphStream binaries</h2>
+						<ul>
+							<li>Go to the GraphStream Download page:<br>
+							<a href="http://graphstream-project.org/download/">http://graphstream-project.org/download/</a></li>
+							<li>We need the 3 binaries of the last 1.3 release: <br>
+								<pre class="inline">gs-algo-1.3.zip</pre>, <pre class="inline">gs-core-1.3.zip</pre>, <pre class="inline">gs-ui-1.3.zip</pre>.</li>
+								<li> Extract those zip file, and copy <pre class="inline">gs-algo-1.3.jar</pre>, <pre class="inline">gs-core-1.3.jar</pre>, <pre class="inline">gs-ui-1.3.jar</pre> to the <pre class="inline">lib/</pre> folder of the project.</li>
+							<li>In Eclipse, select the project in the right panel and refrech the project (F5 key).</li>
+							<li>Right-clic on the project (<pre class="inline">gs-talk-simtools</pre>), then <pre class="inline">properties</pre>, then <pre class="inline">Java build path</pre> (left panel), then <pre class="inline">libraries</pre> (right panel), then clic the <pre class="inline">Add jars</pre> button, and select our 3 jar files in the <pre class="inline">gs-talk-simtools/lib</pre> folder. </li>
+							<li>Maven : <pre class="inline">mvn compile</pre> </li>
+						</ul>
+					</section>
+				</section>
+
+
+				<!-- ============== -->
+				<!-- = TUTORIAL 1 = -->
+				<!-- ============== -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Tutorial 1</h1>
+						<h2>Basic tasks with GraphStream</h2>
+					</section>
+
+					<section>
+						<h2>Create and display</h2>
+
+						<div>
+						Open <pre class="inline">src &gt; org &gt; graphstream &gt; demo &gt; tutorial1 &gt; Tutorial1.java</pre>
+						</div>
+
+						<pre><code class="java" data-trim contenteditable>
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
+
+public class Tutorial1 {
+	public static void main(String args[]) {
+		Graph graph = new SingleGraph("Tutorial 1");
+
+		graph.display();
+
+		graph.addNode("A");
+		graph.addNode("B");
+		graph.addEdge("AB", "A", "B");
+		graph.addNode("C");
+		graph.addEdge("BC", "B", "C", true); // Directed edge.
+		graph.addEdge("CA", "C", "A");
+	}
+}
+						</code></pre>
+						<div>
+							Maven : <pre class="inline">mvn exec:java -Dexec.mainClass="org.graphstream.demo.tutorial1.Tutorial1"</pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Basic tasks with GS</h2>
+
+						<p>We can improve the display with some CSS:</p>
+						<div class="left two_third_size">
+							<pre><code class="java" data-trim contenteditable>
+...
+graph.display();
+
+graph.addAttribute("ui.quality");
+graph.addAttribute("ui.antialias");
+graph.addAttribute("ui.stylesheet",
+	"edge { fill-color: grey; }");
+
+graph.addNode("A");
+...
+						</code></pre>
+						</div>
+						<div class="right third_size">
+							<img src="images/Tutorial1.png" alt="Image tuto 1"/>
+						</div>
+					</section>
+
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<ul>
+							<li>Each node, edge and attribute is identified by an unique string.</li>
+							<li>The node and edge elements are created for you.</li>
+							<li>You can access them however, when created:
+								<pre><code class="java">Node n = graph.addNode("A");</code></pre>
+							</li>
+							<li>Or after creation:
+								<pre><code class="java">Node n = graph.getNode("A");</code></pre>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<ul>
+							<li>You can remove nodes and edges the same way:
+								<pre><code class="java" data-trim contenteditable>graph.removeNode("A");</code></pre>
+							</li>
+							<li>You can change the graph this way at any time. Each change is considered as an “event”.</li>
+							<li>The sequence of changes is seen as the dynamics of the graph.</li>
+							<li>There are many other ways to modify the graph.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+						<ul>
+							<li>Data stored in the graph, on nodes and edges, are called “attributes”.</li>
+							<li> An attribute is a pair (name,value).</li>
+						</ul>
+
+						<div class="left two_third_size">
+							<pre><code class="java" data-trim contenteditable>
+Edge ab = graph.getEdge("AB");
+Edge bc = graph.getEdge("BC");
+Edge ca = graph.getEdge("CA");
+
+ab.setAttribute("ui.label", "AB");
+bc.setAttribute("ui.label", "BC");
+ca.setAttribute("ui.label", "CA");
+							</code></pre>
+						</div>
+						<div class="right third_size">
+							<img src="images/Tutorial1b.png" alt="Image tuto 1"/>
+						</div>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+						<ul>
+							<li>But you can add any kind of data on each graph element.</li>
+							<li>However not all attributes appear in the viewer.</li>
+							<li>Notice the way you can add arrays with <pre class="inline java">setAttribute()</pre> and a variable number of arguments:</li>
+						</ul>
+
+						<pre><code class="java" data-trim contenteditable>
+ab.setAttribute("aNumber", 10);
+bc.setAttribute("anObject", new Double(10));
+ca.setAttribute("anArrayOfThings", 1, 2, 3);
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<p>You can access attributes in several ways:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+int value1 = ((Number) ab.getAttribute("aNumber")).intValue();
+double value2 = bc.getAttribute("anObject");
+Object[] value3 = ca.getAttribute("anArrayOfThings");
+						</code></pre>
+
+						<p>Special methods are here to simplify things:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+double value4 = ab.getNumber("aNumber");
+double value5 = bc.getNumber("anObject");
+						</code></pre>
+						
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<p>Travelling through all nodes of the graph is easy:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+for(Node n: graph) {
+	System.out.println(n.getId());
+}
+						</code></pre>
+
+						<p>The same for edges:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+for(Edge e: graph.getEachEdge()) {
+	System.out.println(e.getId());
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<p>You can also do it with iterators:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+Iterator&lt;? extends Node&gt; nodes = graph.getNodeIterator();
+
+while(nodes.hasNext()) {
+	System.out.println(nodes.next().getId());
+}
+						</code></pre>
+
+						<p>The same for edges:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+Iterator&lt;? extends Edge&gt; edges = graph.getEdgeIterator();
+
+while(edges.hasNext()) {
+	System.out.println(edges.next().getId());
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<p>Or even with indices:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+int n = graph.getNodeCount();
+for(int i=0; i&lt;n; i++) {
+	System.out.println(graph.getNode(i).getId());
+}
+						</code></pre>
+
+						<p>The same for edges:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+int n = graph.getEdgeCount();
+for(int i=0; i&lt;n; i++) {
+	System.out.println(graph.getEdge(i).getId());
+}
+						</code></pre>
+
+						<p>Be careful: indices remain the same as long as the graph is
+						unchanged. But as soon as an addition or removal occurs, indices are no
+						longer tied to their old node or edge.</p>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<p>You can also travel the graph using nodes:</p>
+
+						<pre><code class="java" data-trim contenteditable>
+import static org.graphstream.algorithm.Toolkit.*;
+...
+Node node = randomNode(graph);
+
+for(Edge e : node.getEachEdge()) {
+	System.out.printf("neighbor %s via %s%n",
+		e.getOpposite(node).getId(),
+		e.getId() );
+}
+						</code></pre>
+
+						<ul>
+							<li>Each node and edge allows to iterate on its neighbourhood.</li>
+							<li><pre class="inline">Toolkit</pre> is a collection of often used methods and small algorithms.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Basic tasks with GS</h2>
+
+						<p>You can iterate on directed edges:</p>
+						<pre><code class="java" data-trim contenteditable>
+Node node = getRandomNode(graph);
+Iterator&lt;? extends Edge&gt; edges = node.getLeavingEdgeIterator();
+						</code></pre>
+
+						<p>Or:</p>
+						<pre><code class="java" data-trim contenteditable>
+Iterator&lt;? extends Edge&gt; edges = node.getEnteringEdgeIterator();
+						</code></pre>
+
+						<p>And get the node degree, entering or leaving:</p>
+						<pre><code class="java" data-trim contenteditable>
+System.out.println(“Node degree %d (entering %d, leaving %d)%n”,
+	node.getDegree(),
+	node.getInDegree(),
+	node.getOutDegree());
+						</code></pre>
+					</section>
+				</section>
+
+
+				<!-- ============== -->
+				<!-- = TUTORIAL 2 = -->
+				<!-- ============== -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Tutorial 2</h1>
+						<h2>A first dynamic graph</h2>
+					</section>
+
+					<section>
+						<h2>A first dynamic graph</h2>
+						<ul>
+							<li>Each graph is a source of events.</li>
+							<li>You can connect to any source using the <pre class="inline java">Source.addSink(Sink)</pre> method.</li>
+							<li>You can choose to receive only events concerning the graph structure with <pre class="inline java">addElementSink(ElementSink)</pre>.
+							<em>Elements</em> are nodes and edges.</li>
+							<li>You can choose to receive only events concerning data attributes stored on elements with <pre class="inline java">addAttributeSink(AttributeSink)</pre>.</li>
+							<li>A <pre class="inline java">Sink</pre> is only an empty interface inheriting <pre class="inline java">ElementSink</pre> and <pre class="inline java">AttributeSink</pre>.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<p>An element sink must follow the interface:</p>
+						<pre><code class="java" data-trim contenteditable>
+public interface ElementSink {
+	void nodeAdded( ... );
+	void nodeRemoved( ... );
+	void edgeAdded( ... );
+	void edgeRemoved( ... );
+	void graphCleared( ... );
+	void stepBegins( ... );
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<p>An attribute sink must follow the interface:</p>
+						<pre><code class="java" data-trim contenteditable>
+public interface AttributeSink {
+	void graphAttributeAdded( ... );
+	void graphAttributeChanged( ... );
+	void graphAttributeRemoved( ... );
+
+	void nodeAttributeAdded( ... );
+	void nodeAttributeChanged( ... );
+	void nodeAttributeRemoved( ... );
+
+	void edgeAttributeAdded( ... );
+	void edgeAttributeChanged( ... );
+	void edgeAttributeRemoved( ... );
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+
+						<p>A source is an interface that only defines methods to handle a set of sinks.</p>
+
+						<pre><code class="java" data-trim contenteditable>
+public interface Source {
+	void addSink(Sink sink);
+	void removeSink(Sink sink);
+	void addAttributeSink(AttributeSink sink);
+	void removeAttributeSink(AttributeSink sink);
+	void addElementSink(ElementSink sink);
+	void removeElementSink(ElementSink sink);
+	void clearElementSinks();
+	void clearAttributeSinks();
+	void clearSinks();
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<div class="center">
+							<img class="small_size" src="images/Source.png" alt="source"/><img class="small_size" src="images/Link.png" alt="link"/><img class="small_size" src="images/Sink.png" alt="sink"/>
+						</div>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<ul>
+							<li>As the graph is also a sink, you could use these methods to create the graph.</li>
+							<li>But a better way is to send graph events using an existing source, like a file.</li>
+							<li>Few graph file formats are dynamic.</li>
+							<li>GraphStream provides a format named DGS that allows to store and load dynamic graphs.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<p>A DGS file looks like this. You can find it in the <code>data &gt; tutorial2.dgs</code></p>
+						<div class="left third_size">
+							<pre><code class="bash" data-trim contenteditable>
+DGS003
+"Tutorial 2" 0 0
+an "A"
+an "B"
+an "C"
+ae "AB" "A" "B"
+ae "BC" "B" "C"
+ae "CA" "C" "A"
+ce "AB" label="AB"
+ce "BC" label="BC"
+ce "CA" label="CA"
+							</code></pre>
+						</div>
+
+						<div class="right two_third_size">
+							<ul>
+								<li><pre class="inline">an</pre> add a node and <pre class="inline">ae</pre> an edge.</li>
+								<li><pre class="inline">ae "AB" "A" &gt; "B"</pre> adds a directed edge.</li>
+								<li><pre class="inline">cn</pre>, <pre class="inline">ce</pre> and <pre class="inline">cg</pre> change or add
+									one or more attributes on a node, edge or graph.</li>
+								<li><pre class="inline">dn</pre> and <pre class="inline">de</pre> allow to remove nodes, edges.</li>
+							</ul>
+						</div>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<ul>
+							<li>Each change in the graph is an event.</li>
+							<li>However you may want to define a notion of time, and group some events as occurring "at the same time".</li>
+							<li>You can do this using a <pre class="inline">step</pre>.</li>
+							<li>The DGS notion for steps is <pre class="inline">st &lt;number&gt;</pre>.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<p>The ability to remove nodes and edges make the format dynamic.</p>
+						<p>Add this to the previous DGS file:</p>
+						<pre><code class="bash" data-trim contenteditable>
+st 2
+an "D"
+an "E"
+ae "BD" "B" "D"
+ae "CE" "C" "E"
+ae "DE" "D" "E"
+de "AB"
+dn "A"
+st 3
+						</code></pre>
+						<p>And save it.</p>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<ul>
+							<li>We will now read this file.</li>
+							<li>This can be done in one simple operation :</li>
+						</ul>
+
+						<pre><code data-trim contenteditable>
+graph.read("tutorial2.dgs");
+						</code></pre>
+
+						<ul>
+							<li>However this will "play" all events as fast as possible.</li>
+							<li>We have no control over the speed at which events occur.</li>
+							<li>This form of reading is an utility method of the <pre class="inline">Graph</pre> interface allowing to read static graphs from all the supported file formats.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<p>We can read the DGS file event by event using an input source:</p>
+						<pre><code data-trim contenteditable>
+public class Tutorial2 {
+	public static void main(String args[]) {
+		Graph graph = new SingleGraph("Tutorial2");
+		graph.display();
+		graph.addAttribute("ui.antialias");
+		try {
+			FileSource source = FileSourceFactory.sourceFor(
+				"tutorial2.dgs");
+			source.addSink(graph);
+			source.begin("tutorial2.dgs");
+			while(source.nextEvents());
+			source.end();
+		} catch(Exception e) { e.printStackTrace(); }
+	}
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<ul>
+							<li>We read the file event by event (line by line in the file), however it still does it as							fast as it can.</li>
+							<li>Note the line <pre class="inline">while(source.nextEvents());</pre> that does the job.</li>
+							<li>Also note that we have to call the <pre class="inline">begin()</pre> and <pre class="inline">end()</pre>
+							methods before and after reading to cleanly open and close the file.</li>
+						</ul>
+						<pre><code data-trim contenteditable>
+while(source.nextEvents()) { 
+	Thread.sleep(1000);
+}
+						</code></pre>
+						<p>We can also run it <em>step by step</em> so that events between two step appear together</p>
+						<pre><code data-trim contenteditable>
+while(source.nextStep()) { 
+	Thread.sleep(1000);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<ul>
+							<li>The graph is automatically reshaped for you.</li>
+							<li>However you may want to position nodes by yourself.</li>
+							<li>You can do this using the <pre class="inline">x</pre> and <pre class="inline">y</pre> attributes:</li>
+						</ul>
+						<pre><code data-trim contenteditable>
+an "A" x=0 y=1
+an "B" x=1 y=-1
+an "C" x=-1 y=-1
+						</code></pre>
+
+						<p>And:</p>
+
+						<pre><code data-trim contenteditable>
+an "D" x=1 y=1 
+an "E" x=-1 y=1
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">A first dynamic graph</h2>
+						<p>You have to tell the viewer it should not place nodes for you:</p>
+						<pre><code data-trim contenteditable>
+graph.display(false);
+						</code></pre>
+						<p>You can now run the program anew.</p>
+					</section>
+				</section>
+
+				<section data-state="no-toc-progress">
+					<h2 class="no-toc-progress">Slides and Material</h2>
+					<br /><br />
+					<p>Get the Slides and Materials online:</p>
+					<div> 
+					<a href="http://graphstream-project.org/doc/Tutorials/Lab-Sessions/NeX-2015/">http://graphstream-project.org/doc/Tutorials/Lab-Sessions/NeX-2015/</a>
+					</div>
+
+					<div>  <a href="https://github.com/graphstream/gs-talk/tree/NeX2015">https://github.com/graphstream/gs-talk/tree/NeX2015</a> (branch <pre class="inline">NeX2015</pre>)
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				width: 1920,
+				height: 1080,
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				transition: 'slide',
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+
+				]
+			});
+		</script>
+
+	</body>
+</html>
