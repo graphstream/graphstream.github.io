@@ -1,6 +1,9 @@
 paths:
 
 documents:
+  - title: NeX-Days 2015
+    href: /doc/Talks/NeX-2015/
+  
   - title: ICCSA 2014
     href: /doc/Talks/ICCSA-2014/
     
