@@ -43,6 +43,10 @@ body {
   text-shadow: none;
   word-wrap: break-word; }
 
+.reveal .slides section[data-background="#1b1b1b"] h2{
+  color : #fff;
+}
+
 .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
   margin: 20px 0 20px 0;
   color: #333;
