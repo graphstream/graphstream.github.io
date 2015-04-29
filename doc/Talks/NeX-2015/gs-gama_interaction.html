@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Graphstream - Interaction with GAMA</title>
+
+		<meta name="description" content="Presentation of GraphStream of the NeX talk on April 28-30 2015">
+		<meta name="author" content="Thibaut Démare">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/design.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+	</head>
+
+	<body>
+		
+
+		<div class="reveal">
+			<div  id="header">
+				<div id="presenter_name">
+					Thibaut Démare - LITIS<br />
+					thibaut.demare@univ-lehavre.fr
+				</div>
+				<div id="title_div">
+					<img src="css/img/gs-logo-white-tiny.svg" id="logo_graphstream"/>
+					<span id="title">GraphStream - Interaction with GAMA</span>
+				</div>
+				<div id="conf_name_date">
+					NeX Days' 2015 <br />
+					28 - 30 April 2015
+				</div>
+				<div class="clear_div"></div>
+			</div>
+
+			<div class="slides">
+
+				<section data-state="no-toc-progress">
+					<h1 class="no-toc-progress">GraphStream Tutorials</h1>
+					<h2 class="no-toc-progress">Interactions between GAMA and GraphStream</h2>
+					<img class="logo small_size" src="images/gs-logo.png" alt="GS Logo">
+					<p class="center">
+						Thibaut Démare
+						<br />
+						LITIS - Université du Havre
+						<br />
+						NeX Days' 2015 - Agadir, Morocco
+						<br />
+						28 - 30 April 2015
+					</p>
+				</section>
+
+
+				<!-- ============ -->
+				<!-- = OUTLOOCK = -->
+				<!-- ============ -->
+				<section data-state="no-toc-progress">
+					<h2 class="no-toc-progress">Overview</h2>  
+					<ol>
+						<li>Netstream and <em>gs-gama</em></li>
+						<li>Tutorial: interaction with GAMA
+							<ol>
+								<li>The GAMA Model</li>
+								<li>Demo of interactions with GAMA</li>
+							</ol>
+						</li>
+					</ol>
+				</section>
+
+
+				<!-- ========================= -->
+				<!-- = Netstream and gs-gama = -->
+				<!-- ========================= -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Netstream and <em>gs-gama</em></h1>
+					</section>
+
+					<section>
+						<h2>What is Netstream ?</h2>
+
+						<p>
+							Netstream is basically a network protocol aiming at opening the GraphStream project access to other tools/projects/programs especially those written in other languages than Java. The interface is managed through a network interface (client/server approach).
+						</p>
+					</section>
+
+					<section>
+						<h2>The <em>gs-gama</em> Plug-in</h2>
+
+						<p>
+							<em>gs-gama</em> allows to connect a GAMA simulation with an external software supporting the NetStream protocol, such as GraphStream-based applications..
+							<br />
+							<a href="https://github.com/graphstream/gs-gama/wiki">https://github.com/graphstream/gs-gama/wiki</a>
+						</p>
+					</section>
+
+					<section>
+						<h2>Installation of <em>gs-gama</em></h2>
+
+						<ul>
+							<li>From the USB key provided: none! It is already integrated in the special version of GAMA.</li>
+							<li>Otherwise: for future versions of gs-gama, install it as a plug-in from the Market Place.</li>
+						</ul>
+					</section>
+				</section>
+
+				<!-- ========================= -->
+				<!-- = Tutorial gs-gama = -->
+				<!-- ========================= -->
+				<section>
+					<section data-background="#1b1b1b" class="section_title" data-state="no-toc-progress">
+						<h1>Tutorial: interaction with GAMA</h1>
+					</section>
+
+					<section>
+						<h2>The GAMA Model</h2>
+
+						<h3>A model of mobility simulation</h3>
+						<ul>
+							<li>Some people over an environment move randomly.</li>
+							<li>Each person has a device which establishes a connection with closest devices.</li>
+							<li>This connection disappears as soon as they are too far.</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Demo of interactions with GAMA</h2>
+
+						<h3>Installation of the GAMA model</h3>
+						<div>From a GAMA version with gs-gama installed: import the <pre class="inline">GAMAProject</pre> folder as a project. Go to:
+						<br />
+						<pre class="inline">File > Import... > General > Existing projects into workspace</pre>
+						<br />
+						And then, select the folder <pre class="inline">Demo_NeX2015</pre> and click on <pre class="inline">Finish</pre>.
+						<br />
+						And you need to use the <em>version 1.1.2</em> of GraphStream.
+						</div>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Demo of interactions with GAMA</em></h2>
+
+						<h3>GraphStream side</h3>
+						Open the connection and create a view:
+						<pre><code class="java" data-trim contenteditable>
+NetStreamReceiver receiver = new NetStreamReceiver("localhost", 2001);
+Viewer v = new Viewer(receiver.getDefaultStream());
+v.addDefaultView(true);
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Demo of interactions with GAMA</em></h2>
+
+						<h3>GAMA side</h3>
+						Open the connection :
+						<pre><code class="java" data-trim contenteditable>
+gs_clear_senders;
+gs_add_sender gs_host:"localhost" gs_port:2001 gs_sender_id:"humans";
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Demo of interactions with GAMA</em></h2>
+
+						<h3>GAMA side</h3>
+						
+						Create the nodes for each human agent
+						<pre><code class="java" data-trim contenteditable>
+init {
+	gs_add_node gs_sender_id:"humans" gs_node_id:name;
+	gs_add_node_attribute gs_sender_id:"humans" gs_node_id:name gs_attribute_name:"x" gs_attribute_value:location.x;
+	gs_add_node_attribute gs_sender_id:"humans" gs_node_id:name gs_attribute_name:"y" gs_attribute_value:location.y*-1;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Demo of interactions with GAMA</em></h2>
+
+						<h3>GAMA side</h3>
+						
+						Update the position of agents
+						<pre><code class="java" data-trim contenteditable>
+reflex move {
+	if(tar.x = location.x and tar.y = location.y){
+		tar &lt;- any_location_in(world.shape);
+	}
+	do goto target:tar speed: 5;
+	gs_add_node_attribute gs_sender_id:"humans" gs_node_id:name gs_attribute_name:"x" gs_attribute_value:location.x;
+	gs_add_node_attribute gs_sender_id:"humans" gs_node_id:name gs_attribute_name:"y" gs_attribute_value:location.y*-1;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2 class="no-toc-progress">Demo of interactions with GAMA</em></h2>
+
+						<h3>GAMA side</h3>
+						
+						Delete edges when two humans are no more connected
+						<pre><code class="java" data-trim contenteditable>
+if(distance_to(self, humans_connected[i]) > length){
+	gs_remove_edge gs_sender_id:"humans" gs_edge_id:(name + humans_connected[i].name);
+	remove index:i from: humans_connected;
+}
+						</code></pre>
+
+						And add new edges for new connection
+						<pre><code class="java" data-trim contenteditable>
+if(!contains(humans_connected, humans[i])){
+	humans_connected <- humans_connected + humans[i];
+	gs_add_edge gs_sender_id:"humans" gs_edge_id:(name + humans[i].name) gs_node_id_from:name gs_node_id_to:humans[i].name gs_is_directed:true;
+}
+						</code></pre>
+					</section>
+					
+				</section>
+
+				<section data-state="no-toc-progress">
+					<h2 class="no-toc-progress">Slides and Material</h2>
+					<br /><br />
+					<p>Get the Slides and Materials on-line:</p>
+					<div> 
+					<a href="http://graphstream.github.io/doc/Talks/NeX-2015/">http://graphstream.github.io/doc/Talks/NeX-2015/</a>
+					</div>
+
+					<div>  <a href="https://github.com/graphstream/gs-talk/tree/NeX2015">https://github.com/graphstream/gs-talk/tree/NeX2015</a> (branch <pre class="inline">NeX2015</pre>)
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				width: 1920,
+				height: 1080,
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				transition: 'slide',
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
