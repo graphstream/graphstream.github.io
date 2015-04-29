@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Graphstream - Mobile Simulation</title>
+
+		<meta name="description" content="Presentation of GraphStream of the NeX talk on April 28-30 2015">
+		<meta name="author" content="Thibaut Démare">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="css/design.css">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+	</head>
+
+	<body>
+		
+
+		<div class="reveal">
+			<div  id="header">
+				<div id="presenter_name">
+					Thibaut Démare - LITIS<br />
+					thibaut.demare@univ-lehavre.fr
+				</div>
+				<div id="title_div">
+					<img src="css/img/gs-logo-white-tiny.svg" id="logo_graphstream"/>
+					<span id="title">GraphStream - Mobile Simulation</span>
+				</div>
+				<div id="conf_name_date">
+					NeX Days' 2015 <br />
+					28 - 30 April 2015
+				</div>
+				<div class="clear_div"></div>
+			</div>
+
+			<div class="slides">
+
+				<section data-state="no-toc-progress">
+					<h1 class="no-toc-progress">GraphStream Tutorials</h1>
+					<h2 class="no-toc-progress">A model of mobile simulation</h2>
+					<img class="logo small_size" src="images/gs-logo.png" alt="GS Logo">
+					<p class="center">
+						Thibaut Démare
+						<br />
+						LITIS - Université du Havre
+						<br />
+						NeX Days' 2015 - Agadir, Morocco
+						<br />
+						28 - 30 April 2015
+					</p>
+				</section>
+				
+				<section>
+					<p>We use the same model as in GAMA but this time, fully implemented in Graphstream.</p>
+				</section>
+
+				<section>
+					<h2>Implementation</h2>
+
+					<p>We will use two Java classes:</p>
+
+					<ul>
+						<li><pre class="inline">MobileDevice</pre>, represents a moving person with a communication device,</li>
+						<li><pre class="inline">MobilitySimulation</pre>, represents a set of persons and runs the simulation.</li>
+					</ul>
+
+					<p>We will start from these two classes that already implement a fully functional random waypoint
+					simulation, and use GraphStream to represent the associated graph and make some measures on it.</p>
+
+					<ul>
+						<li>Open eclipse and find the <pre class="inline">mobility</pre> directory in the project,</li>
+						<li>And open in the editor <pre class="inline">MobilitySimulation</pre>.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>The mobility simulation</h2>
+
+					<div>The <pre class="inline">MobilitySimulation</pre> role is to register a set of <pre class="inline">MobileDevice</pre>
+					objects and to run in a loop methods to make them move and to check which other mobile
+					devices they can connect to.</div>
+
+					<div>The principal methods are:</div>
+
+					<ul>
+						<li><pre class="inline">MobilitySimulation()</pre> the constructor, inits and runs the simulation.</li>
+						<li><pre class="inline">addMobileDevices()</pre> registers a set of mobile devices in the simulation.</li>
+						<li><pre class="inline">moveMobileDevices()</pre> makes each device move toward its target or wait.</li>
+						<li><pre class="inline">checkConnections()</pre> sees toward which mobile devices connections can be made or removed</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>The mobility simulation</h2>
+
+					<div>The code is already in the tutorial, but incomplete, we will add a graph to represent the
+					mobile device objects.</div>
+
+					<div>We will add two lines in the constructor <pre class="inline">MobilitySimulation</pre> (in orange), note that we refer to a field <pre class="inline">graph</pre> that is already present:</div>
+
+					<pre><code class="java" data-trim contenteditable>
+public MobilitySimulation() {
+	graph = new SingleGraph("mobility model");
+	graph.display(false);
+	addMobileDevices(deviceCount);
+	initConnectedComponents();
+	for(int step=0; step&lt;steps; step++) {
+		moveMobileDevices();
+		checkConnections();
+		showConnectedComponents();
+		sleep();
+	}
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>The mobile devices</h2>
+
+					<div>Now lets look at the <pre class="inline">MobileDevice</pre>. Here are the main methods:</div>
+
+					<ul>
+						<li><pre class="inline">MobileDevice()</pre> Builds a new mobile device knowing its name and the global graph.</li>
+						<li><pre class="inline">next()</pre> Chooses the next action to do.</li>
+						<li><pre class="inline">closeTo()</pre> True if the devices is close to another one.</li>
+						<li><pre class="inline">nextTarget()</pre> Chooses a next target destination.</li>
+						<li><pre class="inline">move()</pre> Move a little toward the target.</li>
+						<li><pre class="inline">atTarget()</pre> True if arrived at target.</li>
+						<li><pre class="inline">checkConnections()</pre> Check new connections or connections to remove.</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>The mobile devices</h2>
+
+					<p>We will also add one field and complete the constructor.</p>
+
+					<p>Each device maps to a node in the global graph of the simulation:</p>
+
+					<pre><code class="java" data-trim contenteditable>
+protected Node node;
+
+public MobileDevice(Graph graph, String name) {
+
+	this.graph = graph;
+
+	this.x = Math.random();
+	this.y = Math.random();
+	nextTarget();
+
+	node = graph.addNode(name);
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Specifying nodes position in the display</h2>
+
+					<p>When the device moves, we must also tell the corresponding node representation
+					in the display to move:</p>
+
+					<pre><code class="java" data-trim contenteditable>
+	protected void move() {
+		x += (targetx-x)*speed;
+		y += (targety-y)*speed;
+		node.setAttribute("x", x); 
+		node.setAttribute("y", y);
+	}
+					</code></pre>
+
+					<p>We use specific UI attributes to specify the abscissa and ordinate of the node.</p>
+				</section>
+
+				<section>
+					<h2>Fist test</h2>
+
+					<p>We have a valid code, we can start to test.</p>
+
+					<ul>
+						<li>Only nodes will move.</li>
+						<li>No edges will be drawn.</li>
+					</ul>
+
+					<br/>
+
+					<h1><div class="text_center"><em>Try it !</em><div></h1>
+				</section>
+
+				<section>
+					<h2>Now lets add the connectivity !</h2>
+
+					<div>We need first to know when a node is close to another.</div>
+
+					<div>We could use the <pre class="inline">x</pre> and <pre class="inline">y</pre> of the mobile device, but to show you how it works, we will
+					use the coordinates of the node in the graph we set previously in <pre class="inline">move()</pre>.</div>
+
+					<div>Remove the code in the <pre class="inline">closeTo()</pre> method and change it with:</div>
+
+					<pre><code class="java" data-trim contenteditable>
+	protected boolean closeTo(Node other) {
+		double otherxy[] = nodePosition(other);       
+		return(Math.abs(x-otherxy[0]) &lt; 0.07 &amp;&amp; Math.abs(y-otherxy[1]) &lt; 0.07);
+	}
+					</code></pre>
+
+					<div><pre class="inline">nodePosition()</pre> is a static method in the <pre class="inline">GraphPosLengthUtils</pre>
+					class that allows easy retrieval of the coordinate attributes in nodes. This class
+					also allows to easily compute edges lengths for example.</div>
+				</section>
+
+				<section>
+					<h2>The connectivity</h2>
+
+					<p>We will now check the connections to create or remove due to the displacement of
+					devices.</p>
+
+					<div>We will implement two sub-methods used by the <pre class="inline">checkConnectivity()</pre> method:</div>
+
+					<pre><code class="java" data-trim contenteditable>
+protected void checkConnections() {
+	removeConnections();
+	createConnections();
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Removing connections</h2>
+
+					<div>If a device moves too far away, the connections must disappear.</div>
+
+					<pre><code class="java" data-trim contenteditable>
+protected void removeConnections() {
+	Iterator&lt;?extends Edge&gt; edges = node.getEdgeIterator();
+
+	while(edges.hasNext()) {
+		Edge edge = edges.next();
+		if(!closeTo(edge.getOpposite(node))) {
+			edges.remove();
+		}
+	}
+}
+					</code></pre>
+
+					<div>We use an iterator on the set of edges of the graph, and get the opposite node
+					of the edge. Using <pre class="inline">closeTo()</pre> we know if we must remove the edge with
+					the iterator.</div>
+
+					<div>Exercise: we could also have used <pre class="inline">GraphPosLengthUtils.edgeLength()</pre>.</div>
+				</section>
+
+				<section>
+					<h2>Creating connections</h2>
+
+					<p>Now we will create connections for devices that are now close enough.</p>
+
+					<pre><code class="java" data-trim contenteditable>
+protected void createConnections() {
+	for(Node other: graph) {
+		if(other != node && closeTo(other)) {
+			if(!node.hasEdgeToward(other.getId())) {
+				graph.addEdge(
+				String.format("%s-%s", node.getId(), other.getId()),
+				node.getId(), other.getId());
+			}
+		}
+	}
+}
+					</code></pre>
+
+					<div>We iterate on each node of the graph. We then test if the node is not us, and if it is close
+					enough. If so, we check if no edge already exist (<pre class="inline">node.hasEdgeToward()</pre>), and then create the new connection with
+					<pre class="inline">graph.addEdge()</pre>.</div>
+				</section>
+
+				<section>
+					<h2>That's it !</h2>
+
+					<h1><div class="text_center"><em>Try it !</em></div></h1>
+				</section>
+
+				<section>
+					<h2>Lets add a measure</h2>
+
+					<p>We will add a dynamically updating measure on the graph: the number of connected components.
+					We will also see how to add information on the graph, here the connected components count.</p>
+
+					<p>First we add two fields, one for the display on the graph, called a <em>sprite</em>, the other
+					for the algorithm that will observe the graph and constantly update the number of components:</p>
+
+					<pre><code class="java" data-trim contenteditable>
+protected Sprite cc;
+protected ConnectedComponents ccalgo;
+					</code></pre>
+
+					<div>The <pre class="inline">ConnectedComponents</pre> class comes from the <pre class="inline">gs-algo</pre> package which
+					contains lots of such algorithms.</div>
+				</section>
+
+				<section>
+					<h2>Initializing a dynamic algorithm</h2>
+
+					<p>The connected components only need to know the graph. After this it will update
+					itself each time the graph changes.</p>
+
+					<div>We also use a <pre class="inline">SpriteManager</pre> to create a sprite, that is a graphical representation
+					on the graph display, to add a label to print the number of connected components.</div>
+
+					<pre><code class="java" data-trim contenteditable>
+protected void initConnectedComponents() {
+	ccalgo = new ConnectedComponents();
+	ccalgo.init(graph);
+
+	SpriteManager sm = new SpriteManager(graph);
+	cc = sm.addSprite("cc");
+	cc.setPosition(Units.PX, 10, 10, 0);
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Displaying the connected components count</h2>
+
+					<p>Now we display the measure, by updating the sprite at each simulation step:</p>
+
+					<pre><code class="java" data-trim contenteditable>
+protected void showConnectedComponents() {
+	cc.setAttribute("ui.label", "Connected components " +
+	ccalgo.getConnectedComponentsCount());
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Adding some style</h2>
+
+					<div>To make things more fancy, you can try adding a style sheet to the graph. In the
+					<pre class="inline">MobilitySimulation()</pre> constructor, just after <pre class="inline">graph.display()</pre>,
+					add:</div>
+
+					<pre><code class="java" data-trim contenteditable>
+...
+graph.display(false);
+graph.addAttribute("ui.antialias");
+graph.addAttribute("ui.stylesheet",
+	"edge { fill-color: grey; } sprite { size: 0px; }");
+addMobileDevices(deviceCount);
+...
+					</code></pre>
+
+					<h1><div class="text_center"><em>Try it !</em></div></h1>
+				</section>
+
+				<section>
+					<h2>Slides and Material</h2>
+					<br /><br />
+					<p>Get the Slides and Materials on-line:</p>
+					<div> 
+					<a href="http://graphstream.github.io/doc/Talks/NeX-2015/">http://graphstream.github.io/doc/Talks/NeX-2015/</a>
+					</div>
+
+					<div>  <a href="https://github.com/graphstream/gs-talk/tree/NeX2015">https://github.com/graphstream/gs-talk/tree/NeX2015</a> (branch <pre class="inline">NeX2015</pre>)
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				width: 1920,
+				height: 1080,
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				transition: 'slide',
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/notes/notes.js', async: true }				]
+			});
+		</script>
+
+	</body>
+</html>
