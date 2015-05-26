@@ -19,7 +19,7 @@ public static void main(String args[]) {
 }
 {% endhighlight %}
 
-You only need to set this property before calling ``Graph.display()``. However you can set the renderer by creating the viewer for example. More details are provided `here </doc/Tutorials/Graph-Visualisation_1.0/>`_.
+You only need to set this property before calling ``Graph.display()``. However you can set the renderer by creating the viewer for example. More details are provided [here](/doc/Tutorials/Graph-Visualisation_1.0/).
 
 
 ### Specifying the style sheet
