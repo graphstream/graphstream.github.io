@@ -4,6 +4,7 @@ layout: documentation
 docpath: Tutorials|/doc/Tutorials/
 permalink: /doc/Tutorials/Graph-Visualisation/
 redirect_from: /doc/Tutorials/Graph-Visualisation_1.1/
+toc: True
 ---
 
 This tutorial is dedicated to visualisation of graphs and the addition and animation of data on graph renderings. As usual, it is cut in an informational part and a practical part at the end.
@@ -177,7 +178,7 @@ The method:
     s.attachToEdge("AB");
 {% endhighlight %}
 
-Allows to attach a sprite to an edge. When attached, once again, the coordinates are expressed "along" the edge. The first value express the advance of the sprite on the edge. Its values must be taken between 0 and 1 included. Using it, by slowly increasing the value, you can make the sprite move along the edge for example. The second coordinate express a distance between the sprite and the edge, perpendicular to it. 
+Allows to attach a sprite to an edge. When attached, once again, the coordinates are expressed "along" the edge. The first value express the advance of the sprite on the edge. Its values must be taken between 0 and 1 included. Using it, by slowly increasing the value, you can make the sprite move along the edge for example. The second coordinate express a distance between the sprite and the edge, perpendicular to it.
 
 ![Edge coordinates]({{ site.content_img }}/EdgeCoords2.png)
 
@@ -213,7 +214,7 @@ Sprites are treated as any other graph element, and therefore, like nodes and ed
 
 The graph describes the structure to be rendered by the viewer. It is often not very interesting to store directly in the graph styling rules that change the appearance of the display. Usually, attributes are used to store data according to an algorithm you are working on for example, but you do not want to burden yourself with stylistic details at this point.
 
-Therefore, to change the appearance of elements in the viewer, GraphStream defines a kind of style sheet using the same syntax as the cascading style sheets (CSS) of HTML. In this way the structure of the graph is completely separated from its appearance. 
+Therefore, to change the appearance of elements in the viewer, GraphStream defines a kind of style sheet using the same syntax as the cascading style sheets (CSS) of HTML. In this way the structure of the graph is completely separated from its appearance.
 
 There are some attributes that control the display however, since it is not always possible to avoid them. Most of these attributes starts with the prefix ``ui.``. The first of these attributes you need to know is the one that specify the style sheet to use: ``ui.stylesheet``. This attribute must be stored on a graph and takes as value either the style sheet itself as a string of characters or the URL of a file, local, distant or packaged in a jar.
 
@@ -300,7 +301,7 @@ This section can be skipped at first if you are only interested in representing 
 
 ### Integrating the viewer in your GUI
 
-In order to integrate the viewer in a Swing GUI, you will need to create the viewer by yourself. The viewer handles a set of views of the graph (this has been done to allow a view for the graph itself, but also views for data or statistics. Actually, only the graph view is available however). Once the viewer is created you can add a view and request that it is not automatically inserted in a window frame (a ``JFrame``). All views, instance of ``View``, inherit from ``JPanel`` and therefore can be embedded in Swing GUIs. 
+In order to integrate the viewer in a Swing GUI, you will need to create the viewer by yourself. The viewer handles a set of views of the graph (this has been done to allow a view for the graph itself, but also views for data or statistics. Actually, only the graph view is available however). Once the viewer is created you can add a view and request that it is not automatically inserted in a window frame (a ``JFrame``). All views, instance of ``View``, inherit from ``JPanel`` and therefore can be embedded in Swing GUIs.
 
 Here is how you do that:
 
@@ -453,7 +454,7 @@ public class Clicks implements ViewerListener {
 			// You do not necessarily need to use a loop, this is only an example.
 			// as long as you call pump() before using the graph. pump() is non
 			// blocking.  If you only use the loop to look at event, use blockingPump()
-			// to avoid 100% CPU usage. The blockingPump() method is only available from 
+			// to avoid 100% CPU usage. The blockingPump() method is only available from
 			// the nightly builds.
 		}
 	}
@@ -700,7 +701,7 @@ Imagine for example we want to color the edges according to a real-time traffic 
 
 ### Dynamically changing colors and size
 
-Using classes to change the appearance of some elements is useful. However if you need to often change the appearance of an element based on some computation you are doing on the graph it could become tedious. 
+Using classes to change the appearance of some elements is useful. However if you need to often change the appearance of an element based on some computation you are doing on the graph it could become tedious.
 
 Imagine for example you want to change the color of edges according to the traffic on the corresponding road.  You want to tint the edge in red if the traffic is high, and make it more yellow if normal, coloring it in green when there is no traffic at all. To make things more readable, you want to use a gradient from red to yellow, and from yellow to green to indicate various degrees of congestion on the road.
 
@@ -836,4 +837,3 @@ graph.addAttribute("ui.screenshot", "/some/place/screenshot.png");
 ### Other version of this document
 
 - [GraphStream 1.0](/doc/Tutorials/Graph-Visualisation/1.0/)
-

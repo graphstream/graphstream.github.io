@@ -1,0 +1,29 @@
+ul#toc {
+  font-weight: 300;
+  margin-left: 0px;
+  padding-left: 5px;
+  list-style-type: none;
+}
+
+#toc li a {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+#toc li.toc-0 {
+  font-size: 110%;
+  margin-left: 1em;
+}
+
+#toc li.toc-1 {
+  margin-left: 2em;
+}
+
+#toc li.toc-2 {
+  margin-left: 3em;
+}
+
+#toc li.toc-3 {
+  margin-left: 4em;
+}

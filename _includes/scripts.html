@@ -9,6 +9,9 @@
 	{% endfor %}
 {% endif %}
 <script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
+{% if page.toc %}
+<script type="text/javascript" src="{{ '/js/toc.js' | prepend: site.baseurl }}"></script>
+{% endif %}
 
 <script>
 var _gaq=[['_setAccount','UA-19598785-1'],['_setDomainName', '.graphstream-project.org'],['_trackPageview']];
@@ -16,4 +19,3 @@ var _gaq=[['_setAccount','UA-19598785-1'],['_setDomainName', '.graphstream-proje
 g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
-

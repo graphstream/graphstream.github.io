@@ -1,13 +1,21 @@
 <div class="sidebar">
 	<div class="container-fluid">
-
+		{% if page.toc %}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{% include panel_heading_with_icon.html icon="map-signs" title="Content" %}
+				<nav class="toc-container"><ul id="toc"></ul></nav>
+			</div>
+		</div>
+		{% endif %}
+		
 		{% include latest_news.html %}
 		
 		<div class="panel panel-default">
 			<div class="panel-body">
 			{% include panel_heading_with_icon.html icon="question" title="About Us" href="/doc/About-Us/"%}
 				<p>
-				GraphStream is hosted by the <a href="http://www.univ-lehavre.fr/">University of Le Havre</a>. It is initiated and maintained by members of the <a href="http://www.litislab.eu/front-page/themes/reseaux-dinteractions-et-intelligence-collective">RI<sub>2</sub>C</a> research team from the <a href="http://www.litislab.fr/">LITIS</a> computer science lab. 
+				GraphStream is hosted by the <a href="http://www.univ-lehavre.fr/">University of Le Havre</a>. It is initiated and maintained by members of the <a href="http://www.litislab.eu/front-page/themes/reseaux-dinteractions-et-intelligence-collective">RI<sub>2</sub>C</a> research team from the <a href="http://www.litislab.fr/">LITIS</a> computer science lab.
 				</p>
 			</div>
 		</div>

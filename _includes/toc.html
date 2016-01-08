@@ -1,0 +1,12 @@
+<nav>
+	<ul>
+{% for section in include.sections %}
+		<li><a href="{{ section.href }}">{{ section.title }}</a>
+			{% if section.children %}
+			{% include toc.html sections=section.children %}
+			{% endif %}
+		</li>
+{% endfor %}
+	</ul>
+</nav>
+
