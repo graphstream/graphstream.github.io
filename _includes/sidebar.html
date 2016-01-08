@@ -9,6 +9,20 @@
 		</div>
 		{% endif %}
 		
+		{% if page.versions %}
+		<div class="panel panel-default">
+			<div class="panel-body">
+				{% include panel_heading_with_icon.html icon="code-fork" title="Other versions" %}
+				<ul>
+					{% assign versions = page.versions | split:"," %}
+					{% for version in versions %}
+					<li><a href="{{ version }}/">Version {{ version }}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+		
 		{% include latest_news.html %}
 		
 		<div class="panel panel-default">
