@@ -3,6 +3,9 @@ paths:
 documents:
   - title: Getting Started
     href: /doc/Tutorials/Getting-Started/
+  
+  - title: Writing documentation
+    href: /doc/Tutorials/Writing-Documentation/
 
   - title: Creating a movie with FileSinkImages
     href: /doc/Tutorials/Creating-a-movie-with-FileSinkImages/
@@ -27,4 +30,3 @@ documents:
 
   - title: Chart Measures
     href: /doc/Tutorials/Chart-Measures/
-
