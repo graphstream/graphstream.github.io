@@ -48,86 +48,86 @@ Conversely, to store an attribute you use::
 
 As you can see this method is a variable argument list method. Most often you will use it like this, suppose we have some node object ``n``:
 
-{% highlight java %}
+```java
     Node n = graph.getNode("A");
     n.setAttribute("foo", "bar");
-{% endhighlight %}
+```
 
 You then retrieve the value this way:
 
-{% highlight java %}
+```java
     String value = n.getAttribute("foo");
-{% endhighlight %}
+```
 
 Note the absence of cast to ``String`` in the expression.
 
 But you are not restricted to string of characters, you can store any kind of value:
 
-{% highlight java %}
+```java
     n.setAttribute("weight", 1.5);
-{% endhighlight %}
+```
 
 (Also note that the key "weight" is not reserved in GraphStream, although it can be used by many algorithms). In this case, you retrieve the value this way:
 
-{% highlight java %}
+```java
     double value = n.getAttribute("weight");
-{% endhighlight %}
+```
 
 You can also use the ``setAttribute()`` without value:
 
-{% highlight java %}
+```java
     n.setAttribute("Truth?");
-{% endhighlight %}
+```
 
 This will mean the attribute acts as a boolean. In fact, the ``setAttribute()`` method will store the value ``true`` as a ``Boolean`` if there is no value. True means the attribute is present. You can then test the presence of the attribute with::
 
-{% highlight java %}
+```java
     if( n.hasAttribute("Truth?") ) ...
-{% endhighlight %}
+```
 
 You can also store more than one value at once in an attribute:
 
-{% highlight java %}
+```java
     n.setAttribute("a lot", 1, 2, 3, 4);
-{% endhighlight %}
+```
 
 This will store a java array of ``Object`` in the attribute. You therefore retrieve it this way:
 
-{% highlight java %}
+```java
     Object[] array = n.getAttribute("a lot");
-{% endhighlight %}
+```
 
 At any time you can remove an attribute using:
 
-{% highlight java %}
+```java
     n.removeAttribute("foo");
-{% endhighlight %}
+```
 
 And you can get rid of all attributes of an element using:
 
-{% highlight java %}
+```java
     n.clearAttributes();
-{% endhighlight %}
+```
 
 You can get a list of all the attribute keys using ``getEachAttributeKey``:
 
-{% highlight java %}
+```java
     for(String key:n.getEachAttributeKey) {
         Object value = n.getAttribute(key);
         ...
     }
-{% endhighlight %}
+```
 
 You can also use an iterator for this:
 
-{% highlight java %}
+```java
     Iterator<String> i = n.getAttributeKeyIterator();
 
     while(i.hasNext()) {
         Object value = n.getAttribute(i.next());
         ...
     }
-{% endhighlight %}
+```
 
 Although you will probably prefer the previous method.
 
@@ -136,28 +136,28 @@ Although you will probably prefer the previous method.
 
 In fact the ``Element.getAttribute()`` method does not return ``Object``, here is its real signature:
 
-{% highlight java %}
+```java
     <T> T getAttribute(String key)
-{% endhighlight %}
+```
 
 Its return type may seem strange at first. It is in fact the one of the variable you try to assign the value to. This means that you can write such a code:
 
-{% highlight java %}
+```java
     node.addAttribute("foo", "buzz");
     node.addAttribute("bar", new Flup());   // We assume we have some Flup available.
 
     String foo = node.getAttribute("foo");
     Flup bar = node.getAttribute("bar");
-{% endhighlight %}
+```
 
 Indeed, attributes can be of many different types. This heterogeneity does not allows to specify any generic type when creating the elements that will store attributes. Instead the ``getAttribute()`` method returns by default an ``Object``, but if you try to assign it to, say a ``String`` as in the example above, it will force a cast to a ``String`` without needing to write the cast.
 
 Be careful, this does not preclude cast errors, but should avoid you some heavy notation. In fact the cast is hidden in the ``getAttribute()`` method. This means that:
 
-{% highlight java %}
+```java
     node.addAttribute("bar", new Flup());
     String bar = node.getAttribute("bar");
-{% endhighlight %}
+```
 
 Will fail with a class cast exception since obviously a ``Flup`` is not a ``String`` (but would you confuse a ``Flup`` with a ``String`` ?).
 
@@ -166,19 +166,19 @@ Will fail with a class cast exception since obviously a ``Flup`` is not a ``Stri
 
 If you want to ensure the type of the attribute, you can use:
 
-{% highlight java %}
+```java
     <T> T Element.getAttribute(String key, Class<T> cls);
-{% endhighlight %}
+```
 
 This method will return null if the attribute is not of the correct type (or if it does not exist). This avoids you to do the checking by hand. For example:
 
-{% highlight java %}
+```java
     node.addAttribute("foo", "buzz");
     node.addAttribute("bar", new Flup());
 
     Flup bar = node.getAttribute("bar", Flup.class); // OK
     Flup foo = node.getAttribute("foo", Flup.class); // null, bar is a String
-{% endhighlight %}
+```
 
 For some really common attribute types, dedicated methods are available. The two most useful methods are ``getLabel()`` for strings of characters and ``getNumber()`` for any kind of thing that may be stored as a ``Number``.
 
@@ -191,9 +191,9 @@ By default each access to a non existing attribute will return null (or NaN). Si
 
 Use:
     
-{% highlight java %}
+```java
     graph.setNullAttributesAreErrors(true);
-{% endhighlight %}
+```
 
 To enable null attributes checking for a given graph and all its elements. If set to true, each time you try to access a non existing attribute, or each time the attribute exists but is not of the expected type, a ``NullAttributeException`` will be thrown.
 
@@ -219,10 +219,10 @@ To add a label that will be displayed aside the node or edge on screen, you simp
 
 For example suppose you have a node ``n``, you can add a label this way:
 
-{% highlight java %}
+```java
     Node n = graph.addNode("A");
     n.addAttribute("ui.label", "A");
-{% endhighlight %}
+```
 
 The color of elements are changed in a different way. The labels are data that you store on the elements, they are parts of the contents of the graph. Indeed, structure and information both define the contents of the graph.  However as this is done for HTML pages, GraphStream separates the graph representation and styling from the graph contents. One can completely change the display of the same graph using a different style. This is why the viewer uses *style sheets* that uses the CSS syntax well known of web developers. Colors are changed using the style sheet, and instead of specifying directly colors for node and edges, you will specify that they pertain to a style class.
 
@@ -232,39 +232,39 @@ The CSS notation uses selectors to associate style to graph elements. A selector
 
 For example to color all nodes in red (the default is black), you can use a style sheet like this:
 
-{% highlight css %}
+```css
     node {
         fill-color: red;
     }
-{% endhighlight %}
+```
 
 The selector is the keyword ``node``. This selector will apply the style to all nodes, without distinction. The style defines only one property-value pair. The changed property is the fill color, the value is a named color, here ``red``. GraphStream knowns all named colors used in HTML. But you can also give colors using the notation:
 
-{% highlight css %}
+```css
     node {
         fill-color: rgb(255,0,0);
     }
-{% endhighlight %}
+```
 
 However, most of the time you want to change specific nodes of the graph. This can be done using several techniques. One of the most easy is using style classes. You can define a style class using a specific selector:
 
-{% highlight css %}
+```css
     node {
         fill-color: black;
     }
     node.marked {
         fill-color: red;
     }
-{% endhighlight %}
+```
 
 The classes apply to nodes, edges or graphs. Therefore the class selector begins by one of ``node``, ``edge`` or ``graph`` followed by a dot and the name of the class you want to define. Then you add style properties as usual.
 
 By default graph elements do not pertain to any class. You specify classes for individual elements using the ``ui.class`` attribute. For example, given a node ``n``, you could write:
 
-{% highlight java %}
+```java
     Node n = graph.getNode("A");
     n.setAttribute("ui.class", "marked");
-{% endhighlight %}
+```
 
 The classes are applied instantly by the viewer. Therefore you can color nodes individually merely by changing their class.
 
@@ -277,15 +277,15 @@ In this tutorial part, we will build a graph, display it and explore it node by 
 
 In order to work we will need to import two packages and one class:
 
-{% highlight java %}
+```java
     import java.util.Iterator;
     import org.graphstream.graph.*;
     import org.graphstream.graph.implementations.*;
-{% endhighlight %}
+```
 
 We will create a class named ``GraphExplore``:
 
-{% highlight java %}
+```java
     public class GraphExplore {
         public static void main(String args[]) {
             new GraphExplore();
@@ -293,11 +293,11 @@ We will create a class named ``GraphExplore``:
         public GraphExplore() {
         }   
     }
-{% endhighlight %}
+```
 
 In the constructor we will build a simple graph:
 
-{% highlight java %}
+```java
     public GraphExplore() {
         Graph graph = new SingleGraph("tutorial 1");
 
@@ -313,17 +313,17 @@ In the constructor we will build a simple graph:
         graph.addEdge("DF", "D", "F");
         graph.addEdge("EF", "E", "F");
     }
-{% endhighlight %}
+```
 
 Now we are ready to explore the graph. The lines above create a ``SingleGraph`` instance, that is a graph where only one edge can exist between two nodes. Then we ask the graph to avoid reporting references to non existing nodes as errors, and instead to create them as needed. This allows us the create the graph only by specifying edges.
 
 We also ask a display for the graph. Before adding code, it could be interesting to customize this display. We will first add labels to the nodes, add the following code after the graph creation:
 
-{% highlight java %}
+```java
     for (Node node : graph) {
         node.addAttribute("ui.label", node.getId());
     }
-{% endhighlight %}
+```
 
 We use the attribute ``ui.label`` to ask the display of a text aside the node representation on screen. We merely use the node identifier as label. Most attributes that deal with the viewer starts with ``ui``.
 
@@ -333,7 +333,7 @@ This graph looks like this:
 
 Now lets try our graph exploration. The basic idea is to take a starting node and explore its neighbors in a breadth first order, changing the nodes color as we proceed. There exist several ways to explore a graph in GraphStream. One is to enumerate all nodes or edges as we did when setting the labels. Another is to follow the graph topology by exploration. The ``Node`` class provides iterators on its set of neighbors (both directed only or undirected), as well as two iterators to explore the graph starting from this node in depth-first or breadth-first order. We will use the second in a dedicated method. Add the following code after the constructor::
 
-{% highlight java %}
+```java
     public void explore(Node source) {
         Iterator<? extends Node> k = source.getBreadthFirstIterator();
 
@@ -343,13 +343,13 @@ Now lets try our graph exploration. The basic idea is to take a starting node an
             sleep();   
         }
     }
-{% endhighlight %}
+```
 
-This method takes as argument a source node from which the exploration will begin. It starts by creating an iterator in breadth first order from this source node. The iterator will yield first this source node, then all its neighbors, the neighbors of these neighbors, etc. 
+This method takes as argument a source node from which the exploration will begin. It starts by creating an iterator in breadth first order from this source node. The iterator will yield first this source node, then all its neighbors, the neighbors of these neighbors, etc.
 
 We enumerate the nodes in a while loop. For each node we add the ``ui.class`` attribute with value ``marked``. This adds the node in a CSS class. This class will be used to color the nodes as we explore them. However we do not have yet a CSS style sheet for our graph. We can remedy to this problem by adding the following code after the ``explore()`` method:
 
-{% highlight java %}
+```java
     protected String styleSheet =
         "node {" +
         "	fill-color: black;" +
@@ -357,35 +357,35 @@ We enumerate the nodes in a while loop. For each node we add the ``ui.class`` at
         "node.marked {" +
         "	fill-color: red;" +
         "}";
-{% endhighlight %}
+```
 
 And adding the following line just before the ``graph.display()`` call in the constructor:
 
-{% highlight java %}
+```java
     graph.addAttribute("ui.stylesheet", styleSheet);
-{% endhighlight %}
+```
 
 The style sheet defines two selectors: ``node`` that will apply a style to all the nodes, and ``node.marked`` that will apply a style only to nodes that pertain to the ``marked`` CSS class. This way all the nodes will be colored by default in black, but nodes having the ``ui.class`` attribute with value ``marked`` will be colored in red.
 
 We also make use of a ``sleep()`` method that is here only to slow down the exploration process so that one can follow it easily in the viewer. You can add this method just after the ``explore()`` one:
 
-{% highlight java %}
+```java
 	protected void sleep() {
 		try { Thread.sleep(1000); } catch (Exception e) {}
 	}
-{% endhighlight %}
+```
 
 By default it makes a one second pause. We now have all the parts of our program. Before you can run it. We need to add some more lines at the very end of the constructor:
 
-{% highlight java %}
+```java
     explore(graph.getNode("A"));
-{% endhighlight %}
+```
 
 Then we finally can use our ``explore()`` method, passing it as source node the node ``A``.
 
 That is all, you can now run the program. You will only need the ``gs-core.jar`` to do so. Here is the complete code of this tutorial:
 
-{% highlight java %}
+```java
     import java.util.Iterator;
     import org.graphstream.graph.*;
     import org.graphstream.graph.implementations.*;
@@ -440,6 +440,6 @@ That is all, you can now run the program. You will only need the ``gs-core.jar``
             "	fill-color: red;" +
             "}";
     }
-{% endhighlight %}
+```
 
 As an exercise, you could improve this program by allowing it to do the exploration several times, starting each time from the last node it visited. In this case you could color the nodes in red once, and at the next visit, color them back in black. Doing so you will need to use the ``Node.removeAttribute()`` method to remove the ``marked`` class of the nodes.

@@ -14,12 +14,12 @@ You can configure a lot of the appearance of a graph using a style sheet that mi
 
 You can select the renderer (the default one or the gs-ui one) using a system property. The fully-CSS compliant renderer can be set this way for example:
 
-{% highlight java %}
+```java
 public static void main(String args[]) {
-	System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
-	...
+  System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+  ...
 }
-{% endhighlight %}
+```
 
 You only need to set this property before calling ``Graph.display()``. However you can set the renderer by creating the viewer for example. More details are provided [here](/doc/Tutorials/Graph-Visualisation_1.0/).
 
@@ -30,21 +30,21 @@ You specify the style sheet of a graph by putting a ``ui.stylesheet`` attribute 
 
 For example to pass a simple style sheet under the form of a string you can use:
 
-{% highlight java %}
-    graph.addAttribute("ui.stylesheet", "graph { fill-color: red; }");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.stylesheet", "graph { fill-color: red; }");
+```
 
 Which will color the background of the graph in red. Alternatively you can link to a file or URL:
 
-{% highlight java %}
-    graph.addAttribute("ui.stylesheet", "url('file:///somewhere/on/my/disk/stylehsheet')");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.stylesheet", "url('file:///somewhere/on/my/disk/stylehsheet')");
+```
 
 Or:
 
-{% highlight java %}
-    graph.addAttribute("ui.stylehseet", "url('http://somewere/in/the/clouds/stylesheet')");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.stylehseet", "url('http://somewere/in/the/clouds/stylesheet')");
+```
 
 
 ## How style sheets mix
@@ -53,22 +53,22 @@ Each time you change the ``ui.stylesheet`` attribute, the new style are merged w
 
 You can however remove any style sheet using:
 
-{% highlight java %}
-    graph.removeAttribute("ui.stylesheet");
-{% endhighlight %}
+```java
+graph.removeAttribute("ui.stylesheet");
+```
 
 You can also add style for an individual element using the ``ui.style`` attribute on the element
 
-{% highlight java %}
-    node.addAttribute("ui.style", "fill-color: rgb(0,100,255);");
-{% endhighlight %}
+```java
+node.addAttribute("ui.style", "fill-color: rgb(0,100,255);");
+```
 
 The syntax is explained under. This creates a style for this specific node. However if you remove the attribute, this will not remove the style for the node.
 
 
 ## The style sheet syntax
 
-The syntax used by GraphStream is very similar to the one used by CSS. 
+The syntax used by GraphStream is very similar to the one used by CSS.
 
 
 ### Style rules
@@ -89,15 +89,15 @@ You can further specify to apply the style to individual elements. To identify e
 
 You can also assign classes to elements. To assign a class to an element you change its ``ui.class`` attribute. For eexample:
 
-{% highlight java %}
-    graph.getNode("A").addAttribute("ui.class", "foo");
-{% endhighlight %}
+```java
+graph.getNode("A").addAttribute("ui.class", "foo");
+```
 
 Elements can pertain to several classes at once:
 
-{% highlight java %}
-    graph.getNode("A").addAttribute(ui.class", "foo, bar");
-{% endhighlight %}
+```java
+graph.getNode("A").addAttribute("ui.class", "foo, bar");
+```
 
 You specify a selector for a class using a dot ``.`` and the name of the class. For example to define a class of edges you can use ``edge.strange``. Edges having the ``strange`` keyword in their ``ui.class`` attribute will have this style. If an element pertains to several classes, the styles of each class will be merged, if there is a conflict the style appearing in the first class in the class list is chosen.
 
@@ -115,7 +115,7 @@ Therefore, to define the style of elements when a specific event occurs, you can
 
 The selector is followed by a set of style properties between curly braces. A style property is made of a name, a colon (`:`), a set of values separated by comas, and finally a semi-colon. Here is a complete style sheet:
 
-{% highlight css %}
+```css
 graph {
 	fill-color: red;
 }
@@ -135,7 +135,7 @@ node#A {
 node:clicked {
 	fill-color: red;
 }
-{% endhighlight %}
+```
 
 This style sheet contains three selectors, one to define the style of the graph background, another to define the style of every node, and finally one to define the style of the (necessarily unique) node with identifier ``A``.
 Note that some selectors style inherit other styles. Each selector qualified by an identifier or a class inherit the style of the main selector. For example, here, the style of the node ``A`` will be merged to the style applied to all the nodes. Only the fill color will be changed. Indentically, when any node is clicked, the fill color will become red, but only the fill color is changed.
@@ -149,22 +149,22 @@ Values are either fixed keywords or numbers. Numbers must have a unit. The defau
 
 Some properties expect colors as values. The CSS knows almost all of the named colors of HTML, therefore values likes ``red``, ``green``, ``blue``, ``cyan``, ``magenta``, ``yellow``, ``aquamarine``... are accepted. But you can also specify colors using two other notations. The HTML notation uses a dash sign ``#`` and hexadecimal numbers by pairs of three (RGB) or four (RGBA), or six (RGB) or height (RGBA), or twelve (RGB) or sixteen (RGBA). You can also specify colors the CSS way using the ``rgb(R,G,B)`` or ``rgba(R,G,B,A)`` notation, where ``R``, ``G``, ``B`` or ``A`` are integer values between 0 and 255. The alpha value is the transparency, 0 meaning fully transparent and 255 meaning fully opaque. Here are several examples:
 
-{% highlight css %}
+```css
 node#A { fill-color: red; }             /* The node A will be red.       */
 node#B { fill-color: #F00; }            /* The node B will also be red.  */
 node#C { fill-color: #FF0000; }         /* The node C will still be red. */
 node#D { fill-color: #FFFF00000000; }   /* We all love red.              */
 node#E { fill-color: rgb(255,0,0); }    /* Red, red, red.                */
-{% endhighlight %}
+```
 
 And with transparency:
 
-{% highlight css %}
+```css
 node#F { fill-color: rgba(255,0,0,128); }   /* Half-transparent red.       */
 node#G { fill-color: #F008; }               /* Still half-transparent red. */
 node#H { fill-color: #FF000088; }           /* Did you guessed ?           */
 node#I { fill-color: #FFFF000000008888; }   /* That's it.                  */
-{% endhighlight %}
+```
 
 
 ## The CSS reference
@@ -178,7 +178,7 @@ Style properties are numerous. Some do apply only to a restricted set of element
 
     - ``none``: No fill at all.
     
-    - ``plain`` (default): Fill with the first color of the ``fill-color`` property. 
+    - ``plain`` (default): Fill with the first color of the ``fill-color`` property.
 
       ![fill_mode_plain1.png]({{ "/fill_mode_plain1.png" | prepend: site.content_img }})
       ![fill_mode_plain2.png]({{ "/fill_mode_plain2.png" | prepend: site.content_img }})
@@ -386,7 +386,7 @@ Style properties are numerous. Some do apply only to a restricted set of element
 
 
 - ``shadow-color``:
-    Color or colors of the shadow. If the shadow mode is a gradient, two colors at least are 
+    Color or colors of the shadow. If the shadow mode is a gradient, two colors at least are
     needed. The default is black.
 
 - ``shadow-width``:
@@ -799,4 +799,3 @@ with the next releases of GraphStream.
       is stored in attributes. TODO
     - ?? ``panel``: Not yet available.
     - ?? ``slider``: Not yet available.
-

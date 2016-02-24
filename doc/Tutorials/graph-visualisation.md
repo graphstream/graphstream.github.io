@@ -43,18 +43,18 @@ It is also possible to directly create the viewer by hand. This is often necessa
 
 You can specify which viewer to use by setting a global property named ``gs.ui.renderer``. For the advanced viewer, you can use the value ``org.graphstream.ui.j2dviewer.J2DGraphRenderer``. This can be done in the ``main()`` method using the following code for example:
 
-{% highlight java %}
+```java
 public static void main(String args[]) {
 	System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 	...
 }
-{% endhighlight %}
+```
 
 You can also pass this value directly to the JVM when launching the program:
 
-{% highlight bash %}
-    java -Dgs.ui.renderer=org.graphstream.ui.j2dviewer.J2DGraphRenderer yourProgram
-{% endhighlight %}
+```bash
+java -Dgs.ui.renderer=org.graphstream.ui.j2dviewer.J2DGraphRenderer yourProgram
+```
 
 The value being the name of the class to use, you can provide your own graph renderers if you wish. There is a ``org.graphstream.ui.swingViewer.GraphRenderer`` interface that you can follow to do this, but this is the matter of another tutorial.
 
@@ -69,11 +69,11 @@ The viewer therefore receives each change occurring in the graph. In fact the vi
 
 The viewer created by the ``display()`` method is returned by this method:
 
-{% highlight java %}
-    Graph graph = new SingleGraph("I can see dead pixels");
-    Viewer viewer = graph.display();
-    ....
-{% endhighlight %}
+```java
+Graph graph = new SingleGraph("I can see dead pixels");
+Viewer viewer = graph.display();
+....
+```
 
 Although the viewer runs in another thread, its public methods are protected from concurrent accesses, and you can safely call them from the default thread.
 
@@ -84,15 +84,15 @@ As said above, the viewer will by default activate an automatic layout algorithm
 
 You can at any time activate or deactivate this layout, using the viewer:
 
-{% highlight java %}
-    Graph graph = new MultiGraph("Bazinga!");
-    // Populate the graph.
-    Viewer viewer = graph.display();
-    // Let the layout work ...
-    viewer.disableAutoLayout();
-    // Do some work ...
-    viewer.enableAutoLayout();
-{% endhighlight %}
+```java
+Graph graph = new MultiGraph("Bazinga!");
+// Populate the graph.
+Viewer viewer = graph.display();
+// Let the layout work ...
+viewer.disableAutoLayout();
+// Do some work ...
+viewer.enableAutoLayout();
+```
 
 
 ### Coordinate system
@@ -101,16 +101,16 @@ There is no default coordinate system in GraphStream, you choose coordinates by 
 
 Most often the graph is represented in two dimensions, although a 3D viewer is in the works. You set the individual coordinates of a node using the ``x``, ``y`` and ``z`` attributes, this way:
 
-{% highlight java %}
-    node.setAttribute("x", 1);
-    node.setAttribute("y", 3);
-{% endhighlight %}
+```java
+node.setAttribute("x", 1);
+node.setAttribute("y", 3);
+```
 
 You can also use the ``xy`` or ``xyz`` attributes that take two or three values respectively:
 
-{% highlight java %}
-    node.setAttribute("xyz", 1, 3, 0);
-{% endhighlight %}
+```java
+node.setAttribute("xyz", 1, 3, 0);
+```
 
 You are encouraged to use the ``xyz`` attribute.
 
@@ -141,41 +141,41 @@ Sprites can have the same shapes as nodes, but also provide several other useful
 
 Although sprites are stored as attributes, this is not a very convenient way to deal with them. In order to ease sprite management, a ``org.graphstream.ui.spriteManager.SpriteManager`` class is provided. When you create such an object, it will start to observe the graph and allow you to add, change and remove sprites on it. It is able to retrieve the sprites already stored as attributes on the graph, for example if you read the graph from a file:
 
-{% highlight java %}
-    import org.graphstream.ui.spriteManager.*;
-    // ...
-    Graph graph = new MultiGraph("Live long and prosper");
-    // ...
-    SpriteManager sman = new SpriteManager(graph);
-{% endhighlight %}
+```java
+import org.graphstream.ui.spriteManager.*;
+// ...
+Graph graph = new MultiGraph("Live long and prosper");
+// ...
+SpriteManager sman = new SpriteManager(graph);
+```
 
 Then you can easily add sprites on the graph:
 
-{% highlight java %}
-    Sprite s = sman.addSprite("S1");
-{% endhighlight %}
+```java
+Sprite s = sman.addSprite("S1");
+```
 
 Sprites are identified by a unique string, like nodes and edges. The ``addSprite()`` method returns a dummy object that allows to handle the sprite. This object is an interface that will modify the attributes stored on the graph for you.
 
 You can position the sprite using for example:
 
-{% highlight java %}
-    s.setPosition(2, 1, 0);
-{% endhighlight %}
+```java
+s.setPosition(2, 1, 0);
+```
 
 This will place the sprite at an absolute Cartesian position (2,1,0). To attach a sprite to a node you can use:
 
-{% highlight java %}
-    s.attachToNode("A");
-{% endhighlight %}
+```java
+s.attachToNode("A");
+```
 
 This will inform the renderer that the sprite position is relative to the node ``A`` position. In this case, as said above, the position is expressed in spherical coordinates. This allows the sprite to "orbit" around the node. Therefore its three coordinates indicate first a radius (a distance between the sprite and the node center), then two angles of rotation around the node center, one in the XY plane, the other in the XZ plane.
 
 The method:
 
-{% highlight java %}
-    s.attachToEdge("AB");
-{% endhighlight %}
+```java
+s.attachToEdge("AB");
+```
 
 Allows to attach a sprite to an edge. When attached, once again, the coordinates are expressed "along" the edge. The first value express the advance of the sprite on the edge. Its values must be taken between 0 and 1 included. Using it, by slowly increasing the value, you can make the sprite move along the edge for example. The second coordinate express a distance between the sprite and the edge, perpendicular to it.
 
@@ -183,26 +183,26 @@ Allows to attach a sprite to an edge. When attached, once again, the coordinates
 
 The third coordinate express a rotation angle around the edge, the edge being the rotation axis. For sprites attached to edges, it is often useful to specify only the first coordinate:
 
-{% highlight java %}
-    s.setPosition(0.5);
-{% endhighlight %}
+```java
+s.setPosition(0.5);
+```
 
 This will put the sprite just in the middle of the edge ``AB``.
 
 To detach the sprite and position it anew in absolute Cartesian coordinates, use:
 
-{% highlight java %}
-    s.detach();
-{% endhighlight %}
+```java
+s.detach();
+```
 
 The length units used to position sprites are graph units, as for nodes. This includes the absolute position of sprites that are not attached to a graph element, the distance of a sprite attached to a node, or the distance of a sprite attached to an edge. However, it is sometimes useful to specify length coordinates using pixels or percents. You can do this using:
 
-{% highlight java %}
-    import org.graphstream.ui.graphicGraph.stylesheet.Style.Units;
-    // ...
-    s.attachToNode("A");
-    s.setPosition(Units.PX, 12, 180, 0);
-{% endhighlight %}
+```java
+import org.graphstream.ui.graphicGraph.stylesheet.Style.Units;
+// ...
+s.attachToNode("A");
+s.setPosition(Units.PX, 12, 180, 0);
+```
 
 As you can see, you can change the attachment of a sprite at any time, it is therefore easy to simulate the displacement of elements in the graph.
 
@@ -219,27 +219,27 @@ There are some attributes that control the display however, since it is not alwa
 
 You can for example change the background color of the graph using a style sheet given as a string this way:
 
-{% highlight java %}
-    graph.addAttribute("ui.stylesheet", "graph { fill-color: red; }");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.stylesheet", "graph { fill-color: red; }");
+```
 
 But you can also specify an URL:
 
-{% highlight java %}
-    graph.addAttribute("ui.stylehseet", "url('http://www.deep.in/the/site/mystylesheet')");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.stylehseet", "url('http://www.deep.in/the/site/mystylesheet')");
+```
 
 Or:
 
-{% highlight java %}
-    graph.addAttribute("ui.stylesheet", "url(file:///somewhere/over/the/rainbow/stylesheet')");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.stylesheet", "url(file:///somewhere/over/the/rainbow/stylesheet')");
+```
 
 The style sheets are cumulative, each time you change the ``ui.stylesheet`` attribute, the new style sheet is read and merged with the previous ones, replacing or adding style definitions. You can however completely clear the style of a graph using:
 
-{% highlight java %}
-    graph.removeAttribute("ui.stylesheet");
-{% endhighlight %}
+```java
+graph.removeAttribute("ui.stylesheet");
+```
 
 The syntax of a style sheet is very similar to the one seen in the cascading style sheets of HTML. The CSS of GraphStream mostly follows the same rules, including inheritance and composition of styles. A style sheet is a sequence of styling rules. A styling rule is made of a selector and a set of style properties.
 
@@ -249,16 +249,16 @@ Following the selector, you give a set of styling properties between curly brace
 
 Here is an example of a complete styling rule for a node whose identifier is ``A`` whose shape is a box, side size is 15 pixels on 20 pixels, fill color is red and border color blue (who said styling is related to style ?):
 
-{% highlight css %}
-    node#A {
-        shape: box;
-        size: 15px, 20px;
-        fill-mode: plain;   /* Default.          */
-        fill-color: red;    /* Default is black. */
-        stroke-mode: plain; /* Default is none.  */
-        stroke-color: blue; /* Default is black. */
-    }
-{% endhighlight %}
+```css
+node#A {
+	shape: box;
+	size: 15px, 20px;
+	fill-mode: plain;   /* Default.          */
+	fill-color: red;    /* Default is black. */
+	stroke-mode: plain; /* Default is none.  */
+	stroke-color: blue; /* Default is black. */
+}
+```
 
 ![First stylesheet]({{ site.content_img }}/firstStyleSheet.png
 
@@ -271,15 +271,15 @@ There are a lot of style properties, some applies only to a kind of selector. Th
 
 The viewer support several rendering modes. Both the simple and advanced viewers have two options to tune quality. The first one is set by adding the ``ui.quality`` attribute to the graph. This attribute does not need a value. It informs the viewer that it can use rendering algorithms that are more time consuming to favor quality instead of speed:
 
-{% highlight java %}
+```java
 graph.addAttribute("ui.quality");
-{% endhighlight %}
+```
 
 The other attribute allows to activate anti-aliasing of lines and shapes, simply put it on the graph:
 
-{% highlight java %}
+```java
 graph.addAttribute("ui.antialias");
-{% endhighlight %}
+```
 
 Removing these attributes will restore the default behavior.
 
@@ -304,7 +304,7 @@ In order to integrate the viewer in a Swing GUI, you will need to create the vie
 
 Here is how you do that:
 
-{% highlight java %}
+```java
 import org.graphstream.ui.swingViewer.View;
 import org.graphstream.ui.swingViewer.Viewer;
 // ....
@@ -314,7 +314,7 @@ Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD)
 View view = viewer.addDefaultView(false);   // false indicates "no JFrame".
 // ...
 myJFrame.add(view);
-{% endhighlight %}
+```
 
 The `Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD` constant informs the viewer that you will continue to use the Java main thread, while the GUI runs in its own thread (The Swing of AWT thread). Be very careful with this, since this means some synchronization will occur between the two threads. We will come back on this topic later.
 
@@ -323,41 +323,41 @@ The `Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD` constant informs the viewer 
 
 Even if you did not created the view yourself, you can always access the default view created for you, for example:
 
-{% highlight java %}
+```java
 Viewer viewer = graph.display();
 View view = viewer.getDefaultView();
-{% endhighlight %}
+```
 
 The ``View`` interface defines a 'camera' object that has several methods allowing you to navigate the graph rendering (the camera object is synchronize and allows to command the view even from a distinct thread). By default the view is in a mode where it adapts to the graph size to always show the entire graph and so that the center of the view is at the center of the graph. However you can leave this mode at any time to specify the point at the center of the view (in order to "move in the graph") using for example:
 
-{% highlight java %}
+```java
 view.getCamera().setViewCenter(2, 3, 4);
-{% endhighlight %}
+```
 
 You can also zoom in or out using:
 
-{% highlight java %}
+```java
 view.getCamera().setViewPercent(0.5);
-{% endhighlight %}
+```
 
 This will zoom of 200% on the view center.
 
 However in this mode, if the graph changes, if the nodes move, the view will remain centered on the point you given, with the zoom you given. To restore the automatic fitting of the zoom and center for the graph, use:
 
-{% highlight java %}
+```java
 view.getCamera().resetView();
-{% endhighlight %}
+```
 
 
 ### Drawing in the graph viewer
 
 You can also add a back and fore layers in the graph view where you can draw using the ``Graphics2D`` API. This is done using ``View.setBackLayerRenderer()`` and ``View.setFrontLayerRenderer()``. You give to these methods an object that implement the ``LayerRenderer`` interface. This interface is composed of only one method:
 
-{% highlight java %}
+```java
 void render(Graphics2D graphics, GraphicGraph graph, double px2Gu,
-        int widthPx, int heightPx, double minXGu, double minYGu,
-        double maxXGu, double maxYGu);
-{% endhighlight %}
+    int widthPx, int heightPx, double minXGu, double minYGu,
+    double maxXGu, double maxYGu);
+```
 
 This method takes a ``Graphics2D``, a special graph instance of ``GraphicGraph``, containing the graph that is actually drawn, with additional graphic information like node position, an ``GraphicSprite`` objects representing the sprites to draw, as well as a ``StyleSheet`` object. The method also takes a scaling factor ``px2Gu`` that allows to pass from pixels to graph units and inversely. Then the width and height of the view in pixel are given (the graph may not fill the entire view due to its aspect ratio being different from the one of the panel). Finally, you receive the bounds of the graph in graph units.
 
@@ -378,9 +378,9 @@ The first case is the most simple, you work like in most Swing or AWT programs: 
 
 In this case you have to create the viewer using another threading model :
 
-{% highlight java %}
+```java
 Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_SWING_THREAD)
-{% endhighlight %}
+```
 
 We will explain in the next section how to work in parallel with the GUI and allow syncronization between a graph in the Java main thread and the GUI, but here we disable this mechanism, telling the viewer that the graph and the GUI will be handled in the same thread. This is a little faster.
 
@@ -413,7 +413,7 @@ The events coming from the viewer are simple attributes. You could observe your 
 
 Let's see an example:
 
-{% highlight java %}
+```java
 public class Clicks implements ViewerListener {
 	protected boolean loop = true;
 
@@ -470,7 +470,7 @@ public class Clicks implements ViewerListener {
 		System.out.println("Button released on node "+id);
 	}
 }
-{% endhighlight %}
+```
 
 
 ### Retrieving nodes coordinates of the automatic layout
@@ -481,13 +481,13 @@ As explained in the previous section, making the graph a sink of the viewer will
 
 The ``org.graphstream.algorithm.Toolkit`` class contains utility methods to easily retrieve node positions. You can do for example something like this:
 
-{% highlight java %}
+```java
 import static Toolkit.*;
 ...
 Node node = graph.getNode("SomeId");
 double pos[] = nodePosition(node);
 ...
-{% endhighlight %}
+```
 
 
 ## An example: drawing GIS Data
@@ -503,7 +503,7 @@ You will find at the following URL a graph in the DGS format that describes the 
 
 Save it under the name "LeHavre.dgs". This graph can be loaded and displayed easily:
 
-{% highlight java %}
+```java
 public class LeHavre {
 	public static void main(String args[]) {
 		new LeHavre();
@@ -522,7 +522,7 @@ public class LeHavre {
 		graph.display(false);   // No auto-layout.
 	}
 }
-{% endhighlight %}
+```
 
 This creates a multi-graph (a graph where several edges can exist between two same nodes), and tries to read it. When reading a graph, you must be prepared to an eventual I/O error or parsing error, this is why the ``Graph.read()`` method is surrounded by the annoying ``try-catch`` block.
 
@@ -539,15 +539,15 @@ So let's add some style to correct this !
 
 We will first make the display a cleaner hiding text by default. Here is the style sheet we will use:
 
-{% highlight css %}
+```css
 node {
 	text-mode: hidden;
 }
-{% endhighlight %}
+```
 
 We can modify the program to use this style sheet by adding it as an attribute ``ui.stylesheet``:
 
-{% highlight java %}
+```java
 public class LeHavre {
 	public static void main(String args[]) {
 		new LeHavre();
@@ -567,7 +567,7 @@ public class LeHavre {
 		graph.display(false);   // No auto-layout.
 	}
 }
-{% endhighlight %}
+```
 
 ![Le Havre Step 2]({{ site.content_img }}/leHavreStep2.png)
 
@@ -577,7 +577,7 @@ Furthermore, we are interested mainly in the road network, and therefore in the 
 
 Modify the style sheet to look like this:
 
-{% highlight css %}
+```css
 node {
 	size: 3px;
 	fill-color: #777;
@@ -590,15 +590,15 @@ edge {
 	fill-color: #222;
 	arrow-size: 3px, 2px;
 }
-{% endhighlight %}
+```
 
 
 In addition, we will position two other attributes on the graph ``ui.quality`` and ``ui.antialias`` that will help beautifying the display. Above the line that adds the ``ui.stylesheet`` attribute add the two lines:
 
-{% highlight java %}
-    graph.addAttribute("ui.quality");
-    graph.addAttribute("ui.antialias");
-{% endhighlight %}
+```java
+graph.addAttribute("ui.quality");
+graph.addAttribute("ui.antialias");
+```
 
 
 ![Le Havre Step 3]({{ site.content_img }}/leHavreStep3.png)
@@ -612,9 +612,9 @@ Adding style classes
 
 Before seeing style classes, we will need to change the viewer we use. Indeed, we have actually reached the limits of the default GraphStream viewer. This default viewer is made to be as simple and lighweight as possible, and it does not support the whole GraphStream CSS. To change the viewer we use, we can add the following line right at the beginning of the program, before the graph creation:
 
-{% highlight java %}
+```java
 System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
-{% endhighlight %}
+```
 
 You must ensure you have the ``gs-ui.jar`` jar in your class path to use this new viewer.
 
@@ -622,27 +622,27 @@ We will now change the appearance of some edges according to some attributes sto
 
 Until then, we only changed the style of the whole set of edges or the whole set of nodes. To change only some elements, we can use style classes. A class is a style that is applied to an element only if it has an attribute ``ui.class`` which contains the name of the style class. For example in order to make an edge pertain to the ``tollway`` class, one can use:
 
-{% highlight java %}
+```java
 edge.addAttribute("ui.class", "tollway");
-{% endhighlight %}
+```
 
 An element may pertain to several style classes in which case the styles are merged, with a priority to classes that appear first in the list. The list is separated by comas. For example if an edge pertains to two classes you can write:
 
-{% highlight java %}
+```java
 edge.addAttribute("ui.class", "tollway, foo");
-{% endhighlight %}
+```
 
 In the style sheet, you specify the style for a class using for example:
 
-{% highlight css %}
-    edge.tollway { size: 2px; }
-{% endhighlight %}
+```css
+edge.tollway { size: 2px; }
+```
 
-Such a style is applied in **cascade** with the style for each edge. This means that an edge with the ``tollway```class for example will have the style of each edge, plus the style defined by the ``edge.tollway`` style. If the two styles define the same properties, the class style is chosen.
+Such a style is applied in **cascade** with the style for each edge. This means that an edge with the ``tollway`` class for example will have the style of each edge, plus the style defined by the ``edge.tollway`` style. If the two styles define the same properties, the class style is chosen.
 
 First, we will add the classes attributes on the edges, just after the graph reading try-catch block, add the following code:
 
-{% highlight java %}
+```java
 for(Edge edge: graph.getEachEdge()) {
 	if(edge.hasAttribute("isTollway")) {
 		edge.addAttribute("ui.class", "tollway");
@@ -652,17 +652,17 @@ for(Edge edge: graph.getEachEdge()) {
 		edge.addAttribute("ui.class", "bridge");
 	}
 }
-{% endhighlight %}
+```
 
 This code will iterate on each edge of the graph. If an edge has one of the attributes listed above, we add it one of the three classes ``tollway``, ``tunnel`` or ``bridge``.
 
 Then we will add in the style sheet the three style classes:
 
-{% highlight css %}
+```css
 edge.tollway { size: 2px; stroke-color: red; stroke-width: 1px; stroke-mode: plain; }
 edge.tunnel { stroke-color: blue; stroke-width: 1px; stroke-mode: plain; }
 edge.bridge { stroke-color: yellow; stroke-width: 1px; stroke-mode: plain; }
-{% endhighlight %}
+```
 
 Each of these classes add a border around the edges with a distinct color, red for tollways, blue for tunnels, and yellow for bridges.
 
@@ -679,13 +679,13 @@ The ``Graph.display()`` method returns a reference on the viewer used for displa
 
 Replace the ``graph.display(false);`` statement in your code by the following lines:
 
-{% highlight java %}
+```java
 Viewer viewer = graph.display(false);
 View view = viewer.getDefaultView();
 view.resizeFrame(800, 600);
 view.setViewCenter(440000, 2503000, 0);
 view.setViewPercent(0.25);
-{% endhighlight %}
+```
 
 The ``setViewCenter`` method takes three arguments since views can be 2D but also 3D. Here we work in two dimensions only, hence the last argument set to zero. The ``setViewPercent`` method takes as argument a double that tells which percent of the whole graph is visible. For example, the value 0.5 shows only half of the graph.
 
@@ -712,7 +712,7 @@ The interesting part with this coloring method, is that you can change dynamical
 
 The data stored on the graph you have does not incorporate traffic, but it contains maximum speed limits stored as a ``speedMax`` attribute on edges. We could use dynamic coloring to assign a specific color for each edge depending on its speed limit. The maximum speed limit in France is 130 kilometers per hour. Let's first add the ``ui.color`` attributes on each edge. Inside the loop on each edge where we assign the ``tollway``, ``bridge`` and ``tunnel`` classes, add:
 
-{% highlight java %}
+```java
 for(Edge edge: graph.getEachEdge()) {
 	if(edge.hasAttribute("isTollway")) {
 		edge.addAttribute("ui.class", "tollway");
@@ -726,39 +726,39 @@ for(Edge edge: graph.getEachEdge()) {
 	double speedMax = edge.getNumber("speedMax") / 130.0;
 	edge.setAttribute("ui.color", speedMax);
 }
-{% endhighlight %}
+```
 
 This obtains the value stored in the ``speedMax`` attribute, expecting it is a number (which should be the case!) and divides this number by 130 to scale the value in the range 0 to 1. Then this value is used to put the ``ui.color`` attribute on the edge.
 
 Next we will need to change the style sheet. Locate the ``edge`` definition, and replace the ``fill-color: #222;`` by the two ``fill-mode`` and ``fill-color`` lines, as shown under:
 
-{% highlight css %}
+```css
 edge {
 	shape: line;
 	fill-mode: dyn-plain;
 	fill-color: #222, #555, green, yellow;
 	arrow-size: 3px, 2px;
 }
-{% endhighlight %}
+```
 
 This uses a gradient from almost black for very slow areas, to grey for urban areas, green for small roads and yellow for highways. Also, to make things more readable, we will also change the size of nodes:
 
-{% highlight css %}
+```css
 node {
 	size: 1px;
 	fill-color: #777;
 	text-mode: hidden;
 	z-index: 0;
 }
-{% endhighlight %}
+```
 
 Remove or comment the lines that zoom and pan the view. You should obtain something like this:
 
-!Le Havre Step 6[]({{ site.content_img }}/leHavreStep6.png)
+![Le Havre Step 6]({{ site.content_img }}/leHavreStep6.png)
 
 Urban areas appear in gray as speed limit is (hopefully) for more limited in these zones.
 
-For an example that can easily be transformed to a dynamic update of the edge colors, see `Random Walks on Graphs </doc/Algorithms/Random-walks-on-graphs_1.0/>`_.
+For an example that can easily be transformed to a dynamic update of the edge colors, see [Random Walks on Graphs](/doc/Algorithms/Random-walks-on-graphs_1.0/).
 
 The dynamic change on colors is also available for the size of elements. Simply set the ``size`` property to the value ``dyn-size``, then store a ``ui.size`` attribute on elements. The size is in graph units.
 
@@ -775,43 +775,43 @@ To manage sprites you can use the ``SpriteManager`` class. This class takes a gr
 
 Just after the loop that process each edge in our program, add the following code:
 
-{% highlight java %}
+```java
 SpriteManager sman = new SpriteManager(graph);
 Sprite s1 = sman.addSprite("S1");
 Sprite s2 = sman.addSprite("S2");
-{% endhighlight %}
+```
 
 This will create the sprite manager and add two sprites ``S1`` and ``S2``.
 
 Then we will try to position the sprites on two nodes of the graph We can do this by randomly choosing two nodes, obtaining their current position to assign it to the sprites. The ``Toolkit`` class of the ``gs-algo`` package provides a way to randomly pick a node in a graph. Most methods of ``Toolkit`` are utility methods declared as static methods. Therefore to use them, the better way is to use a static import (available in Java 1.6):
 
-{% highlight java %}
+```java
 import static org.graphstream.algorithm.Toolkit.*;
-{% endhighlight %}
+```
 
 Then just after the two sprites creation code, add:
 
-{% highlight java %}
+```java
 Node n1 = randomNode(graph);
 Node n2 = randomNode(graph);
 double p1[] = nodePosition(n1);
 double p2[] = nodePosition(n2);
 s1.setPosition(p1[0], p1[1], p1[2]);
 s2.setPosition(p2[0], p2[1], p2[2]);
-{% endhighlight %}
+```
 
 The ``nodePosition()`` method is an utility method also defined in ``Toolkit`` that returns an array of three doubles containing the value for the ``xyz`` attribute of a node. The ``Sprite.setPosition()`` method is then used with the retrieved node coordinates to position the sprite on the node.
 
 The sprites will appear, by default, as black circles, like nodes without CSS style. We will therefore extend our style sheet to add:
 
-{% highlight css %}
+```css
 sprite {
 	shape: box;
 	size: 32px, 52px;
 	fill-mode: image-scaled;
 	fill-image: url('mapPinSmall.png');
 }
-{% endhighlight %}
+```
 
 This apply to all sprites the shape ``box`` with the size of the image we want to draw:
 
@@ -828,9 +828,9 @@ Once your proud of your visualization, you can take a screen shot of the viewer 
 
 For example:
 
-{% highlight java %}
+```java
 graph.addAttribute("ui.screenshot", "/some/place/screenshot.png");
-{% endhighlight %}
+```
 
 
 ### Other version of this document

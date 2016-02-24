@@ -51,7 +51,7 @@ Each project, called *artifact*, is identified by three informations :
 These informations are defined in the POM using the following
 tags
 
-{% highlight xml %}
+```xml
 <project>
 	...
 	<artifactId>gs-core</artifactId>
@@ -59,11 +59,11 @@ tags
 	<version>1.1</version>
 	...
 </project>
-{% endhighlight %}
+```
 
 These informations have to be used to define dependencies
 
-{% highlight xml %}
+```xml
 <project>
 	...
 	<!-- Start list of dependencies -->
@@ -78,7 +78,7 @@ These informations have to be used to define dependencies
 	</dependencies>
 	...
 </project>
-{% endhighlight %}
+```
 
 
 ## Building GraphStream using Maven
@@ -88,25 +88,25 @@ These informations have to be used to define dependencies
 First, you have to get depencies module of the ``gs-core``,
 named ``gs-deps``. It can be cloned from git using :
 
-{% highlight bash %}
+```bash
 git clone git://github.com/graphstream/gs-deps.git
-{% endhighlight %}
+```
 
 If you already have cloned ``gs-deps`` and just want to make an update
 of it, try to pull changes (if any):
 
-{% highlight bash %}
+```bash
 cd gs-deps
 git pull
-{% endhighlight %}
+```
 
 Next step is to build and install the artifact. Just go into the
 artifact directory and run:
 
-{% highlight bash %}
+```bash
 cd gs-deps
 mvn install
-{% endhighlight %}
+```
 
 This will compile, package and install the project into your local
 repository, so it will reachable by other project.
@@ -117,19 +117,20 @@ repository, so it will reachable by other project.
 To install any ``gs-xxx`` module, just follow the process above,
 starting by ``gs-core``:
 
-{% highlight bash %}
+```bash
 git clone git://github.com/graphstream/gs-xxx.git
 cd gs-xxx
-git pull /* to pull changes if project has been already cloned */
+# to pull changes if project has been already cloned
+git pull
 mvn install
-{% endhighlight %}
+```
 
 In the case where only the build of the package is needed, just run
 the:
 
-{% highlight bash %}
+```bash
 mvn package
-{% endhighlight %}
+```
 
 in the module directory. This will produce a ``gs-xxx-version.jar``
 in ``gs-xxx/target`` that you can use directly. Be carefull, this jar
@@ -145,7 +146,7 @@ is being built. The following is the list of available profiles.
 #### ``nodeps`` profile
 
 Available in ``gs-core`` and ``gs-ui``. It allows to include some
-dependencies in the final jar 
+dependencies in the final jar
 
 #### ``proguard`` profile
 
@@ -169,7 +170,7 @@ You have to redefine the following informations in the pom:
 * description
 * url
 
-{% highlight xml %}
+```xml
 <project>
 	<!-- artifactId, groupId and version are need. -->
 	<artifactId>gs-powaa</artifactId>
@@ -184,7 +185,7 @@ You have to redefine the following informations in the pom:
 
 	...
 </project>
-{% endhighlight %}
+```
 
 If your project needs more dependency that ``gs-core``, you have to add
 these dependencies in the ``dependencies`` section. You can have a look
@@ -195,7 +196,7 @@ you can make a search on the previous link and find the informations about
 this artifact (org.apache.commons:commons-math:2.1). Then you just have to
 add the dependency in the ``dependencies`` section
 
-{% highlight xml %}
+```xml
 <project>
 	...
 	<dependencies>
@@ -215,7 +216,7 @@ add the dependency in the ``dependencies`` section
 		</dependency>
 	</dependencies>
 </project>
-{% endhighlight %}
+```
 
 More informations are done as comments in the ``pom.xml`` skeleton.
 
@@ -232,9 +233,9 @@ Eclipse to find the dependencies.
 
 This can be done with the following command :
 
-{% highlight bash %}
+```bash
 mvn eclipse:configure-workspace
-{% endhighlight %}
+```
 
 
 #### Generate Eclipse project files
@@ -243,9 +244,9 @@ Once the project informations have been set in the POM, you can tell
 Maven to generate the Eclipse project files (.classpath, .project)
 with the following command :
 
-{% highlight bash %}
+```bash
 mvn eclipse:eclipse
-{% endhighlight %}
+```
 
 Then, go to Eclipse and select "import" in the file menu. Choose
 "Existing projects into workspace" and select your project directory.
@@ -274,9 +275,9 @@ Final step is to select the artifact you want to use.
 If the artifact you want to use is not in your local Maven repository,
 you can download it using the following command ::
 
-{% highlight bash %}
+```bash
 mvn dependency:get -Dartifact=groupId:artifactId:version -DrepoUrl=http://repo1.maven.org/maven2/
-{% endhighlight %}
+```
 
 replacing ``groupId``, ``artifactId`` and ``version`` by those of
 the artifact you want.
@@ -287,31 +288,31 @@ the artifact you want.
 
 You just have to set the ``parent`` section in the POM of your project :
 
-{% highlight xml %}
+```xml
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
 		<version>7</version>
 	</parent>
-{% endhighlight %}
+```
 
 Then, use the snapshot version of GraphStream in your dependencies :
 
-{% highlight xml %}
+```xml
 	<dependency>
 		<groupId>org.graphstream</groupId>
 		<artifactId>gs-algo</artifactId>
 		<version>1.2-SNAPSHOT</version>
 		<optional>false</optional>
 	</dependency>
-{% endhighlight %}
+```
 
 
 ### b. by adding snapshot repositories
 
 You have to add the Sonatype snapshot repository in your POM :
 
-{% highlight xml %}
+```xml
 	<repositories>
 		<repository>
 			<releases>
@@ -330,16 +331,15 @@ You have to add the Sonatype snapshot repository in your POM :
 			<layout>default</layout>
 		</repository>
 	</repositories>
-{% endhighlight %}
+```
 
 Then, use the snapshot version of GraphStream in your dependencies :
 
-{% highlight xml %}
+```xml
 	<dependency>
 		<groupId>org.graphstream</groupId>
 		<artifactId>gs-algo</artifactId>
 		<version>1.2-SNAPSHOT</version>
 		<optional>false</optional>
 	</dependency>
-{% endhighlight %}
-
+```

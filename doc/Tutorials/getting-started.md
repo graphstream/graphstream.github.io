@@ -19,7 +19,7 @@ directed and undirected graphs, 1-graphs or p-graphs (a.k.a. multigraphs, that
 are graphs that can have several edges between two nodes).
 
 GraphStream allows to store any kind of data attribute on the graph elements:
-numbers, strings, or any object. 
+numbers, strings, or any object.
 
 Moreover, in addition, GraphStream provides a way to handle the graph evolution
 in time. This means handling the way nodes and edges are added and removed, and
@@ -95,9 +95,9 @@ will evolve afterwards, in the following tutorials.
 
 All graphs in GraphStream follow the ``Graph`` interface. You import it with:
 
-{% highlight java %}
+```java
 import org.graphstream.graph.*;
-{% endhighlight %}
+```
 
 There exist several graph implementations, a versatile one is the ``SingleGraph``
 class. It provides a 1-graph (there can be only one edge between two nodes), that
@@ -106,19 +106,19 @@ edges inside such a graph, simply consider undirected edges as bidirectional. Th
 does not well cope with the mathematical definition, but is certainly easier to use
 for developing. You import it with:
 
-{% highlight java %}
+```java
 import org.graphstream.graph.implementations.*;
-{% endhighlight %}
+```
 
 You create the graph this way:
 
-{% highlight java %}
+```java
 public class Tutorial1 {
 	public static void main(String args[]) {
 		Graph graph = new SingleGraph("Tutorial 1");
 	}
 }
-{% endhighlight %}
+```
 
 There are lots of ways to populate a graph with nodes, edges and data
 attributes. In GraphStream the better way is to connect a graph event producer
@@ -132,25 +132,25 @@ The construction API of the graph works as a factory for node and edge elements
 must ask the graph to create them for you). Add the following lines after the
 graph declaration:
 
-{% highlight java %}
+```java
 graph.addNode("A" );
 graph.addNode("B" );
 graph.addNode("C" );
 graph.addEdge("AB", "A", "B");
 graph.addEdge("BC", "B", "C");
 graph.addEdge("CA", "C", "A");
-{% endhighlight %}
+```
 
 As their name suggest, these methods will add three nodes and three edges between
 the nodes. You can see that each node or edge is identified by a string. Such
-identifiers must naturally be unique. 
+identifiers must naturally be unique.
 
 It is often useful to check the graph by seeing it, you can easily do this using
 the ``display()`` utility method:
 
-{% highlight java %}
+```java
 graph.display();
-{% endhighlight %}
+```
 
 This should produce a result similar to this:
 
@@ -158,7 +158,7 @@ This should produce a result similar to this:
 
 Here is the full text of the above program:
 
-{% highlight java %}
+```java
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 
@@ -176,18 +176,18 @@ public class Tutorial1 {
 		graph.display();
 	}
 }
-{% endhighlight %}
+```
 
 The graph being a factory for node, it can create nodes automatically if needed. Instead
 of the graph construction seen above, you can use:
 
-{% highlight java %}
+```java
 graph.setStrict(false);
 graph.setAutoCreate( true );
 graph.addEdge( "AB", "A", "B" );
 graph.addEdge( "BC", "B", "C" );
 graph.addEdge( "CA", "C", "A" );
-{% endhighlight %}
+```
 
 To produce the same result. If a node is unknown, it will be created for you.
 
@@ -195,22 +195,22 @@ Exploring the graph structure
 -----------------------------
 
 Each time you add a node or edge in the graph, a corresponding object is
-created for you. These objects belong to the ``Node`` and ``Edge`` interfaces. As you have seen it above, you name the nodes 
+created for you. These objects belong to the ``Node`` and ``Edge`` interfaces. As you have seen it above, you name the nodes
 and edges
 by an identifier under the form of a string of characters. Each identifier
 must be unique since they relate to only one node or one edge.
 
 Once added in a graph with an identifier, you can obtain a reference on these objects using this identifier:
 
-{% highlight java %}
+```java
 Node A = graph.getNode("A");
-{% endhighlight %}
+```
 
 or:
 
-{% highlight java %}
+```java
 Edge AB = graph.getEdge("AB");
-{% endhighlight %}
+```
 
 The ``Node`` and ``Edge`` interfaces then allow to obtain details on the
 represented nodes and edges. For example:
@@ -226,35 +226,35 @@ In addition to ``getNode`` and ``getEdge`` which impose to know the identifier
 of the node or edge, the graph class provides ways to iterate on the nodes or
 edges, you can write:
 
-{% highlight java %}
+```java
 for(Node n:graph) {
 	System.out.println(n.getId());
 }
-{% endhighlight %}
+```
 
 The code above allows to iterate on all the nodes of the graph and will print
 their unique identifier, one by line. You can do a similar thing for edges:
 
-{% highlight java %}
+```java
 for(Edge e:graph.getEachEdge()) {
 	System.out.println(e.getId());
 }
-{% endhighlight %}
+```
 
 In fact the ``for(Node n:graph)`` instruction is a shorthand for:
 
-{% highlight java %}
+```java
 for(Node n:graph.getEachNode()) {
-...
+	...
 }
-{% endhighlight %}
+```
 
 You can also obtain a read-only set of nodes from the graph (this is not a
 copy, but a view on the set of nodes, hence the operation is reasonably fast):
 
-{% highlight java %}
+```java
 Collection<Node> nodes = graph.getNodeSet();
-{% endhighlight %}
+```
 
 This can be useful since a lot of algorithms in the ``java.util.Collections``
 are then applicable on the obtained set. The same operation is possible on edges using ``getEdgeSet()``.
@@ -262,52 +262,51 @@ are then applicable on the obtained set. The same operation is possible on edges
 Finally, you can also, if you prefer, use iterators on theses sets of nodes
 and edges:
 
-{% highlight java %}
+```java
 Iterator<? extends Node> nodes = graph.getNodeIterator();
 
 while(nodes.hasNext()) {
-Node node = nodes.next();
-...
+	Node node = nodes.next();
+	...
 }
-{% endhighlight %}
+```
 
 And anew, this is exactly the same for edges with ``Graph.getEdgeIterator()``.
 
-Another way to access graph elements is to use their indices. Unlike identifiers which are specified when the elements are 
-created, indices are automatically maintained by the graph. They could change when elements are added or removed but are 
+Another way to access graph elements is to use their indices. Unlike identifiers which are specified when the elements are
+created, indices are automatically maintained by the graph. They could change when elements are added or removed but are
 always between zero and node/edge count minus one. The following loop iterates on all the nodes of the graph:
 
-{% highlight java %}
+```java
 for (int i = 0; i < graph.getNodeCount(); i++) {
 	Node node = graph.getNode(i);
 	...
 }
-{% endhighlight %}
+```
     
-Access by index is generally faster than access by identifier. It can be useful to interface GraphStream with APIs that use 
+Access by index is generally faster than access by identifier. It can be useful to interface GraphStream with APIs that use
 arrays. The following code constructs the adjacency matrix of a graph:
 
-{% highlight java %}
+```java
 int n = graph.getNodeCount();
 byte adjacencyMatrix[][] = new byte[n][n];
 for (int i = 0; i < n; i++)
 	for (int j = 0; j < n; j++)
 		adjacencyMatrix[i][j] = graph.getNode(i).hasEdgeBetween(j) ? 1 : 0;
-{% endhighlight %}
+```
 
 To get the index of a node knowing its identifier, use:
 
-{% highlight java %}
+```java
 int i = graph.getNode("A").getIndex();
-{% endhighlight %}
+```
     
 Inversely, to get the identifier of a node when its index is known, use
 
-{% highlight java %}
+```java
 String id = graph.getNode(0).getId();
-{% endhighlight %}
+```
 
 ### Other version of this document
 
 - [GraphStream 1.0](/doc/Tutorials/Getting-Started/1.0/)
-

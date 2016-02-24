@@ -30,12 +30,9 @@ large size. The gzip format has been chosen since it is easily streamable and
 easy to use in Java. For example to open a gzip-ed file in Java and read its
 contents as any other textual file, one can use the following code snippet:
 
-{% highlight java %}
-    BufferedReader buffer = new BufferedReader(
-        new InputStreamReader(
-                new GZIPInputStream(
-                        (InputStream)new FileInputStream("filename"))));
-{% endhighlight %}
+```java
+BufferedReader buffer = new BufferedReader(new InputStreamReader(new GZIPInputStream((InputStream)new FileInputStream("filename"))));
+```
 
 Naturally, GraphStream automatically supports gzip-ed files.
 
@@ -118,7 +115,7 @@ Here is the list of possible events:
     Allows to define a new step (clock tick). The number that follows allows to
     identify the step. The number is only indicative and is arbitrary, but is a
     real number, stored as a double (this may change in next versions). The DGS
-    graph reader does not reorder events according to this number. 
+    graph reader does not reorder events according to this number.
 
     For the first step for example:
 
@@ -128,7 +125,7 @@ Here is the list of possible events:
     Allows to add a node. The command is followed by the unique node identifier
     allowing to identify this node compared to others. This name can be a
     single word or a string delimited by the double quote character. Other
-    fields allow to define parameters. 
+    fields allow to define parameters.
 
     The following example adds a node with identifier ``n1`` and values
     ``x=3.14159265`` and ``y=1.61803399`` as attributes:
@@ -136,7 +133,7 @@ Here is the list of possible events:
 	an n1 x=3.14159265 y=1.61803399
 
 ``cn``
-    Allows to modify attributes values for a node. 
+    Allows to modify attributes values for a node.
 
     In this example we modify the ``n1`` node attributes (notice that we use ":" as
     separator for parameters, both "=" and ":" are allowed):
@@ -151,7 +148,7 @@ Here is the list of possible events:
     In this example we remove the ``x`` and ``y`` attributes.
 
 ``dn``
-    Allows to delete a node. 
+    Allows to delete a node.
 
     In the example we delete the ``n1`` node:
 
@@ -163,7 +160,7 @@ Here is the list of possible events:
     nodes, you can specify a parameter list. It is possible to create directed
     edges by adding a ">" (greater-than) or "<" (smaller-than) character
     between the nodes identifiers. This indicates the direction of the edge.
-    When no "<" or ">" is present, the edge is not directed. 
+    When no "<" or ">" is present, the edge is not directed.
 
     The following examples creates an edge with identifier ``e1`` between nodes
     ``n0`` and ``n1`` with a parameter weight and another edge ``e2`` between
@@ -173,7 +170,7 @@ Here is the list of possible events:
 	ae e2 n1 > n2 weight:40
 
 ``ce``
-    As for nodes, allows to modify the parameters of the edge. 
+    As for nodes, allows to modify the parameters of the edge.
 
     The following example change the weight parameter of the ``e1`` edge:
 
@@ -270,7 +267,7 @@ The same with more attributes (examples of vector attributes):
 
 The grammar for the DGS format is given below in BNF notation::
 
-{% highlight ebnf %}
+```ebnf
     <DGS>        ::= <header> ( <event> | <comment> | <EOL> )*
     <header>     ::= <magic> <EOL> <id> <int> <int> <EOL>
     <magic>      ::= "DGS004" | "DGS003"
@@ -299,5 +296,4 @@ The grammar for the DGS format is given below in BNF notation::
     <real>       ::= <int> ( "." ( "0" )* <int> )?
     <word>       ::= ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '-' | '_' )*
     <string>     ::= '"' ( [^'"'] | '\"' )* '"'
-{% endhighlight %}
-
+```

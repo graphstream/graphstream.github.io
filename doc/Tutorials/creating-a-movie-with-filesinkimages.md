@@ -45,9 +45,9 @@ The enum ``FileSinkImages.OutputPolicy`` defines all theses cases.
 
 The corresponding code is:
 
-{% highlight java %}
+```java
   OutputPolicy outputPolicy = OutputPolicy.ByStepOutput;
-{% endhighlight %}
+```
 
 
 Choosing the format
@@ -93,11 +93,11 @@ but it is possible to define a custom resolution with
 
 The corresponding code is:
 
-{% highlight java %}
+```java
  String prefix = "prefix\_";
  OutputType type = OutputType.PNG;
  Resolution resolution = Resolutions.HD720;
-{% endhighlight %}
+```
 
 
 Create the ``FileSinkImages`` object
@@ -105,10 +105,10 @@ Create the ``FileSinkImages`` object
 
 This is easily done with the following code :
 
-{% highlight java %}
- FileSinkImages fsi = new FileSinkImages( 
+```java
+ FileSinkImages fsi = new FileSinkImages(
 	prefix, type, resolution, outputPolicy );
-{% endhighlight %}
+```
 
 
 Choosing a source
@@ -122,7 +122,7 @@ usefull when the graph to render is really big and has a high memory cost.
 
 For example :
 
-{% highlight java %}
+```java
 
  FileSourceDGS dgs = new FileSourceDGS();
  
@@ -133,7 +133,7 @@ For example :
  dgs.begin( "path/to/dgs" );
  while( dgs.nextStep() );
  dgs.end();
-{% endhighlight %}
+```
 
 
 Set style of graph/nodes/edges
@@ -142,12 +142,12 @@ Set style of graph/nodes/edges
 The definition of a style for graph, nodes or edges is allowed by providing a
 css stylesheet. Syntax is the same that in the GraphStream viewer.
 
-{% highlight java %}
+```java
  fsi.setStyleSheet(
- 	"graph { padding: 50px; fill-color: black; }" + 
+ 	"graph { padding: 50px; fill-color: black; }" +
  	"node { fill-color: #3d5689; }" +
  	"edge { fill-color: white; }");
-{% endhighlight %}
+```
 
 
 Optionally, enable layout
@@ -164,9 +164,9 @@ in the enum ``FileSinkImages.LayoutPolicy``:
 
 Layout policy can changed with the following code :
 
-{% highlight java %}
+```java
  fsi.setLayoutPolicy( LayoutPolicy.COMPUTED_FULLY_AT_NEW_IMAGE );
-{% endhighlight %}
+```
 
 
 Optionally, enable high quality rendering
@@ -177,9 +177,9 @@ rendering.
 
 This is done by calling ``setHighQuality()`` method :
 
-{% highlight java %}
+```java
  fsi.setHighQuality();
-{% endhighlight %}
+```
 
 
 Optionally, add a logo
@@ -189,15 +189,15 @@ Sometimes, it could be usefull to add a logo on your movie. The sink provides
 an easy way to add a logo-image on outputted images. Only pathname of the logo
 and coordinate on outputted images are needed :
 
-{% highlight java %}
+```java
  fsi.addLogo( "path/to/logo", x, y );
-{% endhighlight %}
+```
 
 
 Complete example
 -------------------------------------------------------------------------------
 
-{% highlight java %}
+```java
  // FileSinkImages arguments
  
  OutputPolicy outputPolicy = OutputPolicy.ByStepOutput;
@@ -214,7 +214,7 @@ Complete example
  // Optional configuration
  
  fsi.setStyleSheet(
- 	"graph { padding: 50px; fill-color: black; }" + 
+ 	"graph { padding: 50px; fill-color: black; }" +
  	"node { fill-color: #3d5689; }" +
  	"edge { fill-color: white; }");
  
@@ -232,19 +232,19 @@ Complete example
  while( dgs.nextStep() );
  dgs.end();
  fsi.end();
-{% endhighlight %}
+```
 
 
 Create a movie with outputted images
 -------------------------------------------------------------------------------
 
-A way to create the movie is using ``mencoder`` from the 
+A way to create the movie is using ``mencoder`` from the
 `MPlayer Movie Player <http://www.mplayerhq.hu>`_
 
 The following bash script compils all images prefix by ``$PREFIX`` and ended by
 ``$EXT`` to create an high quality movie ``$OUPUT`` :
 
-{% highlight bash %}
+```bash
  #!/bin/bash
 
  EXT=png
@@ -254,7 +254,7 @@ The following bash script compils all images prefix by ``$PREFIX`` and ended by
  OUTPUT="graphstream-movie.avi"
  
  mencoder "mf://$PREFIX*.$EXT" -mf fps=$FPS:type=$EXT -ovc lavc -lavcopts $OPT -o $OUTPUT -nosound -vf scale
-{% endhighlight %}
+```
 
 
 Make a single screenshot
@@ -263,7 +263,7 @@ Make a single screenshot
 The ``writeAll(String)`` method of the sink can be used to make single screenshot
 of the graph:
 
-{% highlight java %}
+```java
  DefaultGraph g = new DefaultGraph("my beautiful graph");
  FileSinkImages pic = new FileSinkImages(OutputType.PNG, Resolutions.VGA);
  
@@ -278,7 +278,7 @@ of the graph:
  g.addEdge("BC", "B", "C");
  		
  pic.writeAll(g, "sample.png");
-{% endhighlight %}
+```
 
 
 ### Other version of this document

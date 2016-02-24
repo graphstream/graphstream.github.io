@@ -21,14 +21,14 @@ an algorithm. It contains two methods :
 ### Why does we not just use a ``compute(Graph)`` method ?
 
 The initialization step and computing step are located in different methods
-because you may have to make a new computation of your algorithm without 
+because you may have to make a new computation of your algorithm without
 calling the initialization step again. This initialization step must contain code
 which is unique for *a* graph and it has to be called again only if you want to reset
 data linked to the algorithm or to change the graph.
 
 This is a good way to use algorithm:
 
-{% highlight java %}
+```java
  Graph g = ... ;
 
  // Creation of the graph
@@ -40,20 +40,20 @@ This is a good way to use algorithm:
  // Others operations on g
 
  a.compute(); // Update results
-{% endhighlight %}
+```
 
 ### A basic algorithm example
 
 The following is an example of a basic algorithm that computes min,
 max and average degree in the graph:
 
-{% highlight java %}
+```java
  public class DegreesAlgorithm implements Algorithm {
     Graph theGraph;
     int minDegree, maxDegree, avgDegree;
   
     public void init(Graph graph) {
-        theGraph = graph; 
+        theGraph = graph;
     }
   
     public void compute() {
@@ -84,7 +84,7 @@ max and average degree in the graph:
         return avgDegree;
     }
  }
-{% endhighlight %}
+```
 
 
 ### Dynamicity
@@ -96,7 +96,7 @@ the end of the algorithm.
 
 Use of this kind of algorithms could be:
 
-{% highlight java %}
+```java
  Graph g = ... ;
 
  // Creation of the graph
@@ -109,7 +109,7 @@ Use of this kind of algorithms could be:
  	da.compute();
 
  da.terminate();
-{% endhighlight %}
+```
 
 
 ### A basic dynamic algorithm example
@@ -119,7 +119,7 @@ make the computation when receiving events. This can be done with a Sink that
 will trigger the computation. For example, this is a dynamic algorithm where
 computation is done when a node is added:
 
-{% highlight java %}
+```java
  public class ApparitionAlgorithm extends SinkAdapter implements
  		DynamicAlgorithm {
  
@@ -166,7 +166,7 @@ computation is done when a node is added:
         compute();
     }
   }
-{% endhighlight %}
+```
 
 In this last example, ``init(..)`` is use to set a link between the graph and
 the algorithm and ``end()`` removes this link.
@@ -188,7 +188,7 @@ node at each iteration and connects it with all previous nodes.
 Generator is a Source, so transmission of events is done in the classic Source/Sink
 way:
 
-{% highlight java %}
+```java
  Generator gen = ...;
  Graph graph = ...;
  
@@ -198,9 +198,9 @@ way:
  for(int i = 0; i < 100; i++)
     gen.nextEvents();
  gen.end();
-{% endhighlight %}
+```
 
-You can have a look on the overview on generators on 
+You can have a look on the overview on generators on
 [this page](/doc/Generators/Overview-of-generators_1.0/).
 
 
@@ -208,7 +208,7 @@ You can have a look on the overview on generators on
 
 A basic full generator can be created easily :
 
-{% highlight java %}
+```java
  public class MyFullGenerator extends SourceBase
        implements Generator {
  
@@ -232,10 +232,9 @@ A basic full generator can be created easily :
        sendNodeAdded(sourceId, Integer.toString(currentIndex));
  
        for(int i = 0; i < currentIndex; i++)
-          sendEdgeAdded(sourceId, Integer.toString(edgeId++), 
+          sendEdgeAdded(sourceId, Integer.toString(edgeId++),
                 Integer.toString(i), Integer.toString(currentIndex), false);
  
        currentIndex++;
  }
-{% endhighlight %}
-
+```

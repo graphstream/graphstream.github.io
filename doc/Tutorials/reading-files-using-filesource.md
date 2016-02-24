@@ -23,7 +23,7 @@ is able to read the following file format :
 File sources are source of events, so a sink has to be added to the source
 to have some effect :
 
-{% highlight java %}
+```java
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.stream.file.FileSource;
@@ -38,7 +38,7 @@ public class TutorialFileSource {
 		...
 	}
 }
-{% endhighlight %}
+```
 
 
 ## Read a whole file in a single instruction
@@ -46,7 +46,7 @@ public class TutorialFileSource {
 FileSource provides ``readAll(XXX)`` methods which can be used with
 an InputStream, a Reader, or just a file path.
 
-{% highlight java %}
+```java
 Graph g = ... ;
 FileSource fs = ... ;
 
@@ -59,7 +59,7 @@ try {
 } finally {
 	fs.removeSink(g);
 }
-{% endhighlight %}
+```
 
 
 ## Read a file event-by-event
@@ -76,7 +76,7 @@ Event-by-event reading is done using three methods :
 
 Reading can be done in this way :
 
-{% highlight java %}
+```java
 Graph g = ... ;
 FileSource fs = ... ;
 
@@ -102,7 +102,7 @@ try {
 } finally {
 	fs.removeSink(g);
 }
-{% endhighlight %}
+```
 
 
 ## File source factory
@@ -110,17 +110,17 @@ try {
 It is possible to let GraphStream choose the right file source to
 read a file using FileSourceFactory :
 
-{% highlight java %}
+```java
 Graph g = ... ;
 FileSource fs = FileSourceFactory.sourceFor("path/to/my/file");
 
 ...
-{% endhighlight %}
+```
 
 
 ##Full example code
 
-{% highlight java %}
+```java
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.stream.file.FileSource;
@@ -156,6 +156,4 @@ public class TutorialFileSource {
 		}
 	}
 }
-{% endhighlight %}
-
-
+```
