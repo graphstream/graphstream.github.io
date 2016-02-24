@@ -4,7 +4,7 @@ html, body, span.label {
 }
 
 h1, h2, h3, h4, .title {
-	font-family: "Patua One";	
+	font-family: "Patua One";
 	font-weight: normal;
 }
 
@@ -26,8 +26,8 @@ a {
 }
 
 h1 a, h2 a, h3 a, h4 a, .title a, a.nb {
-	font-weight:normal;	
-}	
+	font-weight:normal;
+}
 
 a:hover {
 	text-decoration: none;
@@ -103,7 +103,7 @@ article {
 	width:40px;
 	position:absolute;
 	top:0px;
-	left:0px;	
+	left:0px;
 }
 
 .svg.backgroundsize .tiny-logo {
@@ -113,7 +113,7 @@ article {
 
 input.b, textarea.b {
 	display: block;
-	width:100%;	
+	width:100%;
 	-moz-box-sizing: border-box;
    box-sizing: border-box;
 }
@@ -125,12 +125,12 @@ input.b {
 @media (max-width: 979px) and (min-width: 768px) {
 	.sidebar-container {
 		z-index: 0;
-	}	
+	}
 	
 	.sidebar, aside .box {
 		padding-left: 10px;
-		padding-right: 10px;	
-	}	
+		padding-right: 10px;
+	}
 
 	.navbar-fixed-top {
 		position:fixed !important;

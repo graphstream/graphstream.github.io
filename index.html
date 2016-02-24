@@ -1,5 +1,6 @@
 ---
 title: GraphStream - A Dynamic Graph Library
+fancybox: true
 ---
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -7,7 +8,7 @@ title: GraphStream - A Dynamic Graph Library
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	
-	{% include head.html extra_css="/css/jquery.fancybox.css" %}
+	{% include head.html %}
 	
 	<body class="fitheight">
 		{% include menu.html %}
@@ -22,12 +23,12 @@ title: GraphStream - A Dynamic Graph Library
 					<div style="font-size:21px;font-weight:300;text-align:right;line-height:30px;">A Dynamic Graph Library</div>
 				</div>
 				<div class="col-sm-6 hidden-xs">
-					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>				
+					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>
 				</div>
 			</div>
 			
 			<div class="visible-xs container" style="text-align: center;">
-					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>	
+					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>
 			</div>
 			
 			<div class="row" style="padding-top:40px; padding-bottom:40px;">
@@ -60,7 +61,7 @@ title: GraphStream - A Dynamic Graph Library
 							<p style="text-align:justify;">GraphStream is a Java library for the modeling and analysis of dynamic graphs. You can generate, import, export, measure, layout and visualize them.</p>
 							<div style="text-align:right;">
 								<a href="/doc/Tutorials/Getting-Started/" class="alert-success">
-									<span class="fa-stack fa-lg" style="font-size:75%;">
+									<span class="fa-stack">
 										<i class="fa fa-square-o fa-stack-2x"></i>
 										<i class="fa fa-plus fa-stack-1x"></i>
 									</span>
@@ -95,7 +96,7 @@ title: GraphStream - A Dynamic Graph Library
 							<ul>
 						 		<li>The <a href="/doc/API/">API</a></li>
 						 		<li>The <a href="/doc/Source-Repository/"> Source Repository</a></li>
-						 		<li>The <a href="https://github.com/graphstream/gs-core/issues">Issue Tracker</a></li> 
+						 		<li>The <a href="https://github.com/graphstream/gs-core/issues">Issue Tracker</a></li>
 						 		<li>The <a href="http://tracker.graphstream-project.org/milestones/">Roadmap</a></li>
 							</ul>
 						</div>
@@ -107,11 +108,9 @@ title: GraphStream - A Dynamic Graph Library
 				</div>
 			</div>
 			
-			<footer style="font-size:12px;">Copyright  &copy; 2010-2015, <a href="/doc/About-Us/">GraphStream Team.</a> All rights reserved.</footer>
+			{% include footer.html %}
 		</div>
 		
-		{% include scripts.html extra_js="/js/jquery.fancybox.pack.js,/js/jquery.fancybox-media.js"%}
-        
-		<script type="text/javascript">jQuery(document).ready(function() {jQuery(".fancybox-media").fancybox({helpers:{media: true}});});</script>
+		{% include scripts.html %}
 	</body>
 </html>

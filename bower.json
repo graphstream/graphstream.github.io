@@ -22,6 +22,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.6",
-    "font-awesome": "~4.5.0"
+    "font-awesome": "~4.5.0",
+    "fancyBox": "^2.1.5"
   }
 }

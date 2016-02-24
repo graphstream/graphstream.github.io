@@ -6,8 +6,9 @@
 
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-family: "Open Sans", sans-serif;
 $base-font-size:   16px;
+$title-font-family: "Putua One";
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
 
@@ -16,6 +17,8 @@ $spacing-unit:     30px;
 $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
+$link-color:       #222;
+$link-hover-color: rgb(0,136,204);
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
@@ -46,6 +49,9 @@ $on-laptop:        800px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "layout"
+        "base"
+      , "code-block"
+      , "link"
+      , "list"
+      , "sidebar"
 ;

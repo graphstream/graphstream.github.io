@@ -13,9 +13,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="{{ "/bower_components/bootstrap/dist/css/bootstrap.min.css" | prepend: site.baseurl }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ "/bower_components/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}"/>
-	<link rel="stylesheet" type="text/css" href="{{ "/css/base.css" | prepend: site.baseurl }}"/>
-	<link rel="stylesheet" type="text/css" href="{{ "/css/sidebar.css" | prepend: site.baseurl }}"/>
-	<link rel="stylesheet" type="text/css" href="{{ "/css/" | prepend: site.baseurl }}{{ site.highlighter }}-syntax.css">
+	<link rel="stylesheet" type="text/css" href="{{ "/css/" | prepend: site.baseurl }}highlighter.css">
 	
 	<link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 	
@@ -27,6 +25,10 @@
 {% endif %}
 
 {% if page.toc %}
-<link rel="stylesheet" type="text/css" href="{{ '/css/doc-toc.css' | prepend: site.baseurl }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ '/css/doc-toc.css' | prepend: site.baseurl }}"/>
+{% endif %}
+
+{% if page.fancybox %}
+	<link rel="stylesheet" type="text/css" href="{{ "/bower_components/fancyBox/source/jquery.fancybox.css" | prepend: site.baseurl }}"/>
 {% endif %}
 </head>

@@ -8,8 +8,15 @@
 	{% endfor %}
 {% endif %}
 <script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
+
 {% if page.toc %}
 <script type="text/javascript" src="{{ '/js/toc.js' | prepend: site.baseurl }}"></script>
+{% endif %}
+
+{% if page.fancybox %}
+<script src="{{ "/bower_components/fancyBox/source/jquery.fancybox.pack.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/bower_components/fancyBox/source/helpers/jquery.fancybox-media.js" | prepend: site.baseurl }}"></script>
+<script type="text/javascript">jQuery(document).ready(function() {jQuery(".fancybox-media").fancybox({helpers:{media: true}});});</script>
 {% endif %}
 
 <script>

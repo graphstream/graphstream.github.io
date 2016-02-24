@@ -13,7 +13,7 @@
 		
 		{% include menu.html %}
 			
-		<div class="container fitheight" style="padding:0px; margin-top: 50px;">
+		<div class="container fitheight" style="padding:0px; margin-top: 65px;">
 		
 			<div class="content row fitheight">
 				<div class="col-md-3 fitheight hidden-xs hidden-sm sidebar-container">
@@ -26,23 +26,10 @@
 						{{ content }}
 					</article>
 					
-					<footer>
-						Copyright  &copy; 2010 - 2016,&nbsp;
-						<a href="/doc/About-Us/">GraphStream Team</a>.&nbsp;
-						All rights reserved.
-					</footer>
+					{% include footer.html %}
 				</div>
 			</div>
 		</div>
-	
-		<!--<footer id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
-			<div><span>
-				Copyright  &copy; 2010 - 2013,&nbsp;
-				<a href="/doc/About-Us/" class="i">GraphStream Team</a>.&nbsp;
-				All rights reserved.
-				</span>
-			</div>
-		</footer>-->
 
         {% include scripts.html %}
     </body>

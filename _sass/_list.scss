@@ -1,0 +1,26 @@
+/**
+ * Lists
+ */
+ul, ol {
+    margin-left: $spacing-unit;
+}
+
+li {
+    > ul,
+    > ol {
+         margin-bottom: 0;
+    }
+}
+
+ul.nostyle {
+	list-style:none;
+	padding-left:10px;
+}
+
+ul.nostyle i {
+	padding-right: 0.5em;
+}
+
+ul.nostyle i.np {
+	padding-right: 0.1em;
+}
