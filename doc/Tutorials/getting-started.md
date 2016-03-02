@@ -84,7 +84,7 @@ When you download GraphStream you will find these two jars in the ``lib/``
 directory. Simply include them in your ``classpath``.
 
 Alternatively, you can use Maven to install graphstream and setup eclipse
-projects as described in [the maven tutorial](/doc/Tutorials/Create-a-gs-based-Eclipse-project-using-Maven/).
+projects as described in [the maven tutorial](/doc/Tutorials/GraphStream-Maven/).
 
 A first example
 ---------------
