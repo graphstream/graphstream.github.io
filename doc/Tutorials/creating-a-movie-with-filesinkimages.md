@@ -30,23 +30,23 @@ can be outputted in the following cases:
 
 The enum ``FileSinkImages.OutputPolicy`` defines all theses cases.
 
-* ``ByEventOutput``
-* ``ByElementEventOutput``
-* ``ByAttributeEventOutput``
-* ``ByNodeEventOutput``
-* ``ByEdgeEventOutput``
-* ``ByGraphEventOutput``
-* ``ByStepOutput``
-* ``ByNodeAddedRemovedOutput``
-* ``ByEdgeAddedRemovedOutput``
-* ``ByNodeAttributeOutput``
-* ``ByEdgeAttributeOutput``
-* ``ByGraphAttributeOutput``
+* ``BY_EVENT_OUTPUT``
+* ``BY_ELEMENT_EVENT_OUTPUT``
+* ``BY_ATTRIBUTE_EVENT_OUTPUT``
+* ``BY_NODE_EVENT_OUTPUT``
+* ``BY_EDGE_EVENT_OUTPUT``
+* ``BY_GRAPH_EVENT_OUTPUT``
+* ``BY_STEP_OUTPUT``
+* ``BY_NODE_ADDED_REMOVED_OUTPUT``
+* ``BY_EDGE_ADDED_REMOVED_OUTPUT``
+* ``BY_NODE_ATTRIBUTE_OUTPUT``
+* ``BY_EDGE_ATTRIBUTE_OUTPUT``
+* ``BY_GRAPH_ATTRIBUTE_OUTPUT``
 
 The corresponding code is:
 
 ```java
-  OutputPolicy outputPolicy = OutputPolicy.ByStepOutput;
+  OutputPolicy outputPolicy = OutputPolicy.BY_STEP_OUTPUT;
 ```
 
 
@@ -200,7 +200,7 @@ Complete example
 ```java
  // FileSinkImages arguments
  
- OutputPolicy outputPolicy = OutputPolicy.ByStepOutput;
+ OutputPolicy outputPolicy = OutputPolicy.BY_STEP_OUTPUT;
  String prefix = "prefix\_";
  OutputType type = OutputType.PNG;
  Resolution resolution = Resolutions.HD720;
