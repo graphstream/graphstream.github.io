@@ -499,7 +499,7 @@ Geographical Information Systems among other things allow to manipulate geograph
 
 You will find at the following URL a graph in the DGS format that describes the road network of the city of Le Havre in France:
 
-`Graph of the road network for the city of Le Havre </media/data/LeHavre.dgs>`_
+[Graph of the road network for the city of Le Havre](/media/data/LeHavre.dgs)
 
 Save it under the name "LeHavre.dgs". This graph can be loaded and displayed easily:
 
