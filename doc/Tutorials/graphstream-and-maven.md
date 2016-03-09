@@ -111,7 +111,6 @@ mvn install
 This will compile, package and install the project into your local
 repository, so it will reachable by other project.
 
-
 ### Install ``gs-core`` and other modules
 
 To install any ``gs-xxx`` module, just follow the process above,
@@ -343,3 +342,12 @@ Then, use the snapshot version of GraphStream in your dependencies :
 		<optional>false</optional>
 	</dependency>
 ```
+
+## Using non-maven jar in a Maven project
+
+If you want to use a jar which is not in Maven repository, you can install it directly, providing meta-informations. Just use the following command (replacing `$GroupId`, `$ArtifactId` and `$Version` with the correct values) :
+
+```bash
+mvn install:install-file -Dfile=MyJar.jar -DgroupId=$GroupId -DartifactId=$ArtifactId -Dversion=$Version -Dpackaging=jar
+```
+Next, you will be able to use this jar as a Maven dependency in your project.
