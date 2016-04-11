@@ -6,7 +6,7 @@ permalink: /doc/Algorithms/Several-often-used-algorithms-on-graphs/
 redirect_from: /doc/Algorithms/Several-often-used-algorithms-on-graphs_1.0/
 ---
 
-This class contains a lot of very small algorithms that could be often useful
+The class ``org.graphstream.algorithm.Toolkit`` contains a lot of very small algorithms that could be often useful
 with a graph. Most methods take a graph as first argument.
 
 
