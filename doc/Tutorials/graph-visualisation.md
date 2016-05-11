@@ -260,7 +260,7 @@ node#A {
 }
 ```
 
-![First stylesheet]({{ site.content_img }}/firstStyleSheet.png
+![First stylesheet]({{ site.content_img }}/firstStyleSheet.png)
 
 Note that the semi-colon is mandatory, even if there is only one property.
 
