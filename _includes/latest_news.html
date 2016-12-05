@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-	{% include panel_heading_with_icon.html icon="rss" title="Lastest News" href="/news/" %}
+	{% include panel_heading_with_icon.html icon="rss" title="Latest News" href="/news/" %}
 		{% for news in site.posts limit:site.news_count %}
 			<div><a class="list-group-item-heading" href="{{ news.url }}"><code style="font-weight:300;">{{ news.date | date: "%Y-%m-%d" }}</code>&nbsp;{{ news.title }}</a></div>
 		{% endfor %}
