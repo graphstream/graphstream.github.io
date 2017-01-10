@@ -7,15 +7,15 @@ fancybox: true
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	
+
 	{% include head.html %}
-	
+
 	<body class="fitheight">
 		{% include menu.html %}
 
 		<div class="container">
 			<div class="hidden-xs" style="height:50px;"></div>
-			
+
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
 					<div class="hidden-phone" style="height:110px;"></div>
@@ -26,11 +26,11 @@ fancybox: true
 					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>
 				</div>
 			</div>
-			
+
 			<div class="visible-xs container" style="text-align: center;">
 					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>
 			</div>
-			
+
 			<div class="row" style="padding-top:40px; padding-bottom:40px;">
 				<div class="col-md-3 hidden-xs"></div>
 				<div class="col-xs-4 col-md-2" style="text-align:center;">
@@ -52,12 +52,12 @@ fancybox: true
 					</a>
 				</div>
 			</div>
-			
+
 			<div class="row" style="font-size:85%;">
 				<div class="col-xs-12 col-md-4">
 					<div class="panel panel-success">
 						<div class="panel-body bg-success">
-							<h4 class="text-success">What is GraphStream ?</h4>
+							<h4 class="text-success">What is GraphStream?</h4>
 							<p style="text-align:justify;">GraphStream is a Java library for the modeling and analysis of dynamic graphs. You can generate, import, export, measure, layout and visualize them.</p>
 							<div style="text-align:right;">
 								<a href="/doc/Tutorials/Getting-Started/" class="alert-success">
@@ -72,7 +72,7 @@ fancybox: true
 					</div>
 					<div class="panel panel-default" style="color:#555;">
 						<div class="panel-body">
-						<h4>Get some Help :</h4>
+						<h4>Get some Help:</h4>
 						<p>
 						<ul>
 							<li>Try the <a href="/doc/FAQ/">FAQ</a>.</li>
@@ -88,10 +88,10 @@ fancybox: true
 				<div class="col-xs-12 col-md-4">
 					<div class="panel panel-default">
 						<div class="panel-body" style="color:#555;">
-						<h4>Development :</h4>
-							<p>So you are a developer ? You like GraphStream and want to help contribute to this open source project ?  Then read out how to <a href="/doc/Development/Get-Involved/">Get Involved</a>.</p>
-							<p>You may also check out our <a href="/doc/Development/Projects-We-Fancy/">wish list</a>, pick up one idea and contact us if you feel like !</p>
-				
+						<h4>Development:</h4>
+							<p>So you are a developer ? You like GraphStream and want to help contribute to this open source project?  Then read out how to <a href="/doc/Development/Get-Involved/">Get Involved</a>.</p>
+							<p>You may also check out our <a href="/doc/Development/Projects-We-Fancy/">wish list</a>, pick up one idea and contact us if you feel like!</p>
+
 							<p>For a quick overview, check out these links:</p>
 							<ul>
 						 		<li>The <a href="/doc/API/">API</a></li>
@@ -105,12 +105,22 @@ fancybox: true
 
 				<div class="col-xs-12 col-md-4">
 					{% include latest_news.html %}
+
+					<div class="panel panel-default" style="color:#555;">
+						<div class="panel-body">
+							<h4>License:</h4>
+							<p>
+								GraphStream is distributed under both licenses <a href="http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html">CeCILL-C</a> (<a href="http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html">French version</a>) and <a href="http://www.gnu.org/licenses/lgpl.html">LGPL v3</a>.
+							</p>
+					</div>
+				</div>
+
 				</div>
 			</div>
-			
+
 			{% include footer.html %}
 		</div>
-		
+
 		{% include scripts.html %}
 	</body>
 </html>
