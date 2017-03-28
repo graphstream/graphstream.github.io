@@ -50,7 +50,7 @@ degree of 2:
 {% highlight java %}
     Graph graph = new SingleGraph("Random");
     Generator gen = new RandomGenerator(2);
-    gen.addSinkg(graph);
+    gen.addSink(graph);
     gen.begin();
     for(int i=0; i<100; i++)
         gen.nextEvents();
