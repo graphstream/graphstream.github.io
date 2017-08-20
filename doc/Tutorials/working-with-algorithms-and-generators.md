@@ -64,9 +64,9 @@ max and average degree in the graph:
         for(Node n : theGraph.getEachNode() ) {
             int deg = n.getDegree();
   
-            minDegree = Math.min(minDegree, d);
-            maxDegree = Math.max(maxDegree, d);
-            avgDegree += d;
+            minDegree = Math.min(minDegree, deg);
+            maxDegree = Math.max(maxDegree, deg);
+            avgDegree += deg;
         }
   
         avgDegree /= theGraph.getNodeCount();
