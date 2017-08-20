@@ -33,23 +33,6 @@ degree. The complexity is O(n) with n the number of nodes.
 The ``density(Graph)`` method returns the number of links in the graph
 divided by the total number of possible links. The complexity is O(1). 
 
-Diameter
-
-The ``diameter(Graph)`` method computes the diameter of the graph.
-The diameter of the graph is the largest of all the shortest paths from any node to
-any other node.
-
-Note that this operation can be quite costly, the algorithm used to compute all shortest
-paths is the Floyd-Warshall algorithm whose complexity is at worst of O(n^3).
-
-The returned diameter is not an integer since some graphs have non-integer weights
-on edges.
-
-The ``diameter(Graph, String, boolean)`` method does the same thing, but
-considers that the graph is weighted. The second argument is the weight attribute
-name. The third argument indicates if the graph must be considered as directed
-or not.
-
 
 ### Clustering coefficient
 
