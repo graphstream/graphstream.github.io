@@ -4,19 +4,18 @@
 	<title>{% if page.title %}GraphStream - {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 	<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
 	<link type="text/css" href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,700italic' rel='stylesheet'>
 	<link href='https://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
-	
-	<link rel="stylesheet" type="text/css" href="{{ "/bower_components/bootstrap/dist/css/bootstrap.min.css" | prepend: site.baseurl }}"/>
-	<link rel="stylesheet" type="text/css" href="{{ "/bower_components/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}"/>
-	<link rel="stylesheet" type="text/css" href="{{ "/css/" | prepend: site.baseurl }}highlighter.css">
-	
-	<link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-	
+
+	<link rel="stylesheet" type="text/css" href="{{ "/assets/css/" | prepend: site.baseurl }}highlighter.css">
+
+	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" />
+	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
 {% if include.extra_css %}
 	{% assign csss = include.extra_css | split:',' %}
 	{% for css in csss %}

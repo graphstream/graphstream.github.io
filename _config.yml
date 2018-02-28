@@ -18,5 +18,19 @@ highlighter: rouge
 kramdown:
   input: GFM
   hard_wrap: false
-gems:
+plugins:
   - jekyll-redirect-from
+
+# Collections
+collections:
+  downloads:
+    output: true
+    permalink: /:collection/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: downloads
+    values:
+      layout: base

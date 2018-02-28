@@ -1,5 +1,9 @@
-<script src="{{ "/bower_components/jquery/dist/jquery.min.js" | prepend: site.baseurl }}"></script>
-<script src="{{ "/bower_components/bootstrap/dist/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
+<!-- Scripts -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery.scrollex.min.js"></script>
+<script src="/assets/js/jquery.scrolly.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
 
 {% if include.extra_js %}
 	{% assign jss = include.extra_js | split:',' %}
@@ -7,7 +11,8 @@
 <script type="text/javascript" src="{{ js | prepend: site.baseurl }}"></script>
 	{% endfor %}
 {% endif %}
-<script src="{{ "/js/main.js" | prepend: site.baseurl }}"></script>
+
+<script src="assets/js/main.js"></script>
 
 {% if page.toc %}
 <script type="text/javascript" src="{{ '/js/toc.js' | prepend: site.baseurl }}"></script>

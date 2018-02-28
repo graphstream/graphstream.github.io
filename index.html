@@ -1,6 +1,7 @@
 ---
 title: GraphStream - A Dynamic Graph Library
 fancybox: true
+menu: home
 ---
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -10,115 +11,73 @@ fancybox: true
 
 	{% include head.html %}
 
-	<body class="fitheight">
-		{% include menu.html %}
+	<body class="is-loading">
+		<div id="wrapper" class="fade-in">
 
-		<div class="container">
-			<div class="hidden-xs" style="height:50px;"></div>
+			<!-- Intro -->
+				<div id="intro">
+					<h1>GraphStream</h1>
+					<p>GraphStream is a Java library for the modeling and analysis of dynamic graphs. <br/> You can generate, import, export, measure, layout and visualize them.</p>
+					<ul class="actions">
+						<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+					</ul>
+				</div>
 
-			<div class="row">
-				<div class="col-xs-12 col-sm-6">
-					<div class="hidden-phone" style="height:110px;"></div>
-					<div class="title" style="font-size:50px;font-weight:400;line-height:50px;text-align:right;color:#222222;text-shadow:black 0px 0px 1px;">GraphStream</div>
-					<div style="font-size:21px;font-weight:300;text-align:right;line-height:30px;">A Dynamic Graph Library</div>
-				</div>
-				<div class="col-sm-6 hidden-xs">
-					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>
-				</div>
-			</div>
+			<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo">GraphStream</a>
+				</header>
 
-			<div class="visible-xs container" style="text-align: center;">
-					<img src="{{ "/img/gs-logo.png" | prepend: site.baseurl }}"/>
-			</div>
+			<!-- Nav -->
+			{% include nav.html %}
 
-			<div class="row" style="padding-top:40px; padding-bottom:40px;">
-				<div class="col-md-3 hidden-xs"></div>
-				<div class="col-xs-4 col-md-2" style="text-align:center;">
-					<a href="http://www.youtube.com/watch?v=XX5rRF6uxow" class="fancybox-media nb">
-						<i class="fa fa-play-circle fa-4x"></i>
-						<div style="font-size:12px;">Watch the Demo</div>
-					</a>
-				</div>
-				<div class="col-xs-4 col-md-2" style="text-align:center;">
-					<a href="/download/" class="nb">
-						<i class="fa fa-download fa-4x"></i>
-						<div style="font-size:12px;">Download GraphStream</div>
-					</a>
-				</div>
-				<div class="col-xs-4 col-md-2" style="text-align:center;">
-					<a href="https://github.com/graphstream" class="nb">
-						<i class="fa fa-github fa-4x"></i>
-						<div style="font-size:12px;">Browse the Code</div>
-					</a>
-				</div>
-			</div>
+			<!-- Main -->
+				<div id="main">
 
-			<div class="row" style="font-size:85%;">
-				<div class="col-xs-12 col-md-4">
-					<div class="panel panel-success">
-						<div class="panel-body bg-success">
-							<h4 class="text-success">What is GraphStream?</h4>
-							<p style="text-align:justify;">GraphStream is a Java library for the modeling and analysis of dynamic graphs. You can generate, import, export, measure, layout and visualize them.</p>
-							<div style="text-align:right;">
-								<a href="/doc/Tutorials/Getting-Started/" class="alert-success">
-									<span class="fa-stack">
-										<i class="fa fa-square-o fa-stack-2x"></i>
-										<i class="fa fa-plus fa-stack-1x"></i>
-									</span>
-									Get Started
-								</a>
+					<!-- Featured Post -->
+						<article class="post featured">
+							<header class="major">
+								<h2>Watch the demo</h2>
+							</header>
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/XX5rRF6uxow?controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</article>
+
+					<!-- Posts -->
+						<section class="posts">
+							<article>
+								<header>
+									<span class="date">April 24, 2017</span>
+									<h2><a href="#">Sed magna<br />
+									ipsum faucibus</a></h2>
+								</header>
+								<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+								<ul class="actions">
+									<li><a href="#" class="button">Full Story</a></li>
+								</ul>
+							</article>
+						</section>
+
+					<!-- Footer -->
+						<footer>
+							<div class="pagination">
+								<!--<a href="#" class="previous">Prev</a>-->
+								<a href="#" class="page active">1</a>
+								<a href="#" class="page">2</a>
+								<a href="#" class="page">3</a>
+								<span class="extra">&hellip;</span>
+								<a href="#" class="page">8</a>
+								<a href="#" class="page">9</a>
+								<a href="#" class="page">10</a>
+								<a href="#" class="next">Next</a>
 							</div>
-						</div>
-					</div>
-					<div class="panel panel-default" style="color:#555;">
-						<div class="panel-body">
-						<h4>Get some Help:</h4>
-						<p>
-						<ul>
-							<li>Try the <a href="/doc/FAQ/">FAQ</a>.</li>
-							<li>Check the <a href="http://sympa.litislab.fr/sympa/arc/graphstream-users">archives</a> of the users mailing list,</li>
-							<li>or <a href="http://sympa.litislab.fr/sympa/subscribe/graphstream-users">post a question</a>.</li>
-							<li>Report bugs with GraphStream in the <a href="http://tracker.graphstream-project.org/">issue tracker</a>.</li>
-						</ul>
-						</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xs-12 col-md-4">
-					<div class="panel panel-default">
-						<div class="panel-body" style="color:#555;">
-						<h4>Development:</h4>
-							<p>So you are a developer ? You like GraphStream and want to help contribute to this open source project?  Then read out how to <a href="/doc/Development/Get-Involved/">Get Involved</a>.</p>
-							<p>You may also check out our <a href="/doc/Development/Projects-We-Fancy/">wish list</a>, pick up one idea and contact us if you feel like!</p>
-
-							<p>For a quick overview, check out these links:</p>
-							<ul>
-						 		<li>The <a href="/doc/API/">API</a></li>
-						 		<li>The <a href="/doc/Source-Repository/"> Source Repository</a></li>
-						 		<li>The <a href="https://github.com/graphstream/gs-core/issues">Issue Tracker</a></li>
-						 		<li>The <a href="http://tracker.graphstream-project.org/milestones/">Roadmap</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xs-12 col-md-4">
-					{% include latest_news.html %}
-
-					<div class="panel panel-default" style="color:#555;">
-						<div class="panel-body">
-							<h4>License:</h4>
-							<p>
-								GraphStream is distributed under both licenses <a href="http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html">CeCILL-C</a> (<a href="http://www.cecill.info/licences/Licence_CeCILL-C_V1-fr.html">French version</a>) and <a href="http://www.gnu.org/licenses/lgpl.html">LGPL v3</a>.
-							</p>
-					</div>
-				</div>
+						</footer>
 
 				</div>
-			</div>
 
+			<!-- Footer -->
 			{% include footer.html %}
+
 		</div>
 
 		{% include scripts.html %}

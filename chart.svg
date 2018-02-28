@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="chart.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="118.867"
+     inkscape:cy="550.3759"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:showpageshadow="true"
+     showborder="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       sodipodi:absref="C:\Users\gsavin\Downloads\gs-logo.png"
+       y="-115.13482"
+       x="-468.61227"
+       id="image828"
+       xlink:href="file:///C:/Users/gsavin/Downloads/gs-logo.png"
+       preserveAspectRatio="none"
+       height="131.81725"
+       width="131.37932" />
+    <rect
+       style="fill:#101010;fill-opacity:1;stroke:#000000;stroke-width:1.2449249;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect831"
+       width="33.866665"
+       height="33.866665"
+       x="-231.92619"
+       y="9.889286" />
+    <rect
+       style="fill:#5e89d8;fill-opacity:1;stroke:#000000;stroke-width:1.19467843;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect833"
+       width="33.866665"
+       height="33.866665"
+       x="-198.05952"
+       y="9.8892841" />
+    <rect
+       style="fill:#fdfdfd;fill-opacity:1;stroke:#000000;stroke-width:1.19467854;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect833-1"
+       width="33.866665"
+       height="33.866665"
+       x="-164.19286"
+       y="9.889286" />
+    <g
+       id="g956">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect833-1-5"
+         d="M -272.39562,76.387111 H 10.080157 V 254.54145 H -272.39562 Z"
+         style="fill:#fdfdfd;fill-opacity:1;stroke:#000000;stroke-width:2.05209231;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+      <text
+         id="text883"
+         y="133.71428"
+         x="-251.19398"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:29.98611069px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Semi-Bold';stroke-width:0.26458332"
+           y="133.71428"
+           x="-251.19398"
+           id="tspan881"
+           sodipodi:role="line">Section</tspan></text>
+      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,-1.5119048,-15.875)"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         id="flowRoot885"
+         xml:space="preserve"><flowRegion
+           id="flowRegion887"><rect
+             y="631.09113"
+             x="-934.28571"
+             height="385.71429"
+             width="880"
+             id="rect889" /></flowRegion><flowPara
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans'"
+           id="flowPara891">GraphStream is a Java library for the modeling and analysis of dynamic graphs. You can generate, import, export, measure, layout and visualize them.</flowPara></flowRoot>      <text
+         id="text895"
+         y="206.6637"
+         x="-248.36815"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#5e89d8;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.4083333px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#5e89d8;fill-opacity:1;stroke-width:0.26458332"
+           y="206.6637"
+           x="-248.36815"
+           id="tspan893"
+           sodipodi:role="line">A link</tspan></text>
+      <text
+         id="text895-1"
+         y="220.06133"
+         x="-248.36815"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#d8605e;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.4083333px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#d8605e;fill-opacity:1;stroke-width:0.26458332"
+           y="220.06133"
+           x="-248.36815"
+           id="tspan893-9"
+           sodipodi:role="line">A link hovered</tspan></text>
+    </g>
+    <rect
+       style="fill:#d8605e;fill-opacity:1;stroke:#000000;stroke-width:1.19467854;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect833-5"
+       width="33.866665"
+       height="33.866665"
+       x="-130.32619"
+       y="9.8892879" />
+    <g
+       transform="translate(0,178.15434)"
+       id="g956-5">
+      <path
+         inkscape:connector-curvature="0"
+         id="rect833-1-5-0"
+         d="M -272.39562,76.387111 H 10.080157 V 254.54145 H -272.39562 Z"
+         style="fill:#101010;fill-opacity:1;stroke:#000000;stroke-width:2.05209231;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" />
+      <text
+         id="text883-3"
+         y="133.71428"
+         x="-251.19398"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#fdfdfd;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:29.98611069px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Semi-Bold';fill:#fdfdfd;fill-opacity:1;stroke-width:0.26458332"
+           y="133.71428"
+           x="-251.19398"
+           id="tspan881-0"
+           sodipodi:role="line">Section</tspan></text>
+      <flowRoot
+         transform="matrix(0.26458333,0,0,0.26458333,-1.5119048,-15.875)"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#fdfdfd;fill-opacity:1;stroke:none"
+         id="flowRoot885-7"
+         xml:space="preserve"><flowRegion
+           id="flowRegion887-1"
+           style="fill:#fdfdfd;fill-opacity:1"><rect
+             y="631.09113"
+             x="-934.28571"
+             height="385.71429"
+             width="880"
+             id="rect889-5"
+             style="fill:#fdfdfd;fill-opacity:1" /></flowRegion><flowPara
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#fdfdfd;fill-opacity:1"
+           id="flowPara891-8">GraphStream is a Java library for the modeling and analysis of dynamic graphs. You can generate, import, export, measure, layout and visualize them.</flowPara></flowRoot>      <text
+         id="text895-2"
+         y="206.6637"
+         x="-248.36815"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#5e89d8;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.4083333px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#5e89d8;fill-opacity:1;stroke-width:0.26458332"
+           y="206.6637"
+           x="-248.36815"
+           id="tspan893-5"
+           sodipodi:role="line">A link</tspan></text>
+      <text
+         id="text895-1-5"
+         y="220.06133"
+         x="-248.36815"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#d8605e;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.4083333px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans';fill:#d8605e;fill-opacity:1;stroke-width:0.26458332"
+           y="220.06133"
+           x="-248.36815"
+           id="tspan893-9-4"
+           sodipodi:role="line">A link hovered</tspan></text>
+    </g>
+  </g>
+</svg>

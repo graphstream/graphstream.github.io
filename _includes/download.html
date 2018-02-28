@@ -1,0 +1,26 @@
+{% assign dl_id = include.download.title | slugify | prepend: "download-" %}
+<div class="downloads__item">
+  <a data-toggle="collapse" href="#{{ dl_id }}" aria-expanded="false" aria-controls="{{ dl_id }}">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square fa-stack-2x"></i>
+      <i class="fa fa-{% if include.download.icon %}{{ include.download.icon }}{% else %}expand{% endif %} fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+  <div class="media-body">
+    <a data-toggle="collapse" href="{{ include.download.url }}" aria-expanded="false" aria-controls="dl{{ dl_id }}" style="font-weight:300;">
+      <h4 class="media-heading" style="margin-bottom: 0px;">{{ include.download.title }}</h4></a>
+
+    <p>{{ include.download.description }}</p>
+    {% for f in include.download.files %}
+      <div class="files" style="display: flex;">
+        <div class="files__header">
+          <h4>{{ f.name }}</h4>
+          <code>{{ f.hashMethod }}: {{ f.hash }}</code>
+        </div>
+        <div class="files__download">
+          <a class="button special icon fa-download" href="{{ f.href }}">Download</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

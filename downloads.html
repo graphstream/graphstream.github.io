@@ -1,0 +1,22 @@
+---
+layout: base
+title: Downloads
+redirect_from: /download/
+menu: downloads
+permalink: /downloads/index.html
+---
+<header>
+  <h1>{{ page.title }}</h1>
+
+  <a class="button special icon fa-search" href="https://data.graphstream-project.org/pub/">Explore public directory</a>
+
+  or
+
+  <a class="button icon fa-moon-o" href="https://data.graphstream-project.org/pub/1.x/nightly-build/last">get last nightly builds</a>
+</header>
+
+<div class="downloads">
+{% for dl in site.downloads reversed %}
+  {% include download.html download=dl %}
+{% endfor %}
+</div>

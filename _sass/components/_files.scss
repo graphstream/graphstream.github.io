@@ -1,0 +1,26 @@
+.files {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+
+  @include breakpoint(medium) {
+    flex-direction: column;
+  }
+
+  &:nth-child(2n+1) {
+    background-color:  _palette(null, border-bg);
+  }
+
+  &__header {
+    flex: 1 1 auto;
+    max-width: 100%;
+
+    code {
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__download {
+    flex: 0 1 auto;
+  }
+}
