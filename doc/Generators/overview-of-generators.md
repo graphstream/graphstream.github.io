@@ -11,7 +11,7 @@ redirect_from: /doc/Generators/Overview-of-generators_1.0/
 A (n,k)-banana tree is composed of a root node and n
 k-stars with one leaf of each star connected to the root node.
 
-![Banana Tree]({{ "generator_overview_banana_tree.png" | prepend: site/content_img }})
+![Banana Tree]({{ "generator_overview_banana_tree.png" | prepend: site.content_img }})
 
 
 ## Barabasi-Albert generator
@@ -29,7 +29,7 @@ chance to a node if it has a high degree.
             *Emergence of scaling in random networks*, Science 286: 509–512.
             October 1999. doi:10.1126/science.286.5439.509.
 
-![Barabasi Albert]({{ "generator_overview_barabasi_albert.png" | prepend: site/content_img }})
+![Barabasi Albert]({{ "generator_overview_barabasi_albert.png" | prepend: site.content_img }})
 
 
 ## Chvatal graph generator
@@ -50,7 +50,7 @@ Grötzsch graph, which has 11 vertices but is not regular.
             of Combinatorial Theory 9 (1): 93–94,
             doi:10.1016/S0021-9800(70)80057-6
 
-![Chvatal]({{ "generator_overview_chvatal.png" | prepend: site/content_img }})
+![Chvatal]({{ "generator_overview_chvatal.png" | prepend: site.content_img }})
 
 
 ## Dorogovtsev-Mendes generator
@@ -77,7 +77,7 @@ therefore generate trees of any size.
 :Reference: S. N. Dorogovtsev and J. F. F. Mendes, *Evolution of networks*, in
             Adv. Phys, 2002, 1079--1187
 
-![Dorogovtsev Mendes]({{ "generator_overview_dorogovtsev_mendes.png" | prepend: site/content_img }})
+![Dorogovtsev Mendes]({{ "generator_overview_dorogovtsev_mendes.png" | prepend: site.content_img }})
 
 
 ## Flower Snark generator
@@ -93,7 +93,8 @@ The flower snarks are non-planar and non-hamiltonian.
             *Infinite Families of Nontrivial Trivalent Graphs Which Are Not Tait Colorable.*
             Amer. Math. Monthly 82, 221–239, 1975.
 
-![Flower Snark]({{ "generator_overview_flower_snark.png" | prepend: site/content_img }})
+![Flower Snark]({{ "generator_overview_flower_snark.png" | prepend: site.content_img }})
+
 
 
 ## Full connected graph generator
@@ -114,17 +115,17 @@ chosen number. The range in which these numbers are chosen can be specified.
 By default, edges are not oriented. It is possible to ask orientation, in
 which case the direction is chosen randomly.
 
-![Full]({{ "generator_overview_full.png" | prepend: site/content_img }})
+![Full]({{ "generator_overview_full.png" | prepend: site.content_img }})
 
 
 ## Grid generator
 
-![Grid]({{ "generator_overview_grid.png" | prepend: site/content_img }})
+![Grid]({{ "generator_overview_grid.png" | prepend: site.content_img }})
 
 
 ## Incomplete grid generator
 
-![Incomplete Grid]({{ "generator_overview_incomplete_grid.png" | prepend: site/content_img }})
+![Incomplete Grid]({{ "generator_overview_incomplete_grid.png" | prepend: site.content_img }})
 
 
 ## Lobster generator
@@ -133,7 +134,7 @@ Lobster are trees where the distance between any
 node and a root path is less than 2. In this generator, the max distance can
 be customized.
 
-![Lobster]({{ "generator_overview_lobster.png" | prepend: site/content_img }})
+![Lobster]({{ "generator_overview_lobster.png" | prepend: site.content_img }})
 
 
 ## Petersen graph generator
@@ -154,7 +155,7 @@ about what might be true for graphs in general.
 :Reference: Petersen, Julius (1898), *Sur le théorème de Tait*,
             L'Intermédiaire des Mathématiciens 5: 225–227.
 
-![Petersen]({{ "generator_overview_petersen.png" | prepend: site/content_img }})
+![Petersen]({{ "generator_overview_petersen.png" | prepend: site.content_img }})
 
 
 ## Preferential Attachment generator
@@ -174,7 +175,7 @@ therefore generate trees of any size.
             *Emergence of scaling in random networks*. Science 286: 509–512.
             October 1999. doi:10.1126/science.286.5439.509.
 
-![Preferential Attachment]({{ "generator_overview_preferential_attachment.png" | prepend: site/content_img }})
+![Preferential Attachment]({{ "generator_overview_preferential_attachment.png" | prepend: site.content_img }})
 
 
 ## Random Euclidean generator
@@ -210,7 +211,7 @@ If dimension is 3, then attributes "x", "y" and "z" are used. For other
 values of dimension, \|dimension\| attributes are defined ("xi" with "i" in
 \|dimension\|) .
 
-![Random Euclidean]({{ "generator_overview_random_euclidean.png" | prepend: site/content_img }})
+![Random Euclidean]({{ "generator_overview_random_euclidean.png" | prepend: site.content_img }})
 
 
 ## Watts-Strogatz generator
@@ -223,5 +224,5 @@ This generator is based on the Watts-Strogatz model.
             *Collective dynamics of 'small-world' networks*. Nature 393
             (6684): 409–10. doi:10.1038/30918. PMID 9623998. 1998.
 
-![Watts-Strogatz]({{ "generator_overview_watts_strogatz.png" | prepend: site/content_img }})
+![Watts-Strogatz]({{ "generator_overview_watts_strogatz.png" | prepend: site.content_img }})
 

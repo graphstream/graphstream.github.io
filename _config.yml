@@ -18,5 +18,6 @@ highlighter: rouge
 kramdown:
   input: GFM
   hard_wrap: false
-gems:
-  - jekyll-redirect-from
+
+#gems:
+#  - jekyll-redirect-from
