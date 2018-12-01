@@ -201,7 +201,7 @@ add the dependency in the ``dependencies`` section
 	<dependencies>
 		<dependency>
 			<artifactId>gs-core</artifactId>
-			<groudId>org.graphstream</groupId>
+			<groupId>org.graphstream</groupId>
 			<version>1.0</version>
 			<optional>false</optional>
 		</dependency>
