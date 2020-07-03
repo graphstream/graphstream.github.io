@@ -4,7 +4,7 @@ layout: documentation
 docpath: FAQ|/doc/FAQ/,The graph viewer|/doc/FAQ/The-graph-viewer/
 permalink: /doc/FAQ/The-graph-viewer/How-do-I-dynamically-change-color-and-size-in-the-viewer/
 redirect_from: /doc/FAQ/The-graph-viewer/How-do-I-dynamically-change-color-and-size-in-the-viewer_1.1/
-versions: "2.0/"
+versions: "1.0/"
 ---
 
 You have three options to do this.
@@ -32,7 +32,7 @@ node.important {
 We defined two styles, one for all the nodes, another for nodes having the CSS class ``important``. Then in our code, at any time, we can add or change the attribute ``ui.class`` on individual nodes to change their appearance:
 
 {% highlight java %}
-node.setAttribute("ui.class", "important"); // make the node appear as important.
+node.addAttribute("ui.class", "important"); // make the node appear as important.
 {% endhighlight %}
 
 Or:
@@ -64,9 +64,9 @@ You can furthermore have several classes applied to a node. If the size and colo
 And in the Java code:
 
 {% highlight java %}
-node1.setAttribute("ui.class", "big, important");
-node2.setAttribute("ui.class", "big");
-node3.setAttribute("ui.class", "important");
+node1.addAttribute("ui.class", "big, important");
+node2.addAttribute("ui.class", "big");
+node3.addAttribute("ui.class", "important");
 {% endhighlight %}
 
 
@@ -87,7 +87,7 @@ node {
 And then simply pass the Color object as argument of a the special attribute ``ui.color`` on individual graph elements, here nodes, to set the color of the element:
 
 {% highlight java %}
-node.setAttribute("ui.color", Color.RED);
+node.addAttribute("ui.color", Color.RED);
 {% endhighlight %}
 
 However, sometime, you may need a lot of different colors, for example you may need a gradient of colors to indicate some range of values. In this case, you can use the color interpolation feature. Use a style like this one:
@@ -134,8 +134,8 @@ This style gives a default size of 10 pixels to nodes, but allows to change it d
 For example:
 
 {% highlight java %}
-node1.setAttribute("ui.size", 30);     // The node will use 30 pixels.
-node2.setAttribute("ui.size", "2gu");  // The node will use 2 graph units.
+node1.addAttribute("ui.size", 30);     // The node will use 30 pixels.
+node2.addAttribute("ui.size", "2gu");  // The node will use 2 graph units.
 {% endhighlight %}
 
 (Graph units are the units you use to position nodes when using the ``xyz`` or ``x`` and ``y`` attributes, using graph units, your nodes can change size when you change the zoom).
@@ -146,7 +146,7 @@ node2.setAttribute("ui.size", "2gu");  // The node will use 2 graph units.
 You can use the ``ui.style`` attribute on nodes or edges. For example:
 
 {% highlight java %}
-node.setAttribute("ui.style", "fill-color: rgb(0,100,255);");
+node.addAttribute("ui.style", "fill-color: rgb(0,100,255);");
 {% endhighlight %}
 
 However be warned that doing this will store a color inside each node. The benefit of using styles is that if you have thousands of nodes with the same color, they all share the same style. If you use the dynamic color styles, as shown in the previous section, you use the same style with only one real number indicating the color. If you use the example just above, you store a style with one color for each node.

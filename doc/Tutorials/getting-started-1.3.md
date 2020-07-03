@@ -80,12 +80,10 @@ well as what we call *generators*, that are algorithms that produce graphs with
 predefined features (random, grid, scale-free, etc.). It is defined in the
 ``gs-algo-X-Y.jar`` file.
 
-Finally, we have the gs-ui modules. They provides an implementation of the 
-GraphStream Viewer. Their name is composed like this : ``gs-ui-Z-X-Y.jar``
-where ``X`` is the major GraphStream version, ``Y`` is the minor GraphStream 
-version and ``Z`` is the name of the GUI tech used.
+When you download GraphStream you will find these two jars in the ``lib/``
+directory. Simply include them in your ``classpath``.
 
-You can use Maven to install graphstream and setup eclipse
+Alternatively, you can use Maven to install graphstream and setup eclipse
 projects as described in [the maven tutorial](/doc/Tutorials/GraphStream-Maven/).
 
 A first example
@@ -147,12 +145,8 @@ As their name suggest, these methods will add three nodes and three edges betwee
 the nodes. You can see that each node or edge is identified by a string. Such
 identifiers must naturally be unique.
 
-It is often useful to check the graph by seeing it. If you add :
-```java
-System.setProperty("org.graphstream.ui", "swing"); 
-```
-you will be able to visulize your graph with the ``gs-ui-swing module``. you can easily 
-do this using the ``display()`` utility method:
+It is often useful to check the graph by seeing it, you can easily do this using
+the ``display()`` utility method:
 
 ```java
 graph.display();
@@ -170,8 +164,6 @@ import org.graphstream.graph.implementations.*;
 
 public class Tutorial1 {
 	public static void main(String args[]) {
-		System.setProperty("org.graphstream.ui", "swing");
-		
 		Graph graph = new SingleGraph("Tutorial 1");
 
 		graph.addNode("A");
@@ -185,8 +177,6 @@ public class Tutorial1 {
 	}
 }
 ```
-
-You will found more detail about the visualisation in /doc/Tutorials/Graph-Visualisation/
 
 The graph being a factory for node, it can create nodes automatically if needed. Instead
 of the graph construction seen above, you can use:
@@ -243,23 +233,45 @@ for(Node n:graph) {
 ```
 
 The code above allows to iterate on all the nodes of the graph and will print
-their unique identifier, one by line. You can do a similar thing for edges
-using streams:
+their unique identifier, one by line. You can do a similar thing for edges:
 
 ```java
-graph.edges().forEach(e -> {
+for(Edge e:graph.getEachEdge()) {
 	System.out.println(e.getId());
-});
+}
 ```
 
-In fact the ``for(Node n:graph)`` instruction is a shorthand for this
-code using streams:
+In fact the ``for(Node n:graph)`` instruction is a shorthand for:
 
 ```java
-graph.nodes().forEach(n -> {
+for(Node n:graph.getEachNode()) {
 	...
-});
+}
 ```
+
+You can also obtain a read-only set of nodes from the graph (this is not a
+copy, but a view on the set of nodes, hence the operation is reasonably fast):
+
+```java
+Collection<Node> nodes = graph.getNodeSet();
+```
+
+This can be useful since a lot of algorithms in the ``java.util.Collections``
+are then applicable on the obtained set. The same operation is possible on edges using ``getEdgeSet()``.
+
+Finally, you can also, if you prefer, use iterators on theses sets of nodes
+and edges:
+
+```java
+Iterator<? extends Node> nodes = graph.getNodeIterator();
+
+while(nodes.hasNext()) {
+	Node node = nodes.next();
+	...
+}
+```
+
+And anew, this is exactly the same for edges with ``Graph.getEdgeIterator()``.
 
 Another way to access graph elements is to use their indices. Unlike identifiers which are specified when the elements are
 created, indices are automatically maintained by the graph. They could change when elements are added or removed but are
@@ -297,5 +309,4 @@ String id = graph.getNode(0).getId();
 
 ### Other version of this document
 
-- [GraphStream 1.3](/doc/Tutorials/Getting-Started/1.3/)
 - [GraphStream 1.0](/doc/Tutorials/Getting-Started/1.0/)

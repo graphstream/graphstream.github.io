@@ -20,5 +20,5 @@ Yes. A few:
 - ``ui.hide`` to hide a node, edge or sprite (only its presence is tested, not its value).
 - ``ui.quality`` to enable slower but better rendering.
 - ``ui.antialias`` to enable anti-aliasing of shapes drawn by the viewer.
-- ``ui.screenshot`` for graphs, to quickly take a screen shot of the viewer. The value must be the name of a the image file you want to save. Once the screen shot has been saved, the attribute is automatically removed. For example `graph.addAttribute("ui.screenshot", "/some/place/image.png");`.
+- ``ui.screenshot`` for graphs, to quickly take a screen shot of the viewer. The value must be the name of a the image file you want to save. Once the screen shot has been saved, the attribute is automatically removed. For example `graph.setAttribute("ui.screenshot", "/some/place/image.png");`.
 

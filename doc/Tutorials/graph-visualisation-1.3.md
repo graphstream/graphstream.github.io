@@ -16,7 +16,9 @@ This tutorial is dedicated to visualisation of graphs and the addition and anima
 
 GraphStream does not provide one but several viewers.
 
-From the 2.0 version, the default viewer is no more in ``gs-core``. For more advanced rendering, another viewer is available separately. It is located in the ``gs-ui-Z`` modules, where ``Z`` is the name of the GUI tech used. To use it, you must download the ``gs-ui-Z.jar`` jar in the [download](/download/) section of the site and put it in your class path. These viewers supports most of the GraphStream [CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference/):
+You probably already have seen the default viewer. It is capable of drawing the nodes as circles of arbitrary size, and the edges as straight lines of arbitrary width. It can also display a label aside nodes and edges, as well as changing the colors of these elements. With the basic support of sprites (a matter that we will discuss later) these are the only capacities it can handle. This viewer is made to be as portable as possible, using only pure Java and being lightweight. It is provided with the core of GraphStream so that small projects can use only one jar as a dependency.
+
+For more advanced rendering, another viewer is available separately. It is located in the ``gs-ui`` module. To use it, you must download the ``gs-ui.jar`` jar in the [download](/download/) section of the site and put it in your class path. This viewer supports the complete GraphStream [CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference/):
 
 * Several node and edge shapes,
 * Borders (fill and stroke),
@@ -35,17 +37,15 @@ From the 2.0 version, the default viewer is no more in ``gs-core``. For more adv
 
 ### How to display a graph
 
-There are several ways to display a graph. The most easy one is to use the ``Graph.display()`` method. This is in fact a shortcut that creates a viewer for you. Indeed, its return value is an instance of the viewer used to display the graph. This method by default will try to place the nodes automatically in space to make the graph as readable as possible. You can also request that this automatic placement be disabled with ``Graph.display(boolean)``, passing the value ``false`` (however for your nodes to be visible, you therefore have to give them a position). 
+There are several ways to display a graph. The most easy one is to use the ``Graph.display()`` method. This is in fact a shortcut that creates a viewer for you. Indeed, its return value is an instance of the viewer used to display the graph. This method by default will try to place the nodes automatically in space to make the graph as readable as possible. You can also request that this automatic placement be disabled with ``Graph.display(boolean)``, passing the value ``false`` (however for your nodes to be visible, you therefore have to give them a position).
 
 It is also possible to directly create the viewer by hand. This is often necessary in order to include the graph view inside your own GUIs, this is described under.
 
-***Please note the display option is not available on ``gs-ui-android``, which requires a hand-created GUI.***
-
-You can specify which viewer to use by setting a global property named ``org.graphstream.ui``. You can use the value ``swing`` or ``javafx`` depending on which GUI you want to use. This can be done in the ``main()`` method using the following code for example:
+You can specify which viewer to use by setting a global property named ``gs.ui.renderer``. For the advanced viewer, you can use the value ``org.graphstream.ui.j2dviewer.J2DGraphRenderer``. This can be done in the ``main()`` method using the following code for example:
 
 ```java
 public static void main(String args[]) {
-	System.setProperty("org.graphstream.ui", "swing");
+	System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 	...
 }
 ```
@@ -53,10 +53,10 @@ public static void main(String args[]) {
 You can also pass this value directly to the JVM when launching the program:
 
 ```bash
-java -Dorg.graphstream.ui=swing yourProgram
+java -Dgs.ui.renderer=org.graphstream.ui.j2dviewer.J2DGraphRenderer yourProgram
 ```
 
-The value is a link of the display class to use, so ``swing`` is a shortcut for ``org.graphstream.ui.swing.util.Display``. you can provide your own graph renderers if you wish. There is a ``org.graphstream.ui.swingViewer.GraphRenderer`` interface that you can follow to do this, but this is the matter of another tutorial.
+The value being the name of the class to use, you can provide your own graph renderers if you wish. There is a ``org.graphstream.ui.swingViewer.GraphRenderer`` interface that you can follow to do this, but this is the matter of another tutorial.
 
 
 ## The viewer
@@ -220,19 +220,19 @@ There are some attributes that control the display however, since it is not alwa
 You can for example change the background color of the graph using a style sheet given as a string this way:
 
 ```java
-graph.setAttribute("ui.stylesheet", "graph { fill-color: red; }");
+graph.addAttribute("ui.stylesheet", "graph { fill-color: red; }");
 ```
 
 But you can also specify an URL:
 
 ```java
-graph.setAttribute("ui.stylehseet", "url('http://www.deep.in/the/site/mystylesheet')");
+graph.addAttribute("ui.stylehseet", "url('http://www.deep.in/the/site/mystylesheet')");
 ```
 
 Or:
 
 ```java
-graph.setAttribute("ui.stylesheet", "url(file:///somewhere/over/the/rainbow/stylesheet')");
+graph.addAttribute("ui.stylesheet", "url(file:///somewhere/over/the/rainbow/stylesheet')");
 ```
 
 The style sheets are cumulative, each time you change the ``ui.stylesheet`` attribute, the new style sheet is read and merged with the previous ones, replacing or adding style definitions. You can however completely clear the style of a graph using:
@@ -264,21 +264,21 @@ node#A {
 
 Note that the semi-colon is mandatory, even if there is only one property.
 
-There are a lot of style properties, some applies only to a kind of selector. They are described in [the CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference), which describes the whole set of style properties available in GraphStream. Do not forget that not all the CSS properties are supported in all the viewers. These `gs-ui-Z` viewers understands most of the properties listed in [the CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference).
+There are a lot of style properties, some applies only to a kind of selector. They are described in [the CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference_1.0), which describes the whole set of style properties available in GraphStream. Do not forget that not all the CSS properties are supported in all the viewers. The `gs-ui` viewer understands all of the properties listed in [the CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference_1.0).
 
 
 ### Rendering quality
 
-The ``swing`` viewer support several rendering modes. Both the simple and advanced viewers have two options to tune quality. The first one is set by adding the ``ui.quality`` attribute to the graph. This attribute does not need a value. It informs the viewer that it can use rendering algorithms that are more time consuming to favor quality instead of speed:
+The viewer support several rendering modes. Both the simple and advanced viewers have two options to tune quality. The first one is set by adding the ``ui.quality`` attribute to the graph. This attribute does not need a value. It informs the viewer that it can use rendering algorithms that are more time consuming to favor quality instead of speed:
 
 ```java
-graph.setAttribute("ui.quality");
+graph.addAttribute("ui.quality");
 ```
 
 The other attribute allows to activate anti-aliasing of lines and shapes, simply put it on the graph:
 
 ```java
-graph.setAttribute("ui.antialias");
+graph.addAttribute("ui.antialias");
 ```
 
 Removing these attributes will restore the default behavior.
@@ -292,14 +292,6 @@ Most of the time, the Java2D viewers drawing performance can degrade quickly whe
 * On OS X hosts, by default the quartz renderer is activated.
 * ``java -Dsun.java2d.opengl=True`` on Linux. Sadly it **is not** activated by default.
 
-In android, you can enable or disable the hardware acceleration in the ``Manifest``.
-```xml
-<application
-	...	
-	tools:replace="android:hardwareAccelerated">
-```
-
-But be careful, **some CSS property effect may changes**.
 
 ## Advanced view
 
@@ -379,17 +371,6 @@ Here we have several ways to work. It depends on the program you intend to creat
  * If you plan to do a GUI only program, that is a program that only respond to GUI events (mous clicks, keyboard, etc.) you should work in the GUI thread, using listeners.
  * If you intend to create some sort of simulation that runs a code continuously on the graph and uses the viewer to display its results, you should work in the Java main thread (created when you launch the program) and comunicate with the viewer GUI.
 
-***Please note that by default, certain measures have been taken to save resources.*** These include the edge selection and the over/left function.
-If you want to activate them, you can use the method ``enableMouseOptions`` of ``View``:
-
-```java
-viewer.getDefaultView().enableMouseOptions();
-```
-This is a shortcut used to replace the default mouse manager. You can also do it manually :
-
-```java
-viewer.getDefaultView().setMouseManager(new MouseOverMouseManager(EnumSet.of(InteractiveElement.EDGE, InteractiveElement.NODE, InteractiveElement.SPRITE)));
-```
 
 ### Working in the GUI thread
 
@@ -437,7 +418,6 @@ public class Clicks implements ViewerListener {
 	protected boolean loop = true;
 
 	public static void main(String args[]) {
-		System.setProperty("org.graphstream.ui", "swing");
 		new Clicks();
 	}
 	public Clicks() {
@@ -489,14 +469,6 @@ public class Clicks implements ViewerListener {
 	public void buttonReleased(String id) {
 		System.out.println("Button released on node "+id);
 	}
-
-	public void mouseOver(String id) {
-		System.out.println("Need the Mouse Options to be activated");
-	}
-
-	public void mouseLeft(String id) {
-		System.out.println("Need the Mouse Options to be activated");
-	}
 }
 ```
 
@@ -522,13 +494,6 @@ double pos[] = nodePosition(node);
 
 Geographical Information Systems among other things allow to manipulate geographic data and render it. Most often the data is stored under a form that is difficult to use for simulations. What one could want for example is to extract the road network of GIS data under the form of a graph. GraphStream provides a module to do that. We propose you to use the data collected by this module to render a map of a city with the GraphStream viewer. In a first step we will see how to add some style to the city map. In a second time, we will add a very basic traffic simulation on the map and the underlying road graph.
 
-But before that, we will need to add the viewer we use. We are going to use ``gs-ui-swing`` for this example. To add this viewer, we can write the following line right at the beginning of the program, before the graph creation:
-
-```java
-System.setProperty("org.graphstream.ui", "swing");
-```
-
-You must ensure you have the ``gs-ui-swing.jar`` jar in your class path to use this new viewer.
 
 ### The data
 
@@ -541,7 +506,6 @@ Save it under the name "LeHavre.dgs". This graph can be loaded and displayed eas
 ```java
 public class LeHavre {
 	public static void main(String args[]) {
-		System.setProperty("org.graphstream.ui", "swing");
 		new LeHavre();
 	}
 	
@@ -586,7 +550,6 @@ We can modify the program to use this style sheet by adding it as an attribute `
 ```java
 public class LeHavre {
 	public static void main(String args[]) {
-		System.setProperty("org.graphstream.ui", "swing");
 		new LeHavre();
 	}
 	
@@ -600,7 +563,7 @@ public class LeHavre {
 			System.exit(1);
 		}
 		
-		graph.setAttribute("ui.stylesheet", styleSheet);
+		graph.addAttribute("ui.stylesheet", styleSheet);
 		graph.display(false);   // No auto-layout.
 	}
 }
@@ -630,11 +593,11 @@ edge {
 ```
 
 
-In addition, we will position two other attributes on the graph ``ui.quality`` and ``ui.antialias`` that will help beautifying the display in ``gs-ui-swing``. Above the line that adds the ``ui.stylesheet`` attribute add the two lines:
+In addition, we will position two other attributes on the graph ``ui.quality`` and ``ui.antialias`` that will help beautifying the display. Above the line that adds the ``ui.stylesheet`` attribute add the two lines:
 
 ```java
-graph.setAttribute("ui.quality");
-graph.setAttribute("ui.antialias");
+graph.addAttribute("ui.quality");
+graph.addAttribute("ui.antialias");
 ```
 
 
@@ -647,18 +610,26 @@ To help you see how the above graph relates to the city, here is a screen shot o
 Adding style classes
 --------------------
 
+Before seeing style classes, we will need to change the viewer we use. Indeed, we have actually reached the limits of the default GraphStream viewer. This default viewer is made to be as simple and lighweight as possible, and it does not support the whole GraphStream CSS. To change the viewer we use, we can add the following line right at the beginning of the program, before the graph creation:
+
+```java
+System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
+```
+
+You must ensure you have the ``gs-ui.jar`` jar in your class path to use this new viewer.
+
 We will now change the appearance of some edges according to some attributes stored on these edges. There are a lot of data in the graph you downloaded. For each edge, there are three attributes that specify if an edge is a bridge with ``isBridge``, a tunnel with ``isTunnel`` or a tollway with ``isTollway``. These attributes are present only if the corresponding edge is indeed a bridge, a tunnel or a tollway. Therefore we will browse all edges of the graph to look at these attributes in order to change the way they look.
 
 Until then, we only changed the style of the whole set of edges or the whole set of nodes. To change only some elements, we can use style classes. A class is a style that is applied to an element only if it has an attribute ``ui.class`` which contains the name of the style class. For example in order to make an edge pertain to the ``tollway`` class, one can use:
 
 ```java
-edge.setAttribute("ui.class", "tollway");
+edge.addAttribute("ui.class", "tollway");
 ```
 
 An element may pertain to several style classes in which case the styles are merged, with a priority to classes that appear first in the list. The list is separated by comas. For example if an edge pertains to two classes you can write:
 
 ```java
-edge.setAttribute("ui.class", "tollway, foo");
+edge.addAttribute("ui.class", "tollway, foo");
 ```
 
 In the style sheet, you specify the style for a class using for example:
@@ -672,15 +643,15 @@ Such a style is applied in **cascade** with the style for each edge. This means 
 First, we will add the classes attributes on the edges, just after the graph reading try-catch block, add the following code:
 
 ```java
-graph.edges().forEach(edge -> {
+for(Edge edge: graph.getEachEdge()) {
 	if(edge.hasAttribute("isTollway")) {
-		edge.setAttribute("ui.class", "tollway");
+		edge.addAttribute("ui.class", "tollway");
 	} else if(edge.hasAttribute("isTunnel")) {
-		edge.setAttribute("ui.class", "tunnel");
+		edge.addAttribute("ui.class", "tunnel");
 	} else if(edge.hasAttribute("isBridge")) {
-		edge.setAttribute("ui.class", "bridge");
+		edge.addAttribute("ui.class", "bridge");
 	}
-});
+}
 ```
 
 This code will iterate on each edge of the graph. If an edge has one of the attributes listed above, we add it one of the three classes ``tollway``, ``tunnel`` or ``bridge``.
@@ -704,16 +675,16 @@ There are few bridges in the city, on the south east, you can see three bridges 
 
 You may not well see the tunnel in blue. At the scale of the city, it is finally small (300 meters). However you can instruct the viewer to zoom on the view and to move to a given point of view. This is done by accessing the ``Viewer`` object and the actual ``View`` it is using. Indeed, the viewer may have several views on the same graph.
 
-The ``Graph.display()`` method returns a reference on the viewer used for display. The returned object if of type ``Viewer``. This viewer provides lots of methods allowing to control the viewer and its views. To obtain the default view used to display the graph, you can use the ``Viewer.getDefaultView()`` method. The ``View`` object in turn allows to control the frame size (it can be embedded in a GUI without this frame if needed), the zoom and the looked at point inside the graph via the camera. This is done using the ``View.resizeFrame()``, ``Camera.setViewPercent()`` and ``Camera.setViewCenter()`` methods.
+The ``Graph.display()`` method returns a reference on the viewer used for display. The returned object if of type ``Viewer``. This viewer provides lots of methods allowing to control the viewer and its views. To obtain the default view used to display the graph, you can use the ``Viewer.getDefaultView()`` method. The ``View`` object in turn allows to control the frame size (it can be embedded in a GUI without this frame if needed), the zoom and the looked at point inside the graph. This is done using the ``View.resizeFrame()``, ``View.setViewPercent()`` and ``View.setViewCenter()`` methods.
 
 Replace the ``graph.display(false);`` statement in your code by the following lines:
 
 ```java
 Viewer viewer = graph.display(false);
-ViewPanel view = (ViewPanel) viewer.getDefaultView(); // ViewPanel is the view for gs-ui-swing
+View view = viewer.getDefaultView();
 view.resizeFrame(800, 600);
-view.getCamera().setViewCenter(3000, 8000, 0);
-view.getCamera().setViewPercent(0.25);
+view.setViewCenter(440000, 2503000, 0);
+view.setViewPercent(0.25);
 ```
 
 The ``setViewCenter`` method takes three arguments since views can be 2D but also 3D. Here we work in two dimensions only, hence the last argument set to zero. The ``setViewPercent`` method takes as argument a double that tells which percent of the whole graph is visible. For example, the value 0.5 shows only half of the graph.
@@ -742,19 +713,19 @@ The interesting part with this coloring method, is that you can change dynamical
 The data stored on the graph you have does not incorporate traffic, but it contains maximum speed limits stored as a ``speedMax`` attribute on edges. We could use dynamic coloring to assign a specific color for each edge depending on its speed limit. The maximum speed limit in France is 130 kilometers per hour. Let's first add the ``ui.color`` attributes on each edge. Inside the loop on each edge where we assign the ``tollway``, ``bridge`` and ``tunnel`` classes, add:
 
 ```java
-graph.edges().forEach(edge -> {
+for(Edge edge: graph.getEachEdge()) {
 	if(edge.hasAttribute("isTollway")) {
-		edge.setAttribute("ui.class", "tollway");
+		edge.addAttribute("ui.class", "tollway");
 	} else if(edge.hasAttribute("isTunnel")) {
-		edge.setAttribute("ui.class", "tunnel");
+		edge.addAttribute("ui.class", "tunnel");
 	} else if(edge.hasAttribute("isBridge")) {
-		edge.setAttribute("ui.class", "bridge");
+		edge.addAttribute("ui.class", "bridge");
 	}
 
 	// Add this :
 	double speedMax = edge.getNumber("speedMax") / 130.0;
 	edge.setAttribute("ui.color", speedMax);
-});
+}
 ```
 
 This obtains the value stored in the ``speedMax`` attribute, expecting it is a number (which should be the case!) and divides this number by 130 to scale the value in the range 0 to 1. Then this value is used to put the ``ui.color`` attribute on the edge.
@@ -858,83 +829,10 @@ Once your proud of your visualization, you can take a screen shot of the viewer 
 For example:
 
 ```java
-graph.setAttribute("ui.screenshot", "/some/place/screenshot.png");
+graph.addAttribute("ui.screenshot", "/some/place/screenshot.png");
 ```
 
-## What about Android ?
-
-Android is a bit peculiar since it doesn't have a default display method. You need to create your own view in order to use it.
-For the convenience of the users, a default Android ``Fragment`` is provided. The ``Fragment`` can be used like so :
-
-```java
-public void display(Bundle savedInstanceState, Graph graph, boolean autoLayout) {
-    if (savedInstanceState == null) {
-        FragmentManager fm = getSupportFragmentManager();
-
-        // find fragment or create him
-        fragment = (DefaultFragment) fm.findFragmentByTag("fragment_tag");
-        if (null == fragment) {
-            fragment = new DefaultFragment();
-            fragment.init(graph, autoLayout);
-        }
-
-        // Add the fragment in the layout and commit
-        FragmentTransaction ft = fm.beginTransaction() ;
-        ft.add(CONTENT_VIEW_ID, fragment).commit();
-    }
-}
-```
-
-Of course, you can create your own UI with your own fragment. In that case, you have to follow a certain order in the construction of the graph view corresponding to the lifecycle of your ``Activity``/``Fragment``. Three steps are necessary:
-
- * Create the viewer
- * Link the context
- * Create the view
-
-Here the default ``Fragment``, following the different steps :
-
-```java
-...
-	/**
-	* 1- Create only one Viewer
-	* @param savedInstanceState
-	*/
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		viewer = new AndroidViewer(graph, AndroidViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
-	}
-
-	/**
-	* 2- Link the context
-	* @param context
-	*/
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		renderer = new AndroidFullGraphRenderer();
-		renderer.setContext(context);
-	}
-
-	/**
-	* 3- Create the view
-	* @param inflater
-	* @param container
-	* @param savedInstanceState
-	* @return view
-	*/
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		DefaultView view = (DefaultView)viewer.addView(AndroidViewer.DEFAULT_VIEW_ID, renderer);
-
-		if (autoLayout) {
-		    Layout layout = Layouts.newLayoutAlgorithm();
-		    viewer.enableAutoLayout(layout);
-		}
-
-		return view ;
-	}
-...
-```
 
 ### Other version of this document
 
-- [GraphStream 1.3](/doc/Tutorials/Graph-Visualisation/1.3/)
 - [GraphStream 1.0](/doc/Tutorials/Graph-Visualisation/1.0/)

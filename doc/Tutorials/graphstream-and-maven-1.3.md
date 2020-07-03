@@ -42,10 +42,6 @@ Description about "how to build your project" are contained
 in a [Project Object Model](https://en.wikipedia.org/wiki/Project_Object_Model) (POM) using the XML format. Have
 a look on "gs-core/pom.xml" for an example. Dependencies of your project are set in this POM.
 
-from version 2.0, we use (https://jitpack.io) to release the new versions of Graphstream.
-JitPack is a novel package repository for JVM and Android projects. It builds Git projects on demand and provides 
-artifacts.
-
 Each project, called *artifact*, is identified by three informations :
 
 1. a group id, it allows to group several artifacts together. For example ``org.graphstream`` is common to every GraphStream artifact;
@@ -65,32 +61,18 @@ tags
 </project>
 ```
 
-These informations have to be used to define dependencies. However, from the version 2.0,
-these informations need to be adjusted according github artifacts.
-
-First, you need to add the jitpack repository to your POM:
-
-```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-Then you can define your dependancies :
+These informations have to be used to define dependencies
 
 ```xml
 <project>
 	...
 	<!-- Start list of dependencies -->
 	<dependencies>
-	<!-- Add a com.github/graphstream/gs-core/2.0 as dependency -->
+	<!-- Add a org.graphstream/gs-core/1.1 as dependency -->
 		<dependency>
-			<groupId>com.github.graphstream</groupId>
+			<groupId>org.graphstream</groupId>
 			<artifactId>gs-core</artifactId>
-			<version>2.0</version>
+			<version>1.1</version>
 			<optional>false</optional>
 		</dependency>
 	</dependencies>
@@ -98,20 +80,6 @@ Then you can define your dependancies :
 </project>
 ```
 
-### Using snapshot (Graphstream 2.0+)
-
-A snapshot is a version of Graphstream that has not been released. The difference between a real version 
-and a snapshot is that snapshot might still get updates. 
-Snapshot versions are useful during development process. To use them you can add
-the branch name followed by -SNAPSHOT in the version.
-
-```xml
-<dependency>
-    <groupId>com.github.graphstream</groupId>
-    <artifactId>gs-core</artifactId>
-    <version>dev-SNAPSHOT</version>
-</dependency>
-```
 
 ## Building GraphStream using Maven
 
@@ -313,7 +281,7 @@ mvn dependency:get -Dartifact=groupId:artifactId:version -DrepoUrl=http://repo1.
 replacing ``groupId``, ``artifactId`` and ``version`` by those of
 the artifact you want.
 
-## Using snapshot versions of GraphStream (Below 2.0)
+## Using snapshot versions of GraphStream
 
 ### a. by extending oss pom
 
@@ -383,7 +351,3 @@ If you want to use a jar which is not in Maven repository, you can install it di
 mvn install:install-file -Dfile=MyJar.jar -DgroupId=$GroupId -DartifactId=$ArtifactId -Dversion=$Version -Dpackaging=jar
 ```
 Next, you will be able to use this jar as a Maven dependency in your project.
-
-### Other version of this document
-
-- [GraphStream 1.3](/doc/Tutorials/GraphStream-Maven/1.3/)

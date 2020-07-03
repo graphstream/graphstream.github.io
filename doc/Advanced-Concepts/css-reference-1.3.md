@@ -6,27 +6,22 @@ permalink: /doc/Advanced-Concepts/GraphStream-CSS-Reference/
 redirect_from:
  - /doc/Tutorials/GraphStream-CSS-Reference_1.0/
  - /doc/Tutorials/GraphStream-CSS-Reference_1.2/
- - /doc/Tutorials/GraphStream-CSS-Reference_1.3/
 ---
 
 ## Styling
 
-You can configure a lot of the appearance of a graph using a style sheet that mimics the way CSS works for HTML.
+You can configure a lot of the appearance of a graph using a style sheet that mimics the way CSS works for HTML. The default viewer of GraphStream is only able to handle colors and sizes of elements, however the ``gs-ui`` module provides another viewer that fully support de CSS described here.
 
-You can select the renderer (``gs-ui-swing``, ``gs-ui-javafx`` or ``gs-ui-android``) by importing the library and using a system property. 
-The fully-CSS compliant renderer in swing can be set this way for example:
+You can select the renderer (the default one or the gs-ui one) using a system property. The fully-CSS compliant renderer can be set this way for example:
 
 ```java
 public static void main(String args[]) {
-  System.setProperty("org.graphstream.ui", "swing");
+  System.setProperty("gs.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
   ...
 }
 ```
 
-You only need to set this property before calling ``Graph.display()`` (except for ``gs-ui-android`` who doesn't have ``display()``). 
-However you can set the renderer by creating the viewer for example. 
-
-More details are provided [here](/doc/Tutorials/Graph-Visualisation/).
+You only need to set this property before calling ``Graph.display()``. However you can set the renderer by creating the viewer for example. More details are provided [here](/doc/Tutorials/Graph-Visualisation_1.0/).
 
 
 ### Specifying the style sheet
@@ -36,19 +31,19 @@ You specify the style sheet of a graph by putting a ``ui.stylesheet`` attribute 
 For example to pass a simple style sheet under the form of a string you can use:
 
 ```java
-graph.setAttribute("ui.stylesheet", "graph { fill-color: red; }");
+graph.addAttribute("ui.stylesheet", "graph { fill-color: red; }");
 ```
 
 Which will color the background of the graph in red. Alternatively you can link to a file or URL:
 
 ```java
-graph.setAttribute("ui.stylesheet", "url('file:///somewhere/on/my/disk/stylehsheet')");
+graph.addAttribute("ui.stylesheet", "url('file:///somewhere/on/my/disk/stylehsheet')");
 ```
 
 Or:
 
 ```java
-graph.setAttribute("ui.stylehseet", "url('http://somewere/in/the/clouds/stylesheet')");
+graph.addAttribute("ui.stylehseet", "url('http://somewere/in/the/clouds/stylesheet')");
 ```
 
 
@@ -65,7 +60,7 @@ graph.removeAttribute("ui.stylesheet");
 You can also add style for an individual element using the ``ui.style`` attribute on the element
 
 ```java
-node.setAttribute("ui.style", "fill-color: rgb(0,100,255);");
+node.addAttribute("ui.style", "fill-color: rgb(0,100,255);");
 ```
 
 The syntax is explained under. This creates a style for this specific node. However if you remove the attribute, this will not remove the style for the node.
@@ -95,13 +90,13 @@ You can further specify to apply the style to individual elements. To identify e
 You can also assign classes to elements. To assign a class to an element you change its ``ui.class`` attribute. For eexample:
 
 ```java
-graph.getNode("A").setAttribute("ui.class", "foo");
+graph.getNode("A").addAttribute("ui.class", "foo");
 ```
 
 Elements can pertain to several classes at once:
 
 ```java
-graph.getNode("A").setAttribute("ui.class", "foo, bar");
+graph.getNode("A").addAttribute("ui.class", "foo, bar");
 ```
 
 You specify a selector for a class using a dot ``.`` and the name of the class. For example to define a class of edges you can use ``edge.strange``. Edges having the ``strange`` keyword in their ``ui.class`` attribute will have this style. If an element pertains to several classes, the styles of each class will be merged, if there is a conflict the style appearing in the first class in the class list is chosen.
@@ -804,8 +799,3 @@ with the next releases of GraphStream.
       is stored in attributes. TODO
     - ?? ``panel``: Not yet available.
     - ?? ``slider``: Not yet available.
-
-### Other version of this document
-
-- [GraphStream 1.3](/doc/Advanced-Concepts/GraphStream-CSS-Reference/1.3/)
-
