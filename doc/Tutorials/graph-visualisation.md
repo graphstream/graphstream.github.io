@@ -787,7 +787,7 @@ Remove or comment the lines that zoom and pan the view. You should obtain someth
 
 Urban areas appear in gray as speed limit is (hopefully) for more limited in these zones.
 
-For an example that can easily be transformed to a dynamic update of the edge colors, see [Random Walks on Graphs](/doc/Algorithms/Random-walks-on-graphs_1.0/).
+For an example that can easily be transformed to a dynamic update of the edge colors, see [Random Walks on Graphs](/doc/Algorithms/Random-walks-on-graphs/).
 
 The dynamic change on colors is also available for the size of elements. Simply set the ``size`` property to the value ``dyn-size``, then store a ``ui.size`` attribute on elements. The size is in graph units.
 
