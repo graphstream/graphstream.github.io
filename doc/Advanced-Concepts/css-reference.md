@@ -6,7 +6,7 @@ permalink: /doc/Advanced-Concepts/GraphStream-CSS-Reference/
 redirect_from:
  - /doc/Tutorials/GraphStream-CSS-Reference_1.0/
  - /doc/Tutorials/GraphStream-CSS-Reference_1.2/
- - /doc/Tutorials/GraphStream-CSS-Reference_1.3/
+latest: /doc/Tutorials/GraphStream-CSS-Reference/
 ---
 
 ## Styling
@@ -14,7 +14,7 @@ redirect_from:
 You can configure a lot of the appearance of a graph using a style sheet that mimics the way CSS works for HTML.
 
 You can select the renderer (``gs-ui-swing``, ``gs-ui-javafx`` or ``gs-ui-android``) by importing the library and using a system property. 
-The fully-CSS compliant renderer in swing can be set this way for example:
+The fully-CSS compliant renderer in Swing can be set this way for example:
 
 ```java
 public static void main(String args[]) {
@@ -23,11 +23,10 @@ public static void main(String args[]) {
 }
 ```
 
-You only need to set this property before calling ``Graph.display()`` (except for ``gs-ui-android`` who doesn't have ``display()``). 
-However you can set the renderer by creating the viewer for example. 
+You only need to set this property before calling ``Graph.display()`` (except for ``gs-ui-android``  that doesn't have ``display()``). 
+However you can set the renderer by creating the viewer for example.
 
 More details are provided [here](/doc/Tutorials/Graph-Visualisation/).
-
 
 ### Specifying the style sheet
 

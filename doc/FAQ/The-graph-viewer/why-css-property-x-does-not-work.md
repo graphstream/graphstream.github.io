@@ -5,7 +5,7 @@ docpath: FAQ|/doc/FAQ/,The graph viewer|/doc/FAQ/The-graph-viewer/
 permalink: /doc/FAQ/The-graph-viewer/Why-CSS-property-X-does-not-work/
 redirect_from: /doc/FAQ/The-graph-viewer/Why-CSS-property-X-does-not-work-Why-multiple-edges-between-two-nodes-show-as-a-single-edge/
 ---
-Some UI may not implement some options, especially ``gs-ui-android``.
+Some UI may not implement all the features, especially ``gs-ui-android``.
 But if you are completely unable to see the graph, don't forget to add the property of your viewer:
 	
 {% highlight java %}

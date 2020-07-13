@@ -69,12 +69,12 @@ computation.
  		eccentricity.init(graph);
  		eccentricity.compute();
  
- 		for (Node n : graph.getEachNode()) {
- 			Boolean in = n.getAttribute("eccentricity");
+		graph.nodes().forEach( n -> {
+ 		 	Boolean in = n.getAttribute("eccentricity");
  
  			System.out.printf("%s is%s in the eccentricity.\n", n.getId(), in ? ""
  					: " not");
- 		}
+ 		});
  	}
  }
 {% endhighlight %}

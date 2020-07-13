@@ -2,8 +2,9 @@
 title: Getting Started
 layout: documentation
 docpath: Tutorials|/doc/Tutorials/
-permalink: /doc/Tutorials/Getting-Started/index.html
-redirect_from: /doc/Tutorials/Getting-Started_1.1/
+permalink: /doc/Tutorials/Getting-Started/1.3/
+latest: /doc/Tutorials/Getting-Started/
+
 ---
 
 Some words about GraphStream

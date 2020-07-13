@@ -2,7 +2,7 @@
 title: Graph Visualisation
 layout: documentation
 docpath: Tutorials|/doc/Tutorials/
-permalink: /doc/Tutorials/Graph-Visualisation/
+permalink: /doc/Tutorials/Graph-Visualisation/index.html
 redirect_from: /doc/Tutorials/Graph-Visualisation_1.1/
 ---
 
@@ -16,7 +16,7 @@ This tutorial is dedicated to visualisation of graphs and the addition and anima
 
 GraphStream does not provide one but several viewers.
 
-From the 2.0 version, the default viewer is no more in ``gs-core``. For more advanced rendering, another viewer is available separately. It is located in the ``gs-ui-Z`` modules, where ``Z`` is the name of the GUI tech used. To use it, you must download the ``gs-ui-Z.jar`` jar in the [download](/download/) section of the site and put it in your class path. These viewers supports most of the GraphStream [CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference/):
+From the 2.0 version of GraphStream, the default viewer is no part of the ``gs-core`` package anymore. Viewers are available separately. Viewers are located in ``gs-ui-TECH`` modules, where ``TECH`` is the name of the GUI tech used. To use it, you shall download the ``gs-ui-TECH.jar`` jar in the [download](/download/) section of the site and put it in your class path. These viewers support most of the GraphStream [CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference/):
 
 * Several node and edge shapes,
 * Borders (fill and stroke),
@@ -35,11 +35,11 @@ From the 2.0 version, the default viewer is no more in ``gs-core``. For more adv
 
 ### How to display a graph
 
-There are several ways to display a graph. The most easy one is to use the ``Graph.display()`` method. This is in fact a shortcut that creates a viewer for you. Indeed, its return value is an instance of the viewer used to display the graph. This method by default will try to place the nodes automatically in space to make the graph as readable as possible. You can also request that this automatic placement be disabled with ``Graph.display(boolean)``, passing the value ``false`` (however for your nodes to be visible, you therefore have to give them a position). 
+There are several ways to display a graph. The most easy one is to use the ``Graph.display()`` method. This is in fact a shortcut that creates a viewer for you. Indeed, its return value is an instance of the viewer used to display the graph. This method by default will try to place the nodes automatically in space to make the graph as readable as possible. You can also request that this automatic placement be disabled with ``Graph.display(boolean)``, passing the value ``false`` (however for your nodes to be visible, you therefore have to give them a position).
 
 It is also possible to directly create the viewer by hand. This is often necessary in order to include the graph view inside your own GUIs, this is described under.
 
-***Please note the display option is not available on ``gs-ui-android``, which requires a hand-created GUI.***
+***Please note that the `display()` method is not available on ``gs-ui-android``, which requires to be embedded your own Android GUI.***
 
 You can specify which viewer to use by setting a global property named ``org.graphstream.ui``. You can use the value ``swing`` or ``javafx`` depending on which GUI you want to use. This can be done in the ``main()`` method using the following code for example:
 
@@ -269,7 +269,7 @@ There are a lot of style properties, some applies only to a kind of selector. Th
 
 ### Rendering quality
 
-The ``swing`` viewer support several rendering modes. Both the simple and advanced viewers have two options to tune quality. The first one is set by adding the ``ui.quality`` attribute to the graph. This attribute does not need a value. It informs the viewer that it can use rendering algorithms that are more time consuming to favor quality instead of speed:
+The ``swing`` viewer supports several rendering modes. Both the simple and advanced viewers have two options to tune quality. The first one is set by adding the ``ui.quality`` attribute to the graph. This attribute does not need a value. It informs the viewer that it can use rendering algorithms that are more time consuming to favor quality instead of speed:
 
 ```java
 graph.setAttribute("ui.quality");
@@ -379,12 +379,13 @@ Here we have several ways to work. It depends on the program you intend to creat
  * If you plan to do a GUI only program, that is a program that only respond to GUI events (mous clicks, keyboard, etc.) you should work in the GUI thread, using listeners.
  * If you intend to create some sort of simulation that runs a code continuously on the graph and uses the viewer to display its results, you should work in the Java main thread (created when you launch the program) and comunicate with the viewer GUI.
 
-***Please note that by default, certain measures have been taken to save resources.*** These include the edge selection and the over/left function.
-If you want to activate them, you can use the method ``enableMouseOptions`` of ``View``:
+***Please note that by default, some features have been disabled in order to save resources*** These include the edge selection, the mouseOver, and mouseLeft functions.
+If you want to activate them, you can use the ``enableMouseOptions`` method  of ``View``:
 
 ```java
 viewer.getDefaultView().enableMouseOptions();
 ```
+
 This is a shortcut used to replace the default mouse manager. You can also do it manually :
 
 ```java
@@ -528,7 +529,7 @@ But before that, we will need to add the viewer we use. We are going to use ``gs
 System.setProperty("org.graphstream.ui", "swing");
 ```
 
-You must ensure you have the ``gs-ui-swing.jar`` jar in your class path to use this new viewer.
+You must ensure you have the ``gs-ui-swing.jar`` jar in your classpath to use this new viewer.
 
 ### The data
 
@@ -864,14 +865,14 @@ graph.setAttribute("ui.screenshot", "/some/place/screenshot.png");
 ## What about Android ?
 
 Android is a bit peculiar since it doesn't have a default display method. You need to create your own view in order to use it.
-For the convenience of the users, a default Android ``Fragment`` is provided. The ``Fragment`` can be used like so :
+For the convenience of the users, a default Android ``Fragment`` is provided. The ``Fragment`` can be used like so:
 
 ```java
 public void display(Bundle savedInstanceState, Graph graph, boolean autoLayout) {
     if (savedInstanceState == null) {
         FragmentManager fm = getSupportFragmentManager();
 
-        // find fragment or create him
+        // find fragment or create it
         fragment = (DefaultFragment) fm.findFragmentByTag("fragment_tag");
         if (null == fragment) {
             fragment = new DefaultFragment();

@@ -121,9 +121,9 @@ for(int i=0; i<1000; i++) {
 
 rwalk.terminate();
 
-for(Edge edge: graph.getEachEdge()) {
+graph.edges().forEach(edge -> {
 	System.out.println("Edge %s counts %f%n", edge.getId(), rwalk.getPasses(edge));
-}
+});
 {% endhighlight %}
 
 
@@ -192,18 +192,18 @@ edges according to the count values. The comments explain each step:
     	    double maxe = Double.MIN_VALUE;
     	
             // Obtain the maximum and minimum passes values.
-            for(Edge edge: graph.getEachEdge()) {
-    	        double passes = rwalk.getPasses(edge);
+            graph.edges().forEach(edge -> {
+			    double passes = rwalk.getPasses(edge);
     	        if(passes>maxe) maxe = passes;
     	        if(passes<mine) mine = passes;
     	    }
     	
             // Set the colors.
-            for(Edge edge:graph.getEachEdge()) {
-    	        double passes = rwalk.getPasses(edge);
+			graph.edges().forEach(edge -> {
+                double passes = rwalk.getPasses(edge);
     	        double color  = ((passes-mine)/(maxe-mine));
-    		edge.setAttribute("ui.color", color);
-    	    }
+    			edge.setAttribute("ui.color", color);
+    	    });
         }
     
         protected static String styleSheet =

@@ -29,7 +29,8 @@ redirect_from: /doc/Algorithms/Tarjan-Strongly-Connected-Components_development/
 	tscc.init(g);
 	tscc.compute();
 	
-	for (Node n : g.getEachNode())
-		n.addAttribute("label", n.getAttribute(tscc.getSCCIndexAttribute()));
+	g.nodes().forEach( n -> {
+ 		n.setAttribute("label", n.getAttribute(tscc.getSCCIndexAttribute()));
+	});
 {% endhighlight %}
 

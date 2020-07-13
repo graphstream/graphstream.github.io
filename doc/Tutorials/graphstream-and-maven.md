@@ -79,7 +79,7 @@ First, you need to add the jitpack repository to your POM:
 </repositories>
 ```
 
-Then you can define your dependancies :
+Then you can define your dependencies :
 
 ```xml
 <project>
@@ -98,7 +98,7 @@ Then you can define your dependancies :
 </project>
 ```
 
-### Using snapshot (Graphstream 2.0+)
+### Using snapshot versions
 
 A snapshot is a version of Graphstream that has not been released. The difference between a real version 
 and a snapshot is that snapshot might still get updates. 
@@ -114,36 +114,6 @@ the branch name followed by -SNAPSHOT in the version.
 ```
 
 ## Building GraphStream using Maven
-
-### Install dependencies
-
-First, you have to get depencies module of the ``gs-core``,
-named ``gs-deps``. It can be cloned from git using :
-
-```bash
-git clone git://github.com/graphstream/gs-deps.git
-```
-
-If you already have cloned ``gs-deps`` and just want to make an update
-of it, try to pull changes (if any):
-
-```bash
-cd gs-deps
-git pull
-```
-
-Next step is to build and install the artifact. Just go into the
-artifact directory and run:
-
-```bash
-cd gs-deps
-mvn install
-```
-
-This will compile, package and install the project into your local
-repository, so it will reachable by other project.
-
-### Install ``gs-core`` and other modules
 
 To install any ``gs-xxx`` module, just follow the process above,
 starting by ``gs-core``:
@@ -164,216 +134,12 @@ mvn package
 ```
 
 in the module directory. This will produce a ``gs-xxx-version.jar``
-in ``gs-xxx/target`` that you can use directly. Be carefull, this jar
+in ``gs-xxx/target`` that you can use directly. Be careful, this jar
 does not include dependencies, for example, building the jar of
 ``gs-core`` does not include classes of ``mbox2`` and ``pherd``.
 
+From version 2, an additional jar is provided with dependencies : `gs-core-2.0.0-SNAPSHOT-jar-with-dependencies.jar`
 
-### Activate optional profiles
-
-POM allows to define profiles that can be activated while the project
-is being built. The following is the list of available profiles.
-
-#### ``nodeps`` profile
-
-Available in ``gs-core`` and ``gs-ui``. It allows to include some
-dependencies in the final jar
-
-#### ``proguard`` profile
-
-#### ``release`` profile
-
-## Create a new project using GraphStream with the help of Maven
-
-### Get the Project Object Model skeleton
-
-If you are not familiar with POM, you can download a skeleton from the
-site: [pom.xml]({{ site.media }}/skeleton/pom.xml).
-
-### Set project informations
-
-You have to redefine the following informations in the pom:
-
-* artifactId
-* groupId (optional)
-* version
-* name
-* description
-* url
-
-```xml
-<project>
-	<!-- artifactId, groupId and version are need. -->
-	<artifactId>gs-powaa</artifactId>
-	<groupId>org.graphstream</groupId>
-	<version>0.1-SNAPSHOT</version>
-
-	<!-- Name, description and url are optional.
-	 You can remove these sections. -->
-	<name>gs powaa project</name>
-	<description>This project use all the GraphStream powaa.</description>
-	<url>http://gs-powaa.graphstream-project.org</url>
-
-	...
-</project>
-```
-
-If your project needs more dependency that ``gs-core``, you have to add
-these dependencies in the ``dependencies`` section. You can have a look
-to `Maven Search <http://search.maven.org/>`_ to find artifacts you need.
-
-For example, if you need the 2.1 version of ``commons-math`` from Apache,
-you can make a search on the previous link and find the informations about
-this artifact (org.apache.commons:commons-math:2.1). Then you just have to
-add the dependency in the ``dependencies`` section
-
-```xml
-<project>
-	...
-	<dependencies>
-		<dependency>
-			<artifactId>gs-core</artifactId>
-			<groudId>org.graphstream</groupId>
-			<version>1.0</version>
-			<optional>false</optional>
-		</dependency>
-
-		<!-- The new dependency : -->
-		<dependency>
-			<artifactId>commons-math</artifactId>
-			<groupId>org.apache.commons</groupId>
-			<version>2.1</version>
-			<optional>false</optional>
-		</dependency>
-	</dependencies>
-</project>
-```
-
-More informations are done as comments in the ``pom.xml`` skeleton.
-
-### Use your Maven project in Eclipse [optional]
-
-#### Configure Eclipse
-
-When creating the classpath of your project, Maven references
-dependencies from your Maven local repository as the classpath
-variable "M2_REPO".
-
-This variable has to be defined in your Eclipse settings to allow
-Eclipse to find the dependencies.
-
-This can be done with the following command :
-
-```bash
-mvn eclipse:configure-workspace
-```
-
-
-#### Generate Eclipse project files
-
-Once the project informations have been set in the POM, you can tell
-Maven to generate the Eclipse project files (.classpath, .project)
-with the following command :
-
-```bash
-mvn eclipse:eclipse
-```
-
-Then, go to Eclipse and select "import" in the file menu. Choose
-"Existing projects into workspace" and select your project directory.
-
-
-#### Alternatively, use a Maven artifact in your build path
-
-Once your workspace in configured using the previous command, you can
-directly add a maven artifact in the build path of your eclipse
-project.
-
-First, right-click on your eclipse project and go the build path
-configuration. Then click on "*Add Variable*" in the "*Librairies*"
-tab.
-
-![Screenshot 1]({{ site.content_img }}/eclipse-set-variable-part1.jpg)
-
-Select the "*M2_REPO*" variable and click on "*Extend*".
-
-![Screenshot 2]({{ site.content_img }}/eclipse-set-variable-part2.jpg)
-
-Final step is to select the artifact you want to use.
-
-![Screenshot 3]({{ site.content_img }}/eclipse-set-variable-part3.jpg)
-
-If the artifact you want to use is not in your local Maven repository,
-you can download it using the following command ::
-
-```bash
-mvn dependency:get -Dartifact=groupId:artifactId:version -DrepoUrl=http://repo1.maven.org/maven2/
-```
-
-replacing ``groupId``, ``artifactId`` and ``version`` by those of
-the artifact you want.
-
-## Using snapshot versions of GraphStream (Below 2.0)
-
-### a. by extending oss pom
-
-You just have to set the ``parent`` section in the POM of your project :
-
-```xml
-	<parent>
-		<groupId>org.sonatype.oss</groupId>
-		<artifactId>oss-parent</artifactId>
-		<version>7</version>
-	</parent>
-```
-
-Then, use the snapshot version of GraphStream in your dependencies :
-
-```xml
-	<dependency>
-		<groupId>org.graphstream</groupId>
-		<artifactId>gs-algo</artifactId>
-		<version>1.2-SNAPSHOT</version>
-		<optional>false</optional>
-	</dependency>
-```
-
-
-### b. by adding snapshot repositories
-
-You have to add the Sonatype snapshot repository in your POM :
-
-```xml
-	<repositories>
-		<repository>
-			<releases>
-				<enabled>false</enabled>
-				<updatePolicy>always</updatePolicy>
-				<checksumPolicy>warn</checksumPolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>fail</checksumPolicy>
-			</snapshots>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-```
-
-Then, use the snapshot version of GraphStream in your dependencies :
-
-```xml
-	<dependency>
-		<groupId>org.graphstream</groupId>
-		<artifactId>gs-algo</artifactId>
-		<version>1.2-SNAPSHOT</version>
-		<optional>false</optional>
-	</dependency>
-```
 
 ## Using non-maven jar in a Maven project
 

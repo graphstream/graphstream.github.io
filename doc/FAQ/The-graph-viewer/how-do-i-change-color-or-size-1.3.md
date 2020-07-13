@@ -2,7 +2,7 @@
 title: How do I dynamically change the color and size of elements in the viewer ?
 layout: documentation
 docpath: FAQ|/doc/FAQ/,The graph viewer|/doc/FAQ/The-graph-viewer/
-permalink: /doc/FAQ/The-graph-viewer/How-do-I-dynamically-change-color-and-size-in-the-viewer/
+permalink: /doc/FAQ/The-graph-viewer/How-do-I-dynamically-change-color-and-size-in-the-viewer/1.3/
 redirect_from: /doc/FAQ/The-graph-viewer/How-do-I-dynamically-change-color-and-size-in-the-viewer_1.1/
 versions: "1.0/"
 ---

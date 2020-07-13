@@ -122,10 +122,10 @@ different solution access methods is undefined.
 		g.addEdge("CF", "C", "F").addAttribute("length", 11);
 		g.addEdge("DF", "D", "F").addAttribute("length", 15);
 		g.addEdge("EF", "E", "F").addAttribute("length", 6);
-		for (Node n : g)
-			n.addAttribute("label", n.getId());
-		for (Edge e : g.getEachEdge())
-			e.addAttribute("label", "" + (int) e.getNumber("length"));
+
+		graph.nodes().forEach(n -> n.addAttribute("label", n.getId()));
+		graph.edges().forEach(e -> e.addAttribute("label", "" + (int) e.getNumber("length")));
+		
 		return g;
 	}
 

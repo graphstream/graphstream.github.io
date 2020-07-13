@@ -2,8 +2,8 @@
 title: Graph Visualisation
 layout: documentation
 docpath: Tutorials|/doc/Tutorials/
-permalink: /doc/Tutorials/Graph-Visualisation/
-redirect_from: /doc/Tutorials/Graph-Visualisation_1.1/
+permalink: /doc/Tutorials/Graph-Visualisation/1.3/
+latest: /doc/Tutorials/Graph-Visualisation/
 ---
 
 This tutorial is dedicated to visualisation of graphs and the addition and animation of data on graph renderings. As usual, it is cut in an informational part and a practical part at the end.

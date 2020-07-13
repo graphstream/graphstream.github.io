@@ -3,7 +3,6 @@ title: Getting Started
 layout: documentation
 docpath: Tutorials|/doc/Tutorials/
 permalink: /doc/Tutorials/Getting-Started/index.html
-redirect_from: /doc/Tutorials/Getting-Started_1.1/
 ---
 
 Some words about GraphStream
@@ -81,9 +80,9 @@ predefined features (random, grid, scale-free, etc.). It is defined in the
 ``gs-algo-X-Y.jar`` file.
 
 Finally, we have the gs-ui modules. They provides an implementation of the 
-GraphStream Viewer. Their name is composed like this : ``gs-ui-Z-X-Y.jar``
+GraphStream Viewer. Their name is composed like this : ``gs-ui-TECH-X-Y.jar``
 where ``X`` is the major GraphStream version, ``Y`` is the minor GraphStream 
-version and ``Z`` is the name of the GUI tech used.
+version and ``TECH`` is the name of the GUI tech used.
 
 You can use Maven to install graphstream and setup eclipse
 projects as described in [the maven tutorial](/doc/Tutorials/GraphStream-Maven/).
@@ -148,9 +147,11 @@ the nodes. You can see that each node or edge is identified by a string. Such
 identifiers must naturally be unique.
 
 It is often useful to check the graph by seeing it. If you add :
+
 ```java
 System.setProperty("org.graphstream.ui", "swing"); 
 ```
+
 you will be able to visulize your graph with the ``gs-ui-swing module``. you can easily 
 do this using the ``display()`` utility method:
 
@@ -186,7 +187,7 @@ public class Tutorial1 {
 }
 ```
 
-You will found more detail about the visualisation in /doc/Tutorials/Graph-Visualisation/
+You will find more detail about the visualisation in /doc/Tutorials/Graph-Visualisation/
 
 The graph being a factory for node, it can create nodes automatically if needed. Instead
 of the graph construction seen above, you can use:

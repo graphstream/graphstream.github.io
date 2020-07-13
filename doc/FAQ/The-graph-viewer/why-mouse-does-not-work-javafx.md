@@ -2,8 +2,7 @@
 title: Why mouse interaction does not work on javafx ?
 layout: documentation
 docpath: FAQ|/doc/FAQ/,The graph viewer|/doc/FAQ/The-graph-viewer/
-permalink: /doc/FAQ/The-graph-viewer/why-mouse-does-not-work-javafx/
-redirect_from: /doc/FAQ/The-graph-viewer/why-mouse-does-not-work-javafx 1.0/
+permalink: /doc/FAQ/The-graph-viewer/why-mouse-does-not-work-javafx/index.html
 ---
 
 Most of the time, it's because the elements are added in the same panel as the graph, and due to that, the view panel cannot get the right coordinates.
