@@ -151,9 +151,9 @@ edges according to the count values. The comments explain each step:
     	    gen.end();
     	
             // We display the graph.
-    	    graph.addAttribute("ui.stylesheet", styleSheet);
-    	    graph.addAttribute("ui.quality");
-    	    graph.addAttribute("ui.antialias");
+    	    graph.setAttribute("ui.stylesheet", styleSheet);
+    	    graph.setAttribute("ui.quality");
+    	    graph.setAttribute("ui.antialias");
     	    graph.display();
     	
             // We configure the random walk to use twice as
@@ -181,7 +181,7 @@ edges according to the count values. The comments explain each step:
        	    updateGraph(graph, rwalk);
 
             // We take a small screen-shot of the result.
-    	    graph.addAttribute("ui.screenshot", "randomWalk.png");
+    	    graph.setAttribute("ui.screenshot", "randomWalk.png");
         }
     
         /**

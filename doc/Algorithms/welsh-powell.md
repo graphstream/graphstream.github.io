@@ -112,7 +112,7 @@ Consider you what to display the result of the coloring algorithm on a displayed
  }
  for(Node n : graph){ 
  	int col = (int) n.getNumber("color");
- 	n.addAttribute("ui.style", "fill-color:rgba("+cols[col].getRed()+","+cols[col].getGreen()+","+cols[col].getBlue()+",200);" );
+ 	n.setAttribute("ui.style", "fill-color:rgba("+cols[col].getRed()+","+cols[col].getGreen()+","+cols[col].getBlue()+",200);" );
  }
  
  graph.display();

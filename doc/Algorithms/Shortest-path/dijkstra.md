@@ -106,25 +106,25 @@ different solution access methods is undefined.
  //        D      G
   	public static Graph exampleGraph() {
 		Graph g = new SingleGraph("example");
-		g.addNode("A").addAttribute("xy", 0, 1);
-		g.addNode("B").addAttribute("xy", 1, 2);
-		g.addNode("C").addAttribute("xy", 1, 1);
-		g.addNode("D").addAttribute("xy", 1, 0);
-		g.addNode("E").addAttribute("xy", 2, 2);
-		g.addNode("F").addAttribute("xy", 2, 1);
-		g.addNode("G").addAttribute("xy", 2, 0);
-		g.addEdge("AB", "A", "B").addAttribute("length", 14);
-		g.addEdge("AC", "A", "C").addAttribute("length", 9);
-		g.addEdge("AD", "A", "D").addAttribute("length", 7);
-		g.addEdge("BC", "B", "C").addAttribute("length", 2);
-		g.addEdge("CD", "C", "D").addAttribute("length", 10);
-		g.addEdge("BE", "B", "E").addAttribute("length", 9);
-		g.addEdge("CF", "C", "F").addAttribute("length", 11);
-		g.addEdge("DF", "D", "F").addAttribute("length", 15);
-		g.addEdge("EF", "E", "F").addAttribute("length", 6);
+		g.addNode("A").setAttribute("xy", 0, 1);
+		g.addNode("B").setAttribute("xy", 1, 2);
+		g.addNode("C").setAttribute("xy", 1, 1);
+		g.addNode("D").setAttribute("xy", 1, 0);
+		g.addNode("E").setAttribute("xy", 2, 2);
+		g.addNode("F").setAttribute("xy", 2, 1);
+		g.addNode("G").setAttribute("xy", 2, 0);
+		g.addEdge("AB", "A", "B").setAttribute("length", 14);
+		g.addEdge("AC", "A", "C").setAttribute("length", 9);
+		g.addEdge("AD", "A", "D").setAttribute("length", 7);
+		g.addEdge("BC", "B", "C").setAttribute("length", 2);
+		g.addEdge("CD", "C", "D").setAttribute("length", 10);
+		g.addEdge("BE", "B", "E").setAttribute("length", 9);
+		g.addEdge("CF", "C", "F").setAttribute("length", 11);
+		g.addEdge("DF", "D", "F").setAttribute("length", 15);
+		g.addEdge("EF", "E", "F").setAttribute("length", 6);
 
-		graph.nodes().forEach(n -> n.addAttribute("label", n.getId()));
-		graph.edges().forEach(e -> e.addAttribute("label", "" + (int) e.getNumber("length")));
+		graph.nodes().forEach(n -> n.setAttribute("label", n.getId()));
+		graph.edges().forEach(e -> e.setAttribute("label", "" + (int) e.getNumber("length")));
 		
 		return g;
 	}
@@ -149,11 +149,11 @@ different solution access methods is undefined.
 
 		// Color in blue all the nodes on the shortest path form A to B
 		for (Node node : dijkstra.getPathNodes(g.getNode("B")))
-			node.addAttribute("ui.style", "fill-color: blue;");
+			node.setAttribute("ui.style", "fill-color: blue;");
 
 		// Color in red all the edges in the shortest path tree
 		for (Edge edge : dijkstra.getTreeEdges())
-			edge.addAttribute("ui.style", "fill-color: red;");
+			edge.setAttribute("ui.style", "fill-color: red;");
 
 		// Print the shortest path from A to B
 		System.out.println(dijkstra.getPath(g.getNode("B")));

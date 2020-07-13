@@ -143,8 +143,8 @@ In fact the ``Element.getAttribute()`` method does not return ``Object``, here i
 Its return type may seem strange at first. It is in fact the one of the variable you try to assign the value to. This means that you can write such a code:
 
 ```java
-    node.addAttribute("foo", "buzz");
-    node.addAttribute("bar", new Flup());   // We assume we have some Flup available.
+    node.setAttribute("foo", "buzz");
+    node.setAttribute("bar", new Flup());   // We assume we have some Flup available.
 
     String foo = node.getAttribute("foo");
     Flup bar = node.getAttribute("bar");
@@ -155,7 +155,7 @@ Indeed, attributes can be of many different types. This heterogeneity does not a
 Be careful, this does not preclude cast errors, but should avoid you some heavy notation. In fact the cast is hidden in the ``getAttribute()`` method. This means that:
 
 ```java
-    node.addAttribute("bar", new Flup());
+    node.setAttribute("bar", new Flup());
     String bar = node.getAttribute("bar");
 ```
 
@@ -173,8 +173,8 @@ If you want to ensure the type of the attribute, you can use:
 This method will return null if the attribute is not of the correct type (or if it does not exist). This avoids you to do the checking by hand. For example:
 
 ```java
-    node.addAttribute("foo", "buzz");
-    node.addAttribute("bar", new Flup());
+    node.setAttribute("foo", "buzz");
+    node.setAttribute("bar", new Flup());
 
     Flup bar = node.getAttribute("bar", Flup.class); // OK
     Flup foo = node.getAttribute("foo", Flup.class); // null, bar is a String
@@ -221,7 +221,7 @@ For example suppose you have a node ``n``, you can add a label this way:
 
 ```java
     Node n = graph.addNode("A");
-    n.addAttribute("ui.label", "A");
+    n.setAttribute("ui.label", "A");
 ```
 
 The color of elements are changed in a different way. The labels are data that you store on the elements, they are parts of the contents of the graph. Indeed, structure and information both define the contents of the graph.  However as this is done for HTML pages, GraphStream separates the graph representation and styling from the graph contents. One can completely change the display of the same graph using a different style. This is why the viewer uses *style sheets* that uses the CSS syntax well known of web developers. Colors are changed using the style sheet, and instead of specifying directly colors for node and edges, you will specify that they pertain to a style class.
@@ -321,7 +321,7 @@ We also ask a display for the graph. Before adding code, it could be interesting
 
 ```java
     for (Node node : graph) {
-        node.addAttribute("ui.label", node.getId());
+        node.setAttribute("ui.label", node.getId());
     }
 ```
 
@@ -362,7 +362,7 @@ We enumerate the nodes in a while loop. For each node we add the ``ui.class`` at
 And adding the following line just before the ``graph.display()`` call in the constructor:
 
 ```java
-    graph.addAttribute("ui.stylesheet", styleSheet);
+    graph.setAttribute("ui.stylesheet", styleSheet);
 ```
 
 The style sheet defines two selectors: ``node`` that will apply a style to all the nodes, and ``node.marked`` that will apply a style only to nodes that pertain to the ``marked`` CSS class. This way all the nodes will be colored by default in black, but nodes having the ``ui.class`` attribute with value ``marked`` will be colored in red.
@@ -398,7 +398,7 @@ That is all, you can now run the program. You will only need the ``gs-core.jar``
         public GraphExplore() {
             Graph graph = new SingleGraph("tutorial 1");
 
-            graph.addAttribute("ui.stylesheet", styleSheet);
+            graph.setAttribute("ui.stylesheet", styleSheet);
             graph.setAutoCreate(true);
             graph.setStrict(false);
             graph.display();
@@ -412,7 +412,7 @@ That is all, you can now run the program. You will only need the ``gs-core.jar``
             graph.addEdge("EF", "E", "F");
 
             for (Node node : graph) {
-                node.addAttribute("ui.label", node.getId());
+                node.setAttribute("ui.label", node.getId());
             }
 
             explore(graph.getNode("A"));

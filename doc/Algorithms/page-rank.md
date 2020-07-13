@@ -55,8 +55,8 @@ precision.
 	public class DemoPageRank {
 		public static void main(String[] args) throws InterruptedException {
 			Graph graph = new SingleGraph("test");
-			graph.addAttribute("ui.antialias", true);
-			graph.addAttribute("ui.stylesheet", "node {fill-color: red; size-mode: dyn-size;} edge {fill-color:grey;}");
+			graph.setAttribute("ui.antialias", true);
+			graph.setAttribute("ui.stylesheet", "node {fill-color: red; size-mode: dyn-size;} edge {fill-color:grey;}");
 			graph.display();
 
 			DorogovtsevMendesGenerator generator = new DorogovtsevMendesGenerator();
@@ -72,8 +72,8 @@ precision.
 				generator.nextEvents();
 				for (Node node : graph) {
 					double rank = pageRank.getRank(node);
-					node.addAttribute("ui.size", 5 + Math.sqrt(graph.getNodeCount() * rank * 20));
-					node.addAttribute("ui.label", String.format("%.2f%%", rank * 100));
+					node.setAttribute("ui.size", 5 + Math.sqrt(graph.getNodeCount() * rank * 20));
+					node.setAttribute("ui.label", String.format("%.2f%%", rank * 100));
 				}
 				Thread.sleep(1000);
 			}

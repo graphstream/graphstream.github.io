@@ -43,7 +43,7 @@ public class KruskalTest {
 	  	String css = "edge .notintree {size:1px;fill-color:gray;} " +
 				 "edge .intree {size:3px;fill-color:black;}";
 
-	  	graph.addAttribute("ui.stylesheet", css);
+	  	graph.setAttribute("ui.stylesheet", css);
 	 	graph.display();
 	 
 	 	gen.addEdgeAttribute("weight");
