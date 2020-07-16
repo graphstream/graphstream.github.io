@@ -68,13 +68,12 @@ computation.
  		Centroid centroid = new Centroid();
  		centroid.init(graph);
  		centroid.compute();
- 
- 		for (Node n : graph.getEachNode()) {
+		graph.nodes().forEach( n -> {
  			Boolean in = n.getAttribute("centroid");
  
  			System.out.printf("%s is%s in the centroid.\n", n.getId(), in ? ""
  					: " not");
- 		}
+ 		});
  	}
  }
 {% endhighlight %}

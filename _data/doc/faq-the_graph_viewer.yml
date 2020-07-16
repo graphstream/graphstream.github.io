@@ -21,3 +21,13 @@ documents:
     
   - title: Why CSS property X does not work ? Why multiple edges between two nodes show as a single edge ?
     href: /doc/FAQ/The-graph-viewer/Why-CSS-property-X-does-not-work/
+    
+  - title:  Why mouse interaction does not work on javafx ?
+    href: /doc/FAQ/The-graph-viewer/why-mouse-does-not-work-javafx/
+  
+  - title: Why mouseOver/mouseLeft methods does not work ? Why I can't select edges ?
+    href: /doc/FAQ/The-graph-viewer/why-mouse-options-does-not-work/
+  
+  - title: Why do I get NullPointerException with JavaFX UI? 
+    href:  /doc/FAQ/The-graph-viewer/null-pointer-exeption-javafx/
+  
