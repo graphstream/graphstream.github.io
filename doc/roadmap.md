@@ -4,8 +4,8 @@ layout: documentation
 permalink: /doc/Roadmap/
 ---
 
-{% include warning.html title="This is a work in progress." message="Please be patient !" %}
+{% include warning.html title="This is a work in progress." message="" %}
 
-We are currently working on the roadmap for the ``2.0`` release.
-You can send your suggestions to us ``team@graphstream-project.org``.
-
+> The long and winding road, that leads, to your door<br />
+> Will never disappear, I've seen that road before<br />
+>  -- Lennon/McCartney

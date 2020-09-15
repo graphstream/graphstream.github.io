@@ -27,8 +27,8 @@ documents:
   - title: Getting Started
     href: /doc/Tutorials/Getting-Started/
   
-  - title: About Us
-    href: /doc/About-Us/
+  - title: Install GraphStream
+    href: /dev/Install/
 
   - title: Roadmap
     href: /doc/Roadmap/

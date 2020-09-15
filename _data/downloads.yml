@@ -1,3 +1,32 @@
+- title: Release 2.0
+  icon: gear
+  description: Major release with new UI implementations. The preferred way to use  the release is through maven. see the [install doc](//graphstream-project.org/doc/Install).
+  files:
+    - name: gs-core
+      href: //github.com/graphstream/gs-core/releases/download/2.0/gs-core-2.0.jar
+      hash: f389d6844007360f3e92c826e712db9bc87110d476c70c34cd82fc46e074a30e
+      hashMethod: SHA256
+      
+    - name: gs-algo
+      href: //github.com/graphstream/gs-algo/releases/download/2.0/gs-algo-2.0.jar
+      hash: a1744e5c97349f51b0544a75391d36448a43d80d9a6d7bee6522dd7fbd343fa1
+      hashMethod: SHA256
+      
+    - name: gs-ui-swing
+      href: //github.com/graphstream/gs-ui-swing/releases/download/2.0/gs-ui-swing-2.0.jar
+      hash: 5e6481dc68913693fde422e9c9d445b6166c158813ac5688444db3ef76ee81ad
+      hashMethod: SHA256
+      
+    - name: gs-ui-javafx
+      href: //github.com/graphstream/gs-ui-javafx/releases/download/2.0/gs-ui-javafx-2.0.jar
+      hash: d0d5ab709c84428a1d73dc2fa2f242e786f38ca8df45d00246f4f7f2e67af276
+      hashMethod: SHA256
+
+    - name: gs-ui-android
+      href: //github.com/graphstream/gs-ui-android/releases/download/2.0/gs-ui-android.aar
+      hash: 90c5672414fade6bbd61866a2d6018846ac9a4e444e88aebffdf0273106ce201
+      hashMethod: SHA256
+
 - title: Release 1.3
   icon: gear
   description: This release fixes a lot of issues since 1.2. It can be used directly

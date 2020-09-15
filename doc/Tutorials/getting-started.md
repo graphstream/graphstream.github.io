@@ -84,8 +84,7 @@ GraphStream Viewer. Their name is composed like this : ``gs-ui-TECH-X-Y.jar``
 where ``X`` is the major GraphStream version, ``Y`` is the minor GraphStream 
 version and ``TECH`` is the name of the GUI tech used.
 
-You can use Maven to install graphstream and setup eclipse
-projects as described in [the maven tutorial](/doc/Tutorials/GraphStream-Maven/).
+More information on how to install GraphStream is found on the <a class="btn btn-primary" href="/doc/Install"><i class="fa fa-cog fa-lg"></i> Install</a> page.
 
 A first example
 ---------------
