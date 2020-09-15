@@ -2,10 +2,12 @@
 title: CSS reference
 layout: documentation
 docpath: Advanced Concepts|/doc/Advanced-Concepts/
-permalink: /doc/Advanced-Concepts/GraphStream-CSS-Reference/
+permalink: /doc/Advanced-Concepts/GraphStream-CSS-Reference/1.3/
 redirect_from:
  - /doc/Tutorials/GraphStream-CSS-Reference_1.0/
  - /doc/Tutorials/GraphStream-CSS-Reference_1.2/
+latest: /doc/Advanced-Concepts/GraphStream-CSS-Reference/
+
 ---
 
 ## Styling

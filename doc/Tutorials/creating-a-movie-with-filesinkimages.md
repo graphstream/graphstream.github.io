@@ -5,7 +5,7 @@ layout: documentation
 docpath: Tutorials|/doc/Tutorials/
 permalink: /doc/Tutorials/Creating-a-movie-with-FileSinkImages/
 redirect_from: /doc/Tutorials/Creating-a-movie-with-FileSinkImages_1.2/
-versions: "1.0"
+versions: 1.0
 ---
 
 We often have to take screenshot of a graph to show it in a presentation or at

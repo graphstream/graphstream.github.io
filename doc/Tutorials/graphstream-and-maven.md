@@ -3,7 +3,8 @@ title: GraphStream & Maven
 layout: documentation
 docpath: Tutorials|/doc/Tutorials/
 permalink: /doc/Tutorials/GraphStream-Maven/
-redirect_from: /doc/Tutorials/GraphStream-Maven_1.1/
+redirect_from: /doc/Tutorials/GraphStream-Maven/2.0/
+versions: 1.3
 ---
 
 ## What you have to know about Maven

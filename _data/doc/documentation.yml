@@ -28,8 +28,11 @@ documents:
     href: /doc/Tutorials/Getting-Started/
   
   - title: Install GraphStream
-    href: /dev/Install/
+    href: /doc/Install/
 
   - title: Roadmap
     href: /doc/Roadmap/
+  
+  - title: Install
+    href: /doc/Install
 

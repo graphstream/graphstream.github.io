@@ -2,6 +2,7 @@
 title: API
 layout: documentation
 permalink: /doc/API/
+versions: 1.3
 ---
 
 GraphStream is distributed under several packages. The Javadoc associated to these packages is available separately online.

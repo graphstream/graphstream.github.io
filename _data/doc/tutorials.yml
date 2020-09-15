@@ -25,8 +25,5 @@ documents:
   - title: Reading files using FileSource
     href: /doc/Tutorials/Reading-files-using-FileSource/
 
-  - title: GraphStream & Maven
-    href: /doc/Tutorials/GraphStream-Maven/
-
   - title: Chart Measures
     href: /doc/Tutorials/Chart-Measures/

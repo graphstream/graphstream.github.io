@@ -4,6 +4,7 @@ layout: documentation
 docpath: Tutorials|/doc/Tutorials/
 permalink: /doc/Tutorials/Graph-Visualisation/index.html
 redirect_from: /doc/Tutorials/Graph-Visualisation_1.1/
+versions: 1.0,1.3
 ---
 
 This tutorial is dedicated to visualisation of graphs and the addition and animation of data on graph renderings. As usual, it is cut in an informational part and a practical part at the end.

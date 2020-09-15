@@ -15,10 +15,9 @@ You can download GraphStream on the [github releases pages](https://github.com/g
 
 But the preferred way to install GraphStream is through a build tool such as [Maven](https://maven.apache.org/) or [Gradle](https://gradle.org/).
 
-GraphStream major releases are distributed on the Central repository so you only need to specify the dependency through its group and artifact ids. 
+GraphStream major releases are distributed on the Maven Central Repository so you only need to specify the dependency through its group and artifact ids.
 
 ```xml
-<!-- https://mvnrepository.com/artifact/org.graphstream/gs-core -->
 <dependency>
     <groupId>org.graphstream</groupId>
     <artifactId>gs-core</artifactId>

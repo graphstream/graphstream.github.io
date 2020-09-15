@@ -4,6 +4,7 @@ layout: documentation
 docpath: Algorithms|/doc/Algorithms/,Shortest path|/doc/Algorithms/Shortest-path/
 permalink: /doc/Algorithms/Shortest-path/Dijkstra/
 redirect_from: /doc/Algorithms/Dijkstra_1.1/
+versions: 1.0
 ---
 
 Dijkstra's algorithm computes the shortest paths from a given node called
