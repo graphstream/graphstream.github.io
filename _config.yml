@@ -12,12 +12,23 @@ api_modules: ['core', 'algo', 'ui']
 news_count: 5
 future: true
 
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /img/gs-logo.png
+
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
   hard_wrap: false
-
+plugins:
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
 #gems:
 #  - jekyll-redirect-from

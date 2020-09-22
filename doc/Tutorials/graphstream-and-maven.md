@@ -41,63 +41,29 @@ repository.
 
 Description about "how to build your project" are contained
 in a [Project Object Model](https://en.wikipedia.org/wiki/Project_Object_Model) (POM) using the XML format. Have
-a look on "gs-core/pom.xml" for an example. Dependencies of your project are set in this POM.
+a look on `gs-core/pom.xml` for an example. Dependencies of your project are set in this POM.
 
-from version 2.0, we use (https://jitpack.io) to release the new versions of Graphstream.
-JitPack is a novel package repository for JVM and Android projects. It builds Git projects on demand and provides 
-artifacts.
 
 Each project, called *artifact*, is identified by three informations :
 
 1. a group id, it allows to group several artifacts together. For example ``org.graphstream`` is common to every GraphStream artifact;
 2. an artifact id, for example ``gs-core``, this id has to be unique according to the group;
-3. and a version, ``1.1``.
+3. and a version, ``2.0``.
 
-These informations are defined in the POM using the following
-tags
+These information are defined in the POM using the following
+tags:
 
 ```xml
 <project>
 	...
 	<artifactId>gs-core</artifactId>
 	<groupId>org.graphstream</groupId>
-	<version>1.1</version>
+	<version>2.0</version>
 	...
 </project>
 ```
 
-These informations have to be used to define dependencies. However, from the version 2.0,
-these informations need to be adjusted according github artifacts.
 
-First, you need to add the jitpack repository to your POM:
-
-```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-Then you can define your dependencies :
-
-```xml
-<project>
-	...
-	<!-- Start list of dependencies -->
-	<dependencies>
-	<!-- Add a com.github/graphstream/gs-core/2.0 as dependency -->
-		<dependency>
-			<groupId>com.github.graphstream</groupId>
-			<artifactId>gs-core</artifactId>
-			<version>2.0</version>
-			<optional>false</optional>
-		</dependency>
-	</dependencies>
-	...
-</project>
-```
 
 ### Using snapshot versions
 

@@ -17,6 +17,8 @@
 	
 	<link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 	
+	{% seo %}
+
 {% if include.extra_css %}
 	{% assign csss = include.extra_css | split:',' %}
 	{% for css in csss %}
