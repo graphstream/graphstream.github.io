@@ -17,7 +17,7 @@ This tutorial is dedicated to visualisation of graphs and the addition and anima
 
 GraphStream does not provide one but several viewers.
 
-From the 2.0 version of GraphStream, the default viewer is no part of the ``gs-core`` package anymore. Viewers are available separately. Viewers are located in ``gs-ui-TECH`` modules, where ``TECH`` is the name of the GUI tech used. To use it, you shall download the ``gs-ui-TECH.jar`` jar in the [download](/download/) section of the site and put it in your class path. These viewers support most of the GraphStream [CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference/):
+From the 2.0 version of GraphStream, the default viewer is not part of the ``gs-core`` package anymore. Viewers are available separately. Viewers are located in ``gs-ui-TECH`` modules, where ``TECH`` is the name of the GUI tech used. To use it, you shall download the ``gs-ui-TECH.jar`` jar in the [download](/download/) section of the site and put it in your class path. These viewers support most of the GraphStream [CSS reference](/doc/Advanced-Concepts/GraphStream-CSS-Reference/):
 
 * Several node and edge shapes,
 * Borders (fill and stroke),
