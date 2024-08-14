@@ -18,7 +18,7 @@ an algorithm. It contains two methods :
 * ``init( Graph g )``, which is the initialization step of the algorithm ;
 * ``compute()``, which launches the algorithm.
 
-### Why does we not just use a ``compute(Graph)`` method ?
+### Why do we not just use a ``compute(Graph)`` method ?
 
 The initialization step and computing step are located in different methods
 because you may have to make a new computation of your algorithm without
